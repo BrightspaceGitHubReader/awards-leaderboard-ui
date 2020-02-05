@@ -1,0 +1,24 @@
+language: node_js
+node_js: 10
+addons:
+  chrome: stable
+branches:
+  only:
+    - master
+    - /^\d+\.\d+\.\d+$/
+install: npm ci
+script: ./ci-script.sh
+deploy:
+  - provider: script
+    script: export STAGE=dev && ./ci-deploy.sh
+    skip_cleanup: true
+    on:
+      branch: master
+  - provider: script
+    script: export STAGE=prod && ./ci-deploy.sh
+    skip_cleanup: true
+    on:
+      tags: true
+env:
+  global:
+  - SAUCE_USERNAME: lweber-d2l

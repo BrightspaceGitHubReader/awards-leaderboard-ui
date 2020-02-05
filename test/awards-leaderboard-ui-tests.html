@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>d2l-menu unit tests</title>
+
+    <script>
+        //This is a hack to fix the issue whereby redux tries to access a process variable
+        window.process = {
+            env: {
+                NODE_ENV: 'production'
+            }
+        };
+    </script>
+    </script>
+    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="/node_modules/mocha/mocha.js"></script>
+    <script src="/node_modules/chai/chai.js"></script>
+    <script src="/node_modules/@polymer/test-fixture/test-fixture.js"></script>
+    <script src="/node_modules/wct-mocha/wct-mocha.js"></script>
+    <script type="module" src="../src/components/awards-leaderboard-ui.js"></script>
+</head>
+
+<body>
+
+    <test-fixture id="basic">
+        <template>
+            <awards-leaderboard-ui id="leaderboard"></awards-leaderboard-ui>
+        </template>
+    </test-fixture>
+    <script type="module">
+        import { runAxe } from '/node_modules/@brightspace-ui/core/tools/a11y-test-helper.js';
+        
+        describe('awards-leaderboard-ui', () => {
+            let awardsLeaderboard;
+            describe('basic', () => {
+                beforeEach(async () => {
+                    awardsLeaderboard = fixture('basic');
+                    await awardsLeaderboard.updateComplete;
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
