@@ -22,4 +22,4 @@ class App extends BaseMixin(LitElement) {
 
 }
 
-window.customElements.define('awards-leaderboard-ui', App);
+window.customElements.define('d2l-awards-leaderboard-ui', App);
