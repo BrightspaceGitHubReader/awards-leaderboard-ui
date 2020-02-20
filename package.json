@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "@brightspace-ui/core": "^1",
-    "@bundled-es-modules/uuid": "^3.3.2",
     "@polymer/polymer": "^3",
     "@webcomponents/webcomponentsjs": "^2",
     "d2l-fetch": "github:Brightspace/d2l-fetch#semver:^2",
