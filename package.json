@@ -20,7 +20,7 @@
     "url": "git+https://github.com/Brightspace/awards-leaderboard-ui.git"
   },
   "author": "D2L",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/Brightspace/awards-leaderboard-ui/issues"
   },
