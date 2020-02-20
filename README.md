@@ -1,5 +1,4 @@
 # awards-leaderboard-ui
-# [Name of project]
 [BADGES:]
 
 [![Build Status][CI Badge]][CI Branch] 
