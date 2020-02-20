@@ -15,6 +15,7 @@
 import '@brightspace-ui/core/components/typography/typography.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
+import { LeaderboardService } from '../services/awards-leaderboard-service.js';
 
 class App extends BaseMixin(LitElement) {
 
@@ -24,14 +25,31 @@ class App extends BaseMixin(LitElement) {
         `];
 	}
 
-	render() {
-		return html`<div>Hi</div>`;
-	}
-
 	static get properties() {
 		return {
-			label: { type: String }
+			label: { type: String },
+			orgUnitId: { type: Number }
 		};
+	}
+
+	constructor() {
+		super();
+		this.label = '';
+		this.orgUnitId = 0;
+		this._getLeaderboard();
+	}
+
+	render() {
+		return html`<div>Hi there!</div>`;
+	}
+
+	_getLeaderboard() {
+		const myLeaderboard = LeaderboardService.getLeaderboard(this.orgUnitId);
+		if (myLeaderboard === undefined) {
+			console.log('nothing came back'); // eslint-disable-line no-console
+		} else {
+			console.log(myLeaderboard); // eslint-disable-line no-console
+		}
 	}
 
 }
