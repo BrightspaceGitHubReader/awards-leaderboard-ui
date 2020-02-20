@@ -16,4 +16,4 @@ Options for getting started:
 Awards Leaderboard is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 <!-- links -->
 [CI Branch]:https://travis-ci.com/Brightspace/awards-leaderboard-ui
-[CI Badge]:https://travis-ci.com/Brightspace/awards-leaderboard-ui.svg?token=zP8A4cpDoGGHonhCHpEN&branch=master
+[CI Badge]:https://travis-ci.com/Brightspace/awards-leaderboard-ui.svg?branch=master
