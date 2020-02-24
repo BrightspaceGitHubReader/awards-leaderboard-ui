@@ -19,9 +19,9 @@ import 'd2l-users/components/d2l-profile-image.js';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
-import { TopStyleLimit } from '../constants/Constants'
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
 import { LeaderboardService } from '../services/awards-leaderboard-service.js';
+import { TopStyleLimit } from '../constants/Constants';
 
 class App extends BaseMixin(LitElement) {
 
