@@ -1,3 +1,5 @@
 {
-
+    "awards.none": "No awards",
+    "awards.one": "1 award",
+    "awards.many": "{numawards} awards"
 }

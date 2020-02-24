@@ -11,22 +11,24 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/list/list.js';
 import '@brightspace-ui/core/components/list/list-item.js';
-import '@brightspace-ui/core/components/typography/typography.js';
 import 'd2l-users/components/d2l-profile-image.js';
+import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
+import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
 import { LeaderboardService } from '../services/awards-leaderboard-service.js';
-
 
 class App extends BaseMixin(LitElement) {
 
 	static get styles() {
 		return [
+			bodyCompactStyles,
+			bodySmallStyles,
 			css`
-
 			.awardRow {
 				display: flex;
 				flex-direction: row;
@@ -36,8 +38,6 @@ class App extends BaseMixin(LitElement) {
 				margin-left: auto;
 			}
 			.profileImage {
-				height: 45px;
-				width: 45px;
 				border-radius: 5px;
 				margin: 9px;
 			}
@@ -53,7 +53,7 @@ class App extends BaseMixin(LitElement) {
 				justify-content: center;
 				border-color: var(--d2l-color-ferrite);
 			}
-			.awardRank[topRank] {
+			.awardRank[topRank=true] {
 				border-color: white;
 			}
 			.creditCount {
@@ -79,7 +79,8 @@ class App extends BaseMixin(LitElement) {
 		return {
 			label: { type: String },
 			orgUnitId: { type: Number },
-			sortedLeaderboardArray: { type: Array }
+			sortedLeaderboardArray: { type: Array },
+			doneLoading: { type: Boolean}
 		};
 	}
 
@@ -88,11 +89,12 @@ class App extends BaseMixin(LitElement) {
 		this.label = '';
 		this.orgUnitId = 0;
 		this.sortedLeaderboardArray = [];
+		this.doneLoading = false;
 
 		const baseUrl = import.meta.url;
 
-		this.fullURLExpand = new URL("../../images/arrow-expand.svg", baseUrl);
-		this.fullURLCollapse = new URL("../../images/arrow-collapsed.svg", baseUrl);
+		this.fullURLExpand = new URL('../../images/arrow-expand.svg', baseUrl);
+		this.fullURLCollapse = new URL('../../images/arrow-collapsed.svg', baseUrl);
 
 	}
 
@@ -102,12 +104,11 @@ class App extends BaseMixin(LitElement) {
 		</d2l-list>`;
 	}
 
-	firstUpdated(changedProperties) {
+	firstUpdated() {
 		this._getLeaderboard();
 	}
 
 	async _getLeaderboard() {
-		console.log(this.orgUnitId);
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId);
 		if (myLeaderboard === undefined) {
 			console.log('nothing came back'); // eslint-disable-line no-console
@@ -115,8 +116,6 @@ class App extends BaseMixin(LitElement) {
 			console.log(myLeaderboard); // eslint-disable-line no-console
 		}
 		this.sortedLeaderboardArray = myLeaderboard.Objects.slice(0, 10);
-		const baseUrl = import.meta.url;
-		console.log(baseUrl);
 	}
 
 	createAwardEntry(item) {
@@ -124,10 +123,16 @@ class App extends BaseMixin(LitElement) {
 		<d2l-list-item>
 			<div class='awardRow' id="${item.UserId}_Expand" @click="${this.expandClicked}">
 				<div class="awardRank" ?topRank="${item.Rank > 4}">${item.Rank}</div>
-				<img class='profileImage' src=${item.ProfileImage}></img>
-				<div class='creditCount'>
-					<div>${item.DisplayName}</div>
-					<div>Award Count: ${item.TotalAwardCount}</div>
+				<d2l-profile-image
+					class="profileImage"
+					href="${LeaderboardRoutes.ProfileImage(item.UserId)}"
+					small=""
+					token="token"
+					aria-hidden="true">
+				</d2l-profile-image>
+				<div class='creditCount '>
+					<div class='d2l-body-compact'>${item.DisplayName}</div>
+					<div class='d2l-body-small'>${this.getAwardText(item)}</div>
 				</div>
 				<img id="${item.UserId}_ExpandIcon" class="expandButton"  text="Expand" src="${this.fullURLExpand.toString()}"></img>
 			</div>
@@ -137,17 +142,26 @@ class App extends BaseMixin(LitElement) {
 		</d2l-list-item>`;
 	}
 
+	getAwardText(item) {
+		if (item.TotalAwardCount === 0) {
+			return this.localize('awards.none');
+		} else if (item.TotalAwardCount === 0) {
+			return this.localize('awards.one');
+		} else
+			return this.localize('awards.many', {numawards:`${item.TotalAwardCount}`});
+	}
+
 	expandClicked(event) {
-		const panel = this.shadowRoot.getElementById(event.target.id + "Panel");
-		const icon = this.shadowRoot.getElementById(event.target.id + "Icon");
+		const panel = this.shadowRoot.getElementById(`${event.target.id  }Panel`);
+		const icon = this.shadowRoot.getElementById(`${event.target.id  }Icon`);
 		if (panel.style.maxHeight) {
 			panel.style.maxHeight = null;
-			icon.classList.remove("expandButtonRotated");
+			icon.classList.remove('expandButtonRotated');
 			icon.src = this.fullURLExpand.toString();
 		} else {
-			panel.style.maxHeight = panel.scrollHeight + "px";
-			icon.classList.add("expandButtonRotated");
-			icon.src="../images/arrow-collapsed.svg";
+			panel.style.maxHeight = `${panel.scrollHeight  }px`;
+			icon.classList.add('expandButtonRotated');
+			icon.src = '../images/arrow-collapsed.svg';
 			icon.src = this.fullURLCollapse.toString();
 		}
 	}
