@@ -19,6 +19,7 @@ import 'd2l-users/components/d2l-profile-image.js';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
+import { TopStyleLimit } from '../constants/Constants'
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
 import { LeaderboardService } from '../services/awards-leaderboard-service.js';
 
@@ -110,11 +111,7 @@ class App extends BaseMixin(LitElement) {
 
 	async _getLeaderboard() {
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId);
-		if (myLeaderboard === undefined) {
-			console.log('nothing came back'); // eslint-disable-line no-console
-		} else {
-			console.log(myLeaderboard); // eslint-disable-line no-console
-		}
+		console.log(myLeaderboard); // eslint-disable-line no-console
 		this.sortedLeaderboardArray = myLeaderboard.Objects.slice(0, 10);
 	}
 
@@ -122,7 +119,7 @@ class App extends BaseMixin(LitElement) {
 		return html`
 		<d2l-list-item>
 			<div class='awardRow' id="${item.UserId}_Expand" @click="${this.expandClicked}">
-				<div class="awardRank" ?topRank="${item.Rank > 4}">${item.Rank}</div>
+				<div class="awardRank" ?topRank="${item.Rank >= TopStyleLimit}">${item.Rank}</div>
 				<d2l-profile-image
 					class="profileImage"
 					href="${LeaderboardRoutes.ProfileImage(item.UserId)}"
@@ -152,8 +149,8 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	expandClicked(event) {
-		const panel = this.shadowRoot.getElementById(`${event.target.id  }Panel`);
-		const icon = this.shadowRoot.getElementById(`${event.target.id  }Icon`);
+		const panel = this.shadowRoot.getElementById(`${event.target.id}Panel`);
+		const icon = this.shadowRoot.getElementById(`${event.target.id}Icon`);
 		if (panel.style.maxHeight) {
 			panel.style.maxHeight = null;
 			icon.classList.remove('expandButtonRotated');
