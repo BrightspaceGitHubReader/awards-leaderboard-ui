@@ -156,7 +156,7 @@ class App extends BaseMixin(LitElement) {
 			icon.classList.remove('expandButtonRotated');
 			icon.src = this.fullURLExpand.toString();
 		} else {
-			panel.style.maxHeight = `${panel.scrollHeight  }px`;
+			panel.style.maxHeight = `${panel.scrollHeight}px`;
 			icon.classList.add('expandButtonRotated');
 			icon.src = '../images/arrow-collapsed.svg';
 			icon.src = this.fullURLCollapse.toString();
