@@ -36,14 +36,18 @@ export class LeaderboardService {
 		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgunitid));
 	}
 
-	static getRequest(base_path) {
-		const getRequest = new Request(`${this.Host}${base_path}`, {
-			method: 'GET',
-			headers: {
-				'Content-Type' : 'application/json'
-			}
-		});
-		return d2lfetch.fetch(getRequest).then(r => r.json());
+	static getRequest(url) {
+		return fetch(url, this.GetOptions).then(r => r.json());
 	}
+
+	// static getRequest(base_path) {
+	// 	const getRequest = new Request(`${this.Host}${base_path}`, {
+	// 		method: 'GET',
+	// 		headers: {
+	// 			'Content-Type': 'application/json'
+	// 		}
+	// 	});
+	// 	return d2lfetch.fetch(getRequest).then(r => r.json());
+	// }
 
 }
