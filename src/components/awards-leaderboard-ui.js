@@ -16,13 +16,12 @@ import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/list/list.js';
 import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
-import './leaderboard-row.js'
+import './leaderboard-row.js';
 
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
 import { LeaderboardService } from '../services/awards-leaderboard-service.js';
-
 
 class App extends BaseMixin(LitElement) {
 
@@ -49,8 +48,6 @@ class App extends BaseMixin(LitElement) {
 		this.sortedLeaderboardArray = [];
 		this.doneLoading = false;
 
-
-
 	}
 
 	render() {
@@ -67,7 +64,7 @@ class App extends BaseMixin(LitElement) {
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId);
 		console.log(myLeaderboard); // eslint-disable-line no-console
 		this.sortedLeaderboardArray = myLeaderboard.Objects.slice(0, 10);
-		this.doneLoading=true;
+		this.doneLoading = true;
 	}
 
 	createLeaderboardEntry(item) {
@@ -76,8 +73,6 @@ class App extends BaseMixin(LitElement) {
 			<leaderboard-row userData=${JSON.stringify(item)}></leaderboard-row>
 		</d2l-list-item>`;
 	}
-
-
 }
 
 window.customElements.define('d2l-awards-leaderboard-ui', App);
