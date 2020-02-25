@@ -10,7 +10,7 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.\
+// limitations under the License.
 import 'd2l-tooltip/d2l-tooltip.js';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
@@ -117,7 +117,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	getAwardText() {
 		if (this.userData.TotalAwardCount === 0) {
 			return this.localize('awards.none');
-		} else if (this.userData.TotalAwardCount === 0) {
+		} else if (this.userData.TotalAwardCount === 1) {
 			return this.localize('awards.one');
 		} else
 			return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
