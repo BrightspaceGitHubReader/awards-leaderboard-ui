@@ -1,6 +1,9 @@
-export const BasVersion = 1.1;
+const BasVersion = 1.1;
+const MAX_USERS = 10;
 
 export class LeaderboardRoutes {
-	static ClasslistLeaderboard(orgUnitId) { return `/d2l/api/bas/${BasVersion}/orgunits/${orgUnitId}/classlist/`; }
+	static ClasslistLeaderboard(orgUnitId) { return `/d2l/api/bas/${BasVersion}/orgunits/${orgUnitId}/classlist/?limit=${MAX_USERS}`; }
+	static MyAwards(orgUnitId, userId) { return `/d2l/api/bas/${BasVersion}/orgunits/${orgUnitId}/classlist/users/${userId}`; }
+	static MyConfigs(orgUnitId){ return `/d2l/api/bas/${BasVersion}/orgunits/${orgUnitId}/myConfiguration`; }
 	static ProfileImage(userId) { return `/d2l/api/hm/users/${userId}`; }
 }

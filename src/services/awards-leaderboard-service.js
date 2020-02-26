@@ -35,6 +35,10 @@ export class LeaderboardService {
 	static getLeaderboard(orgunitid) {
 		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgunitid));
 	}
+	
+	static getMyAwards(orgunitid, userId) {
+		return this.getRequest(LeaderboardRoutes.MyAwards(orgunitid, userId));
+	}
 
 	static getRequest(url) {
 		return fetch(url, this.GetOptions).then(r => r.json());
