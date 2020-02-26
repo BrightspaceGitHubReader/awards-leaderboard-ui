@@ -17,3 +17,6 @@ else
     echo "Not a pull request and/or no secure environment variables, running headless tests...";
     npm run test:travis || travis_terminate 1;
 fi
+
+echo 'Build'
+npm run build
