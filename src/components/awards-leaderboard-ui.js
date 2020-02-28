@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import '@brightspace-ui/core/components/icons/icon.js';
+import '@brightspace-ui/core/components/colors/colors.js';
 import '@brightspace-ui/core/components/list/list.js';
 import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
@@ -29,6 +30,9 @@ class App extends BaseMixin(LitElement) {
 		return [
 
 			css`
+			.myAwardItem {
+				background-color: var(--d2l-color-celestine-plus-2);
+			}
 			
         `];
 	}
@@ -37,6 +41,7 @@ class App extends BaseMixin(LitElement) {
 		return {
 			label: { type: String },
 			orgUnitId: { type: Number },
+			userId: { type: Number },
 			doneLoading: { type: Boolean}
 		};
 	}
@@ -45,19 +50,22 @@ class App extends BaseMixin(LitElement) {
 		super();
 		this.label = '';
 		this.orgUnitId = 0;
+		this.userId = 0;
 		this.sortedLeaderboardArray = [];
+		this.myAwards = {};
 		this.doneLoading = false;
-
 	}
 
 	render() {
 		return html`<d2l-list>
-			${this.sortedLeaderboardArray.map(item => this.createLeaderboardEntry(item))}
+			${this.createLeaderboardEntry(this.myAwards, true)}
+			${this.sortedLeaderboardArray.map(item => this.createLeaderboardEntry(item, false))}
 		</d2l-list>`;
 	}
 
 	firstUpdated() {
 		this._getLeaderboard();
+		this._getMyAwards();
 	}
 
 	async _getLeaderboard() {
@@ -67,10 +75,27 @@ class App extends BaseMixin(LitElement) {
 		this.doneLoading = true;
 	}
 
-	createLeaderboardEntry(item) {
+	async _getMyAwards() {
+		const myAwards = await LeaderboardService.getMyAwards(this.orgUnitId, this.userId);
+		if (myAwards === undefined || myAwards === null) {
+			return;
+		}
+		if (Object.prototype.hasOwnProperty.call(myAwards, 'Message')) {
+			return;
+		}
+		this.myAwards = myAwards;
+	}
+
+	createLeaderboardEntry(item, isMyAward) {
+		if (item.UserId === undefined) {
+			return;
+		}
+		if (item.UserId === this.userId) {
+			isMyAward = true;
+		}
 		return html`
-		<d2l-list-item>
-			<leaderboard-row userData=${JSON.stringify(item)}></leaderboard-row>
+			<d2l-list-item class="${ isMyAward ? 'myAwardItem' : '' }">
+			<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)}></leaderboard-row>
 		</d2l-list-item>`;
 	}
 }

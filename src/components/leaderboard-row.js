@@ -39,6 +39,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.awardRank {
 				border-radius: 15px;
 				background-color: #E3E9F1;
+				border: 1px solid #E3E9F1;
 				height: 15px;
 				width: 15px;
 				padding: 9px;
@@ -46,11 +47,17 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				align-items: center;
 				display: flex;
 				justify-content: center;
-				border-color: var(--d2l-color-ferrite);
+				-moz-border-radius:50%;
+				-webkit-border-radius:50%;
 			}
-			.awardRank[topRank=true] {
-				border-color: white;
-            }
+			.awardRank[topRank] {
+				background-color: white;
+				border: 1px solid var(--d2l-color-ferrite);
+			}
+			.awardRow[myAward] .awardRank[topRank],
+			.awardRow[myAward] .awardRank {
+				border: 1px solid var(--d2l-color-celestine);
+			}
             .badgeEntry {
                 height: 30px;
                 width: 30px;
@@ -93,8 +100,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 	render() {
 		return html`
-            <div class='awardRow' id="$Expandable" @click="${this.expandClicked}">
-            <div class="awardRank" ?topRank="${this.userData.Rank >= TopStyleLimit}">${this.userData.Rank}</div>
+            <div class='awardRow' id="$Expandable" @click="${this.expandClicked}" ?myAward="${this.myAward}">
+            <div class="awardRank" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
             <d2l-profile-image
                 class="profileImage"
                 href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
@@ -154,7 +161,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 	static get properties() {
 		return {
-			userData: {type: Object}
+			userData: {type: Object},
+			myAward: { type: Boolean }
 		};
 	}
 }
