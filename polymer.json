@@ -11,7 +11,7 @@
     "index.html"
   ],
   "extraDependencies": [
-
+    "images/**"
   ],
   "builds": [
     {
