@@ -111,7 +111,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
             </d2l-profile-image>
             <div class='creditCount'>
                 <div class='d2l-body-compact noMargin'>${this.userData.DisplayName}</div>
-                <div class='d2l-body-small noMargin'>${this.getAwardText()}</div>
+                <div class='d2l-body-small noMargin'>${this.getDisplayNumber()}</div>
             </div>
             <img id="ExpandIcon" class="expandButton"  text="Expand" src="${this.fullURLExpand.toString()}"></img>
         </div>
@@ -120,14 +120,29 @@ class LeaderboardRow extends BaseMixin(LitElement) {
         </div>
     	`;
 	}
+	
+	getDisplayNumber(){
+		if(!this.configAwardCountSort){
+			return this.getCreditCountText();
+		}
+		return this.getAwardCountText();
+	}
 
-	getAwardText() {
+	getAwardCountText() {
 		if (this.userData.TotalAwardCount === 0) {
 			return this.localize('awards.none');
-		} else if (this.userData.TotalAwardCount === 1) {
+		}
+		if (this.userData.TotalAwardCount === 1) {
 			return this.localize('awards.one');
-		} else
-			return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
+		}
+		return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
+	}
+
+	getCreditCountText(){
+		if (this.userData.TotalCreditCount === 1) {
+			return this.localize('credits.one');
+		}
+		return this.localize('credits.many', {numcredits:`${this.userData.TotalCreditCount}`});
 	}
 
 	getAwards() {
@@ -162,7 +177,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	static get properties() {
 		return {
 			userData: {type: Object},
-			myAward: { type: Boolean }
+			myAward: { type: Boolean },
+			configAwardCountSort: { type: Boolean }
 		};
 	}
 }

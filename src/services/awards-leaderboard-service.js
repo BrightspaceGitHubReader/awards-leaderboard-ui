@@ -32,8 +32,8 @@ export class LeaderboardService {
 		};
 	}
 
-	static getLeaderboard(orgunitid) {
-		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgunitid));
+	static getLeaderboard(orgunitid, classlistSort) {
+		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgunitid, classlistSort));
 	}
 
 	static getMyAwards(orgunitid, userId) {
