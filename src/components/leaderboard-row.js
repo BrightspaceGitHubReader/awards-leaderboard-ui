@@ -129,9 +129,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	getAwardCountText() {
-		if (this.userData.TotalAwardCount === 0) {
-			return this.localize('awards.none');
-		}
 		if (this.userData.TotalAwardCount === 1) {
 			return this.localize('awards.one');
 		}
