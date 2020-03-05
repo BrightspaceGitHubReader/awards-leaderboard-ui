@@ -34,9 +34,9 @@ export class LeaderboardService {
 		};
 	}
 
-	static getLeaderboard(orgunitid, sortByAwardsConfig) {
+	static getLeaderboard(orgunitid, sortByCreditsConfig) {
 		var classlistSort = ClasslistAwardSortByAwards;
-		if (!sortByAwardsConfig) {
+		if (sortByCreditsConfig) {
 			classlistSort = ClasslistAwardSortByCredits;
 		} 
 		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgunitid, classlistSort));

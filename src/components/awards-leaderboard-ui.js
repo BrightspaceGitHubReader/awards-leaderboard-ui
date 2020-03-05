@@ -42,7 +42,7 @@ class App extends BaseMixin(LitElement) {
 			label: { type: String },
 			orgUnitId: { type: Number },
 			userId: { type: Number },
-			sortByAwardsConfig: { type: Boolean },
+			sortByCreditsConfig: { type: Boolean },
 			doneLoading: { type: Boolean }
 		};
 	}
@@ -54,7 +54,7 @@ class App extends BaseMixin(LitElement) {
 		this.userId = 0;
 		this.sortedLeaderboardArray = [];
 		this.myAwards = {};
-		this.sortByAwardsConfig = false;
+		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
 	}
 
@@ -71,7 +71,7 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	async _getLeaderboard() {
-		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByAwardsConfig);
+		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
 		console.log(myLeaderboard); // eslint-disable-line no-console
 		this.sortedLeaderboardArray = myLeaderboard.Objects;
 		this.doneLoading = true;
@@ -97,7 +97,7 @@ class App extends BaseMixin(LitElement) {
 		}
 		return html`
 			<d2l-list-item class="${ isMyAward ? 'myAwardItem' : '' }">
-			<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)} ?sortByAwardsConfig=${this.sortByAwardsConfig}></leaderboard-row>
+			<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
 		</d2l-list-item>`;
 	}
 }
