@@ -72,7 +72,7 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	async _getLeaderboard() {
-		if (this.awardsClasslistSort == 4) { //Sort by Credit Count
+		if (this.awardsClasslistSort === 4) { //Sort by Credit Count
 			this.awardCountSort = false;
 		} //Otherwise Sort by Award Count
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.awardsClasslistSort);

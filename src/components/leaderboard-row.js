@@ -120,9 +120,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
         </div>
     	`;
 	}
-	
-	getDisplayNumber(){
-		if(!this.configAwardCountSort){
+
+	getDisplayNumber() {
+		if (!this.configAwardCountSort) {
 			return this.getCreditCountText();
 		}
 		return this.getAwardCountText();
@@ -135,7 +135,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
 	}
 
-	getCreditCountText(){
+	getCreditCountText() {
 		if (this.userData.TotalCreditCount === 1) {
 			return this.localize('credits.one');
 		}
