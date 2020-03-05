@@ -1,4 +1,4 @@
-
+import { ClasslistAwardSortByAwards, ClasslistAwardSortByCredits } from '../constants/constants';
 import { d2lfetch } from 'd2l-fetch/src/index';
 import fetchAuthFramed from 'd2l-fetch-auth/es6/d2lfetch-auth-framed';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
@@ -32,8 +32,12 @@ export class LeaderboardService {
 		};
 	}
 
-	static getLeaderboard(orgunitid) {
-		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgunitid));
+	static getLeaderboard(orgunitid, sortByCreditsConfig) {
+		let classlistSort = ClasslistAwardSortByAwards;
+		if (sortByCreditsConfig) {
+			classlistSort = ClasslistAwardSortByCredits;
+		}
+		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgunitid, classlistSort));
 	}
 
 	static getMyAwards(orgunitid, userId) {

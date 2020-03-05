@@ -1,5 +1,6 @@
 {
-    "awards.none": "No awards",
+    "awards.many": "{numawards} awards",
     "awards.one": "1 award",
-    "awards.many": "{numawards} awards"
+    "credits.many": "{numcredits} credits",
+    "credits.one": "1 credits"
 }
