@@ -122,7 +122,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	getDisplayNumber() {
-		if (!this.configAwardCountSort) {
+		if (!this.sortByAwardsConfig) {
 			return this.getCreditCountText();
 		}
 		return this.getAwardCountText();
@@ -175,7 +175,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return {
 			userData: {type: Object},
 			myAward: { type: Boolean },
-			configAwardCountSort: { type: Boolean }
+			sortByAwardsConfig: { type: Boolean }
 		};
 	}
 }
