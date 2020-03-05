@@ -1,9 +1,7 @@
-
+import { ClasslistAwardSortByAwards, ClasslistAwardSortByCredits } from '../constants/constants';
 import { d2lfetch } from 'd2l-fetch/src/index';
 import fetchAuthFramed from 'd2l-fetch-auth/es6/d2lfetch-auth-framed';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
-import { ClasslistAwardSortByAwards } from '../constants/constants';
-import { ClasslistAwardSortByCredits } from '../constants/constants';
 
 d2lfetch.use({
 	name: 'auth',
@@ -35,10 +33,10 @@ export class LeaderboardService {
 	}
 
 	static getLeaderboard(orgunitid, sortByCreditsConfig) {
-		var classlistSort = ClasslistAwardSortByAwards;
+		let classlistSort = ClasslistAwardSortByAwards;
 		if (sortByCreditsConfig) {
 			classlistSort = ClasslistAwardSortByCredits;
-		} 
+		}
 		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgunitid, classlistSort));
 	}
 
