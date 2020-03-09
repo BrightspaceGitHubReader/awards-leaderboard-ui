@@ -101,23 +101,23 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	render() {
 		return html`
             <div class='awardRow' id="$Expandable" @click="${this.expandClicked}" ?myAward="${this.myAward}">
-            <div class="awardRank" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
-            <d2l-profile-image
-                class="profileImage"
-                href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
-                small=""
-                token="token"
-                aria-hidden="true">
-            </d2l-profile-image>
-            <div class='creditCount'>
-                <div class='d2l-body-compact noMargin'>${this.userData.DisplayName}</div>
-                <div class='d2l-body-small noMargin'>${this.getDisplayNumber()}</div>
-            </div>
-            <img id="ExpandIcon" class="expandButton"  text="Expand" src="${this.fullURLExpand.toString()}"></img>
-        </div>
-        <div id="ExpandPanel" class="panel"> 
-            ${this.getAwards()}
-        </div>
+				<div class="awardRank" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
+				<d2l-profile-image
+					class="profileImage"
+					href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
+					medium=""
+					token="token"
+					aria-hidden="true">
+				</d2l-profile-image>
+				<div class='creditCount'>
+					<div class='d2l-body-compact noMargin'>${this.userData.DisplayName}</div>
+					<div class='d2l-body-small noMargin'>${this.getDisplayNumber()}</div>
+				</div>
+				<img id="ExpandIcon" class="expandButton" text="Expand" src="${this.fullURLExpand.toString()}"></img>
+			</div>
+			<div id="ExpandPanel" class="panel"> 
+				${this.getAwards()}
+			</div>
     	`;
 	}
 
@@ -153,9 +153,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	createAwardEntry(award) {
 		const awardImageUrl = award.Award.ImageData.Path;
 		const badgeID = `Badge_${award.Award.AwardId}`;
-		return html`<img id="${badgeID}" src=${awardImageUrl} class='badgeEntry'> </img>
-        <d2l-tooltip for="${badgeID}">${award.Award.Title}</d2l-tooltip>`;
+		return html`<img id="${badgeID}" src=${awardImageUrl} class='badgeEntry'></img>
+			<d2l-tooltip for="${badgeID}">${award.Award.Title}</d2l-tooltip>
+		`;
 	}
+
 	expandClicked() {
 		const panel = this.shadowRoot.getElementById('ExpandPanel');
 		const icon = this.shadowRoot.getElementById('ExpandIcon');
