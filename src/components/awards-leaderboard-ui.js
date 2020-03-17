@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/colors/colors.js';
+import '@brightspace-ui/core/components/dialog/dialog.js';
+import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/list/list.js';
 import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
@@ -43,7 +44,8 @@ class App extends BaseMixin(LitElement) {
 			orgUnitId: { type: Number },
 			userId: { type: Number },
 			sortByCreditsConfig: { type: Boolean },
-			doneLoading: { type: Boolean }
+			doneLoading: { type: Boolean },
+			awardsDialogOpen: { type: Boolean }
 		};
 	}
 
@@ -56,10 +58,24 @@ class App extends BaseMixin(LitElement) {
 		this.myAwards = {};
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
+		this.awardsDialogOpen = false;
 	}
 
 	render() {
-		return html`<d2l-list>
+		return html`
+			<d2l-button id="open" @click="${this.handleClick}">Show Dialog</d2l-button>
+
+			<d2l-dialog ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this.closeDialog}">
+				<iframe 
+					src="${LeaderboardService.getIssuedAward(175, 8)}"
+					frameBorder="0"
+					width="450"
+					height="300"
+					style="overflow:hidden"
+				>
+				</iframe>
+				<d2l-button slot="footer" dialog-action>Close</d2l-button>
+			</d2l-dialog>
 			${this.createLeaderboardEntry(this.myAwards, true)}
 			${this.sortedLeaderboardArray.map(item => this.createLeaderboardEntry(item, false))}
 		</d2l-list>`;
@@ -99,6 +115,13 @@ class App extends BaseMixin(LitElement) {
 			<d2l-list-item class="${ isMyAward ? 'myAwardItem' : '' }">
 			<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
 		</d2l-list-item>`;
+	}
+
+	handleClick(){
+		this.awardsDialogOpen = true;
+	}
+	closeDialog(){
+		this.awardsDialogOpen = false;
 	}
 }
 
