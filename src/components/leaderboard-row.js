@@ -40,8 +40,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				border-radius: 15px;
 				background-color: #E3E9F1;
 				border: 1px solid #E3E9F1;
-				height: 15px;
-				width: 15px;
+				height: 21px;
+				width: 21px;
 				padding: 9px;
 				margin: 9px;
 				align-items: center;
@@ -59,23 +59,31 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				border: 1px solid var(--d2l-color-celestine);
 			}
             .badgeEntry {
-                height: 30px;
-                width: 30px;
+                height: 34px;
+				width: 34px;
+				padding-right: 2px;
+				vertical-align: middle;
+				padding-top: 12px;
             }
 			.creditCount {
 				display:flex;
 				flex-direction: column;
 			}
 			.panel {
-				display: block;
+				display: none;
 				overflow: hidden;
-				max-height: 0;
+				height: 60px;
+				margin-bottom: -11px;
 				transition: max-height 0.2s ease-out;
+				padding-left: 9px;
+				background-color: var(--d2l-color-sylvite);
+				border-top: 1px solid var(--d2l-color-mica);
 			}
 			.noMargin {
 				margin: unset  !important;
 			}
 			.expandButton{
+				margin-right: 25px;
                 transition: transform 0.2s;
                 -webkit-touch-callout: none; /* iOS Safari */
                 -webkit-user-select: none; /* Safari */
@@ -161,12 +169,12 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	expandClicked() {
 		const panel = this.shadowRoot.getElementById('ExpandPanel');
 		const icon = this.shadowRoot.getElementById('ExpandIcon');
-		if (panel.style.maxHeight) {
-			panel.style.maxHeight = null;
+		if (panel.style.display !== 'none') {
+			panel.style.display = 'none';
 			icon.classList.remove('expandButtonRotated');
 			icon.src = this.fullURLExpand.toString();
 		} else {
-			panel.style.maxHeight = `${panel.scrollHeight}px`;
+			panel.style.display = 'block';
 			icon.classList.add('expandButtonRotated');
 			icon.src = '../images/arrow-collapsed.svg';
 			icon.src = this.fullURLCollapse.toString();
