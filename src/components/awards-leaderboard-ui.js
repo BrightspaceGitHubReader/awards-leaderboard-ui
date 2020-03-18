@@ -65,14 +65,9 @@ class App extends BaseMixin(LitElement) {
 		return html`
 			<d2l-button id="open" @click="${this.handleClick}">Show Dialog</d2l-button>
 
-			<d2l-dialog ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this.closeDialog}">
-				<iframe 
-					src="${LeaderboardService.getIssuedAward(175, 8)}"
-					frameBorder="0"
-					width="450"
-					height="300"
-					style="overflow:hidden"
-				>
+			<d2l-dialog title-text="Badge 1" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this.closeDialog}">
+				<iframe frameBorder="0" width="100%" height="100%" scrolling="no"
+					src="${LeaderboardService.getIssuedAward(175, 8)}">
 				</iframe>
 				<d2l-button slot="footer" dialog-action>Close</d2l-button>
 			</d2l-dialog>
