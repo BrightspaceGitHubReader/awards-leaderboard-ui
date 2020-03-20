@@ -58,14 +58,14 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.awardRow[myAward] .awardRank {
 				border: 1px solid var(--d2l-color-celestine);
 			}
-            .badgeEntry {
-                height: 34px;
+			.badgeEntry {
+				height: 34px;
 				width: 34px;
 				padding-right: 2px;
 				vertical-align: middle;
 				padding-top: 12px;
 				padding-bottom: 12px;
-            }
+			}
 			.creditCount {
 				display:flex;
 				flex-direction: column;
