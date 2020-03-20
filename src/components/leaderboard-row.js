@@ -40,8 +40,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				border-radius: 15px;
 				background-color: #E3E9F1;
 				border: 1px solid #E3E9F1;
-				height: 15px;
-				width: 15px;
+				height: 21px;
+				width: 21px;
 				padding: 9px;
 				margin: 9px;
 				align-items: center;
@@ -58,30 +58,40 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.awardRow[myAward] .awardRank {
 				border: 1px solid var(--d2l-color-celestine);
 			}
-            .badgeEntry {
-                height: 30px;
-                width: 30px;
-            }
+			.badgeEntry {
+				height: 34px;
+				width: 34px;
+				padding-right: 2px;
+				vertical-align: middle;
+				padding-top: 12px;
+				padding-bottom: 12px;
+			}
 			.creditCount {
 				display:flex;
 				flex-direction: column;
 			}
 			.panel {
-				display: block;
+				display: none;
 				overflow: hidden;
-				max-height: 0;
+				max-height: 0px;
+				margin-top: 11px;
+				margin-bottom: -11px;
 				transition: max-height 0.2s ease-out;
+				padding-left: 9px;
+				background-color: var(--d2l-color-sylvite);
+				border-top: 1px solid var(--d2l-color-mica);
 			}
 			.noMargin {
 				margin: unset  !important;
 			}
 			.expandButton{
-                transition: transform 0.2s;
-                -webkit-touch-callout: none; /* iOS Safari */
-                -webkit-user-select: none; /* Safari */
-                -moz-user-select: none; /* Old versions of Firefox */
-                -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+				margin-right: 25px;
+				transition: transform 0.2s;
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none; /* Safari */
+				-moz-user-select: none; /* Old versions of Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+				user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 			}
 			.expandButtonRotated {
 				transform: rotate(90deg);
@@ -163,9 +173,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		const icon = this.shadowRoot.getElementById('ExpandIcon');
 		if (panel.style.maxHeight) {
 			panel.style.maxHeight = null;
+			panel.style.display = 'none';
 			icon.classList.remove('expandButtonRotated');
 			icon.src = this.fullURLExpand.toString();
 		} else {
+			panel.style.display = 'block';
 			panel.style.maxHeight = `${panel.scrollHeight}px`;
 			icon.classList.add('expandButtonRotated');
 			icon.src = '../images/arrow-collapsed.svg';
