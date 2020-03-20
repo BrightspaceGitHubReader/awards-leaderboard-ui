@@ -64,6 +64,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				padding-right: 2px;
 				vertical-align: middle;
 				padding-top: 12px;
+				padding-bottom: 12px;
             }
 			.creditCount {
 				display:flex;
@@ -72,7 +73,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.panel {
 				display: none;
 				overflow: hidden;
-				height: 60px;
+				max-height: 0px;
+				margin-top: 11px;
 				margin-bottom: -11px;
 				transition: max-height 0.2s ease-out;
 				padding-left: 9px;
@@ -169,12 +171,14 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	expandClicked() {
 		const panel = this.shadowRoot.getElementById('ExpandPanel');
 		const icon = this.shadowRoot.getElementById('ExpandIcon');
-		if (panel.style.display !== 'none') {
+		if (panel.style.maxHeight) {
+			panel.style.maxHeight = null;
 			panel.style.display = 'none';
 			icon.classList.remove('expandButtonRotated');
 			icon.src = this.fullURLExpand.toString();
 		} else {
 			panel.style.display = 'block';
+			panel.style.maxHeight = `${panel.scrollHeight}px`;
 			icon.classList.add('expandButtonRotated');
 			icon.src = '../images/arrow-collapsed.svg';
 			icon.src = this.fullURLCollapse.toString();
