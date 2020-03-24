@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/colors/colors.js';
+import '@brightspace-ui/core/components/dialog/dialog.js';
+import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/list/list.js';
 import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
@@ -43,7 +44,10 @@ class App extends BaseMixin(LitElement) {
 			orgUnitId: { type: Number },
 			userId: { type: Number },
 			sortByCreditsConfig: { type: Boolean },
-			doneLoading: { type: Boolean }
+			doneLoading: { type: Boolean },
+			awardsDialogOpen: { type: Boolean },
+			dialogAwardTitle: { type: String },
+			dialogIssuedId: { type: Number }
 		};
 	}
 
@@ -56,18 +60,37 @@ class App extends BaseMixin(LitElement) {
 		this.myAwards = {};
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
+		this.awardsDialogOpen = false;
 	}
 
 	render() {
-		return html`<d2l-list>
-			${this.createLeaderboardEntry(this.myAwards, true)}
-			${this.sortedLeaderboardArray.map(item => this.createLeaderboardEntry(item, false))}
-		</d2l-list>`;
+		return html`
+			<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
+				${this._renderDialogContents()}
+				<d2l-button slot="footer" dialog-action>Close</d2l-button>
+			</d2l-dialog>
+			<d2l-list>
+				${this._createLeaderboardEntry(this.myAwards, true)}
+				${this.sortedLeaderboardArray.map(item => this._createLeaderboardEntry(item, false))}
+			</d2l-list>
+		`;
+	}
+
+	_renderDialogContents() {
+		if (!this.awardsDialogOpen) {
+			return;
+		}
+		return html`
+			<iframe frameBorder="0" width="100%" height="100%" scrolling="no"
+				src="${LeaderboardService.getIssuedAward(this.dialogIssuedId)}">
+			</iframe>
+		`;
 	}
 
 	firstUpdated() {
 		this._getLeaderboard();
 		this._getMyAwards();
+		this.addEventListener('award-issued-dialog', this._openDialog);
 	}
 
 	async _getLeaderboard() {
@@ -88,7 +111,7 @@ class App extends BaseMixin(LitElement) {
 		this.myAwards = myAwards;
 	}
 
-	createLeaderboardEntry(item, isMyAward) {
+	_createLeaderboardEntry(item, isMyAward) {
 		if (item.UserId === undefined) {
 			return;
 		}
@@ -97,8 +120,18 @@ class App extends BaseMixin(LitElement) {
 		}
 		return html`
 			<d2l-list-item class="${ isMyAward ? 'myAwardItem' : '' }">
-			<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
-		</d2l-list-item>`;
+				<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
+			</d2l-list-item>
+		`;
+	}
+	_closeDialog() {
+		this.awardsDialogOpen = false;
+
+	}
+	_openDialog(e) {
+		this.dialogAwardTitle = e.detail.awardTitle;
+		this.dialogIssuedId = e.detail.issuedId;
+		this.awardsDialogOpen = true;
 	}
 }
 
