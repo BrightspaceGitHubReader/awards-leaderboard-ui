@@ -45,7 +45,9 @@ class App extends BaseMixin(LitElement) {
 			userId: { type: Number },
 			sortByCreditsConfig: { type: Boolean },
 			doneLoading: { type: Boolean },
-			awardsDialogOpen: { type: Boolean }
+			awardsDialogOpen: { type: Boolean },
+			dialogAwardTitle: { type: String },
+			dialogIssuedId: { type: Number }
 		};
 	}
 
@@ -63,22 +65,32 @@ class App extends BaseMixin(LitElement) {
 
 	render() {
 		return html`
-			<d2l-button id="open" @click="${this.handleClick}">Show Dialog</d2l-button>
-
-			<d2l-dialog title-text="Badge 1" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this.closeDialog}">
-				<iframe frameBorder="0" width="100%" height="100%" scrolling="no"
-					src="${LeaderboardService.getIssuedAward(175, 8)}">
-				</iframe>
+			<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
+				${this._renderDialogContents()}
 				<d2l-button slot="footer" dialog-action>Close</d2l-button>
 			</d2l-dialog>
-			${this.createLeaderboardEntry(this.myAwards, true)}
-			${this.sortedLeaderboardArray.map(item => this.createLeaderboardEntry(item, false))}
-		</d2l-list>`;
+			<d2l-list>
+				${this._createLeaderboardEntry(this.myAwards, true)}
+				${this.sortedLeaderboardArray.map(item => this._createLeaderboardEntry(item, false))}
+			</d2l-list>
+		`;
+	}
+
+	_renderDialogContents(){
+		if(!this.awardsDialogOpen){
+			return;
+		}
+		return html`
+			<iframe frameBorder="0" width="100%" height="100%" scrolling="no"
+				src="${LeaderboardService.getIssuedAward(this.dialogIssuedId)}">
+			</iframe>
+		`;
 	}
 
 	firstUpdated() {
 		this._getLeaderboard();
 		this._getMyAwards();
+		this.addEventListener('award-issued-dialog', this._openDialog)
 	}
 
 	async _getLeaderboard() {
@@ -99,7 +111,7 @@ class App extends BaseMixin(LitElement) {
 		this.myAwards = myAwards;
 	}
 
-	createLeaderboardEntry(item, isMyAward) {
+	_createLeaderboardEntry(item, isMyAward) {
 		if (item.UserId === undefined) {
 			return;
 		}
@@ -108,15 +120,18 @@ class App extends BaseMixin(LitElement) {
 		}
 		return html`
 			<d2l-list-item class="${ isMyAward ? 'myAwardItem' : '' }">
-			<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
-		</d2l-list-item>`;
+				<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
+			</d2l-list-item>
+		`;
 	}
-
-	handleClick(){
-		this.awardsDialogOpen = true;
-	}
-	closeDialog(){
+	_closeDialog(){
 		this.awardsDialogOpen = false;
+
+	}
+	_openDialog(e){
+		this.dialogAwardTitle = e.detail.awardTitle;
+		this.dialogIssuedId = e.detail.issuedId;
+		this.awardsDialogOpen = true;
 	}
 }
 

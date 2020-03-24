@@ -11,12 +11,12 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-import 'd2l-tooltip/d2l-tooltip.js';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
 import { TopStyleLimit } from '../constants/constants';
+import './award-issued.js';
 
 class LeaderboardRow extends BaseMixin(LitElement) {
 	static get styles() {
@@ -57,14 +57,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.awardRow[myAward] .awardRank[topRank],
 			.awardRow[myAward] .awardRank {
 				border: 1px solid var(--d2l-color-celestine);
-			}
-			.badgeEntry {
-				height: 34px;
-				width: 34px;
-				padding-right: 2px;
-				vertical-align: middle;
-				padding-top: 12px;
-				padding-bottom: 12px;
 			}
 			.creditCount {
 				display:flex;
@@ -110,7 +102,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 	render() {
 		return html`
-            <div class='awardRow' id="$Expandable" @click="${this.expandClicked}" ?myAward="${this.myAward}">
+            <div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
 				<div class="awardRank" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
 				<d2l-profile-image
 					class="profileImage"
@@ -121,54 +113,28 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				</d2l-profile-image>
 				<div class='creditCount'>
 					<div class='d2l-body-compact noMargin'>${this.userData.DisplayName}</div>
-					<div class='d2l-body-small noMargin'>${this.getDisplayNumber()}</div>
+					<div class='d2l-body-small noMargin'>${this._getDisplayNumber()}</div>
 				</div>
 				<img id="ExpandIcon" class="expandButton" text="Expand" src="${this.fullURLExpand.toString()}"></img>
 			</div>
 			<div id="ExpandPanel" class="panel"> 
-				${this.getAwards()}
+				${this._getAwards()}
 			</div>
     	`;
 	}
 
-	getDisplayNumber() {
-		if (this.sortByCreditsConfig) {
-			return this.getCreditCountText();
-		}
-		return this.getAwardCountText();
-	}
-
-	getAwardCountText() {
-		if (this.userData.TotalAwardCount === 1) {
-			return this.localize('awards.one');
-		}
-		return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
-	}
-
-	getCreditCountText() {
-		if (this.userData.TotalCreditCount === 1) {
-			return this.localize('credits.one');
-		}
-		return this.localize('credits.many', {numcredits:`${this.userData.TotalCreditCount}`});
-	}
-
-	getAwards() {
-		if (this.userData.IssuedAwards.Objects.length) {
-			return html`${this.userData.IssuedAwards.Objects.map(award => this.createAwardEntry(award))}`;
-		} else {
-			return html``;
-		}
-	}
-
-	createAwardEntry(award) {
-		const awardImageUrl = award.Award.ImageData.Path;
-		const badgeID = `Badge_${award.Award.AwardId}`;
-		return html`<img id="${badgeID}" src=${awardImageUrl} class='badgeEntry'></img>
-			<d2l-tooltip for="${badgeID}">${award.Award.Title}</d2l-tooltip>
+	_createAwardEntry(award) {
+		return html`
+			<award-issued 
+				awardId=${award.Award.AwardId} 
+				awardTitle=${award.Award.Title}
+				awardImageUrl=${award.Award.ImageData.Path}
+				issuedId=${award.IssuedId}>
+			</award-issued>
 		`;
 	}
 
-	expandClicked() {
+	_expandClicked() {
 		const panel = this.shadowRoot.getElementById('ExpandPanel');
 		const icon = this.shadowRoot.getElementById('ExpandIcon');
 		if (panel.style.maxHeight) {
@@ -183,6 +149,35 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			icon.src = '../images/arrow-collapsed.svg';
 			icon.src = this.fullURLCollapse.toString();
 		}
+	}
+
+	_getAwards() {
+		if (this.userData.IssuedAwards.Objects.length) {
+			return html`${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}`;
+		} else {
+			return html``;
+		}
+	}
+
+	_getAwardCountText() {
+		if (this.userData.TotalAwardCount === 1) {
+			return this.localize('awards.one');
+		}
+		return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
+	}
+
+	_getCreditCountText() {
+		if (this.userData.TotalCreditCount === 1) {
+			return this.localize('credits.one');
+		}
+		return this.localize('credits.many', {numcredits:`${this.userData.TotalCreditCount}`});
+	}
+
+	_getDisplayNumber() {
+		if (this.sortByCreditsConfig) {
+			return this._getCreditCountText();
+		}
+		return this._getAwardCountText();
 	}
 
 	static get properties() {

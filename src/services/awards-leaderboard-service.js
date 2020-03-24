@@ -44,8 +44,8 @@ export class LeaderboardService {
 		return this.getRequest(LeaderboardRoutes.MyAwards(orgunitid, userId));
 	}
 
-	static getIssuedAward(userId, issueId) {
-		return LeaderboardRoutes.GetIssuedAward(userId, issueId);
+	static getIssuedAward(issueId) {
+		return LeaderboardRoutes.GetIssuedAward(issueId);
 	}
 
 	static getRequest(url) {
