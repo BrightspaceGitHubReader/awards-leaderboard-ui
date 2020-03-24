@@ -11,12 +11,12 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+import './award-issued.js';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
 import { TopStyleLimit } from '../constants/constants';
-import './award-issued.js';
 
 class LeaderboardRow extends BaseMixin(LitElement) {
 	static get styles() {

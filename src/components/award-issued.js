@@ -34,10 +34,6 @@ class AwardIssued extends BaseMixin(LitElement) {
 		];
 	}
 
-	constructor() {
-		super();
-	}
-
 	render() {
 		this.badgeId = `Badge_${this.awardId}`;
 		return html`
@@ -47,7 +43,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 			<d2l-tooltip for="${this.badgeId}">${this.awardTitle}</d2l-tooltip>
     	`;
 	}
-	
+
 	static get properties() {
 		return {
 			awardTitle: {type: String},
@@ -57,9 +53,9 @@ class AwardIssued extends BaseMixin(LitElement) {
 			badgeId: { type: String }
 		};
 	}
-	
-	_awardClick(){
-		let event = new CustomEvent('award-issued-dialog', {
+
+	_awardClick() {
+		const event = new CustomEvent('award-issued-dialog', {
 			bubbles: true,
 			composed: true,
 			detail: {

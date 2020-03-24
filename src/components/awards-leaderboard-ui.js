@@ -76,8 +76,8 @@ class App extends BaseMixin(LitElement) {
 		`;
 	}
 
-	_renderDialogContents(){
-		if(!this.awardsDialogOpen){
+	_renderDialogContents() {
+		if (!this.awardsDialogOpen) {
 			return;
 		}
 		return html`
@@ -90,7 +90,7 @@ class App extends BaseMixin(LitElement) {
 	firstUpdated() {
 		this._getLeaderboard();
 		this._getMyAwards();
-		this.addEventListener('award-issued-dialog', this._openDialog)
+		this.addEventListener('award-issued-dialog', this._openDialog);
 	}
 
 	async _getLeaderboard() {
@@ -124,11 +124,11 @@ class App extends BaseMixin(LitElement) {
 			</d2l-list-item>
 		`;
 	}
-	_closeDialog(){
+	_closeDialog() {
 		this.awardsDialogOpen = false;
 
 	}
-	_openDialog(e){
+	_openDialog(e) {
 		this.dialogAwardTitle = e.detail.awardTitle;
 		this.dialogIssuedId = e.detail.issuedId;
 		this.awardsDialogOpen = true;
