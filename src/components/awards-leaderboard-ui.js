@@ -34,6 +34,12 @@ class App extends BaseMixin(LitElement) {
 			.myAwardItem {
 				background-color: var(--d2l-color-celestine-plus-2);
 			}
+			@keyframes loadingPulse {
+				0% { background-color: var(--d2l-color-sylvite); }
+				50% { background-color: var(--d2l-color-regolith); }
+				75% { background-color: var(--d2l-color-sylvite); }
+				100% { background-color: var(--d2l-color-sylvite); }
+			}
 			.skeleton-awardRow{
 				display: flex;
 				flex-direction: row;
@@ -41,7 +47,7 @@ class App extends BaseMixin(LitElement) {
 				padding: 3px;
 			}
 			.skeleton-awardRank{
-				background-color: var(--d2l-color-sylvite);
+				animation: loadingPulse 1.8s linear infinite;
 				border-radius: 15px;
 				height: 21px;
 				width: 21px;
@@ -51,7 +57,7 @@ class App extends BaseMixin(LitElement) {
 				-webkit-border-radius:50%;
 			}
 			.skeleton-profilePic {
-				background-color: var(--d2l-color-sylvite);
+				animation: loadingPulse 1.8s linear infinite;
 				border-radius: 6px;
 				width: 42px;
 				height: 42px;
@@ -64,13 +70,13 @@ class App extends BaseMixin(LitElement) {
 				padding-left: 10px;
 			}
 			.skeleton-name {
-				background-color: var(--d2l-color-sylvite);
+				animation: loadingPulse 1.8s linear infinite;
 				height: 0.8rem;
 				width: 60%;
 				border-radius: 6px;
 			}
 			.skeleton-count {
-				background-color: var(--d2l-color-sylvite);
+				animation: loadingPulse 1.8s linear infinite;
 				height: 0.7rem;
 				width: 40%;
 				margin-top: 4px;
