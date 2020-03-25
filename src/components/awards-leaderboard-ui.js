@@ -34,7 +34,54 @@ class App extends BaseMixin(LitElement) {
 			.myAwardItem {
 				background-color: var(--d2l-color-celestine-plus-2);
 			}
-			
+			@keyframes loadingPulse {
+				0% { background-color: var(--d2l-color-sylvite); }
+				50% { background-color: var(--d2l-color-regolith); }
+				75% { background-color: var(--d2l-color-sylvite); }
+				100% { background-color: var(--d2l-color-sylvite); }
+			}
+			.skeleton-awardRow{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				padding: 3px;
+			}
+			.skeleton-awardRank{
+				animation: loadingPulse 1.8s linear infinite;
+				border-radius: 15px;
+				height: 21px;
+				width: 21px;
+				padding: 9px;
+				margin: 9px;
+				-moz-border-radius:50%;
+				-webkit-border-radius:50%;
+			}
+			.skeleton-profilePic {
+				animation: loadingPulse 1.8s linear infinite;
+				border-radius: 6px;
+				width: 42px;
+				height: 42px;
+				margin-left: 7px;
+			}
+			.skeleton-info{
+				display: flex;
+				flex-direction: column;
+				width: 50%;
+				padding-left: 10px;
+			}
+			.skeleton-name {
+				animation: loadingPulse 1.8s linear infinite;
+				height: 0.8rem;
+				width: 60%;
+				border-radius: 6px;
+			}
+			.skeleton-count {
+				animation: loadingPulse 1.8s linear infinite;
+				height: 0.7rem;
+				width: 40%;
+				margin-top: 4px;
+				border-radius: 4px;
+			}
         `];
 	}
 
@@ -64,6 +111,24 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	render() {
+		if (!this.doneLoading) {
+			const numberOfItems = 5;
+			const itemsSkeleton = html`
+				<d2l-list-item>
+					<d2l-list-item-content>
+						<div class="skeleton-awardRow">
+							<div class="skeleton-awardRank"></div>
+							<div class="skeleton-profilePic"></div>
+							<div class="skeleton-info">
+								<div class="skeleton-name"></div>
+								<div class="skeleton-count"></div>
+							</div>
+						</div>					
+					</d2l-list-item-content>
+				</d2l-list-item>
+			`;
+			return html`<d2l-list>${(new Array(numberOfItems)).fill(itemsSkeleton)}</d2l-list>`;
+		}
 		return html`
 			<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
 				${this._renderDialogContents()}
