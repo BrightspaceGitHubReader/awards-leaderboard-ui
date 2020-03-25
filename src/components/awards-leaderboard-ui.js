@@ -111,20 +111,19 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	render() {
-		if(!this.doneLoading){
+		if (!this.doneLoading) {
 			const numberOfItems = 5;
 			const itemsSkeleton = html`
 				<d2l-list-item>
 					<d2l-list-item-content>
-				<div class="skeleton-awardRow">
-					<div class="skeleton-awardRank"></div>
-					<div class="skeleton-profilePic"></div>
-					<div class="skeleton-info">
-						<div class="skeleton-name"></div>
-						<div class="skeleton-count"></div>
-					</div>
-				</div>
-					
+						<div class="skeleton-awardRow">
+							<div class="skeleton-awardRank"></div>
+							<div class="skeleton-profilePic"></div>
+							<div class="skeleton-info">
+								<div class="skeleton-name"></div>
+								<div class="skeleton-count"></div>
+							</div>
+						</div>					
 					</d2l-list-item-content>
 				</d2l-list-item>
 			`;
@@ -163,7 +162,7 @@ class App extends BaseMixin(LitElement) {
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
 		console.log(myLeaderboard); // eslint-disable-line no-console
 		this.sortedLeaderboardArray = myLeaderboard.Objects;
-		this.doneLoading = true;
+		//this.doneLoading = true;
 	}
 
 	async _getMyAwards() {
