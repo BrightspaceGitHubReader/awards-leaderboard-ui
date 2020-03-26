@@ -31,6 +31,11 @@ class App extends BaseMixin(LitElement) {
 		return [
 
 			css`
+			d2l-list {
+				max-height: 420px;
+				overflow: hidden;
+				overflow-y: scroll;
+			}
 			.myAwardItem {
 				background-color: var(--d2l-color-celestine-plus-2);
 			}
