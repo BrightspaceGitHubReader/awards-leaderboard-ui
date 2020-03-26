@@ -12,11 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import './award-issued.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
+import 'd2l-resize-aware/resize-observer-module.js';
+import 'd2l-resize-aware/d2l-resize-aware.js';
 import { TopStyleLimit } from '../constants/constants';
+
+const displayFormatChangeWidth = 389;//400;
+export const eventHeight = 4.2;
 
 class LeaderboardRow extends BaseMixin(LitElement) {
 	static get styles() {
@@ -24,10 +30,16 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			bodyCompactStyles,
 			bodySmallStyles,
 			css`
+			d2l-resize-aware {
+				width: 100%;
+			}
             .awardRow {
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+			}
+            .resizeContainer[mobile] .awardRow {
+				background-color: red;
 			}
 			.awardRow :last-child {
 				margin-left: auto;
@@ -61,6 +73,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.creditCount {
 				display:flex;
 				flex-direction: column;
+				width: 100%;
 			}
 			.panel {
 				display: none;
@@ -100,26 +113,61 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		this.fullURLCollapse = new URL('../../images/arrow-collapsed.svg', baseUrl);
 	}
 
+	connectedCallback() {
+		super.connectedCallback();
+		afterNextRender(this, () => {
+			const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
+			console.log(this.shadowRoot.querySelector('d2l-resize-aware'))
+			resizeAware.addEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
+			resizeAware._onResize();
+		});
+	}
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
+		resizeAware.removeEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
+	}
+	_onResize(e) {
+		console.log ('width: ' , e.detail.current.width);
+		this._mobile = e.detail.current.width <= displayFormatChangeWidth;
+	}
+
 	render() {
-		return html`
-            <div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
-				<div class="awardRank" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
-				<d2l-profile-image
-					class="profileImage"
-					href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
-					medium=""
-					token="token"
-					aria-hidden="true">
-				</d2l-profile-image>
-				<div class='creditCount'>
-					<div class='d2l-body-compact noMargin'>${this.userData.DisplayName}</div>
-					<div class='d2l-body-small noMargin'>${this._getDisplayNumber()}</div>
-				</div>
+		let expandIcon;
+		let expandPanel;
+		let userAwards = html`${this._getAwards()}`;
+		if(this._mobile){
+			expandIcon = html`
 				<img id="ExpandIcon" class="expandButton" text="Expand" src="${this.fullURLExpand.toString()}"></img>
-			</div>
-			<div id="ExpandPanel" class="panel"> 
-				${this._getAwards()}
-			</div>
+			`;
+			expandPanel = html`
+				<div id="ExpandPanel" class="panel"> 
+					${userAwards}
+				</div>
+			`;
+		} else {
+			expandIcon = userAwards;
+		}
+
+		return html`
+			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}">
+				<div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
+					<div class="awardRank" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
+					<d2l-profile-image
+						class="profileImage"
+						href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
+						medium=""
+						token="token"
+						aria-hidden="true">
+					</d2l-profile-image>
+					<div class='creditCount'>
+						<div class='d2l-body-compact noMargin'>${this.userData.DisplayName}</div>
+						<div class='d2l-body-small noMargin'>${this._getDisplayNumber()}</div>
+					</div>
+					${expandIcon}
+				</div>
+				${expandPanel}
+			</d2l-resize-aware>
     	`;
 	}
 
@@ -135,6 +183,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	_expandClicked() {
+		if(!this._mobile){
+			return;
+		}
 		const panel = this.shadowRoot.getElementById('ExpandPanel');
 		const icon = this.shadowRoot.getElementById('ExpandIcon');
 		if (panel.style.maxHeight) {
@@ -184,7 +235,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return {
 			userData: {type: Object},
 			myAward: { type: Boolean },
-			sortByCreditsConfig: { type: Boolean }
+			sortByCreditsConfig: { type: Boolean },
+			_mobile: {
+				type: Boolean,
+				value: false
+			}
 		};
 	}
 }
