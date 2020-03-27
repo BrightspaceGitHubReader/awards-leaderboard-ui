@@ -21,7 +21,8 @@ import 'd2l-resize-aware/resize-observer-module.js';
 import 'd2l-resize-aware/d2l-resize-aware.js';
 import { TopStyleLimit } from '../constants/constants';
 
-const displayFormatChangeWidth = 389;//400;
+const mobileWidthMax = 500;
+const fullWidthMin = 800;
 export const eventHeight = 4.2;
 
 class LeaderboardRow extends BaseMixin(LitElement) {
@@ -37,9 +38,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-			}
-            .resizeContainer[mobile] .awardRow {
-				background-color: red;
 			}
 			.awardRow :last-child {
 				margin-left: auto;
@@ -73,14 +71,23 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.creditCount {
 				display:flex;
 				flex-direction: column;
-				width: 100%;
+			}
+			.resizeContainer[full] .creditCount{
+				flex-direction: row;
+				width: 40%;
+			}
+			.resizeContainer[full] .displayName{
+				width: 70%;
+			}
+			.resizeContainer[full] .displayNumber{
+				width: 30%;
 			}
 			.panel {
 				display: none;
 				overflow: hidden;
 				max-height: 0px;
 				margin-top: 11px;
-				margin-bottom: -11px;
+				margin-bottom: -20px;
 				transition: max-height 0.2s ease-out;
 				padding-left: 9px;
 				background-color: var(--d2l-color-sylvite);
@@ -89,8 +96,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.noMargin {
 				margin: unset  !important;
 			}
-			.expandButton{
+			.right {
+				margin-left: auto;
 				margin-right: 25px;
+			}
+			.expandButton{
 				transition: transform 0.2s;
 				-webkit-touch-callout: none; /* iOS Safari */
 				-webkit-user-select: none; /* Safari */
@@ -117,7 +127,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		super.connectedCallback();
 		afterNextRender(this, () => {
 			const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
-			console.log(this.shadowRoot.querySelector('d2l-resize-aware'))
 			resizeAware.addEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
 			resizeAware._onResize();
 		});
@@ -128,8 +137,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		resizeAware.removeEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
 	}
 	_onResize(e) {
-		console.log ('width: ' , e.detail.current.width);
-		this._mobile = e.detail.current.width <= displayFormatChangeWidth;
+		this._mobile = e.detail.current.width <= mobileWidthMax;
+		this._full = e.detail.current.width > fullWidthMin;
 	}
 
 	render() {
@@ -149,8 +158,19 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			expandIcon = userAwards;
 		}
 
+		let displayNumber;
+		if(this._full){
+			displayNumber = html`
+				<div class='d2l-body-compact noMargin displayNumber'>${this._getDisplayNumber()}</div>
+			`;
+		} else {
+			displayNumber = html`
+				<div class='d2l-body-small noMargin'>${this._getDisplayNumber()}</div>
+			`;
+		}
+
 		return html`
-			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}">
+			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
 				<div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
 					<div class="awardRank" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
 					<d2l-profile-image
@@ -161,10 +181,12 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 						aria-hidden="true">
 					</d2l-profile-image>
 					<div class='creditCount'>
-						<div class='d2l-body-compact noMargin'>${this.userData.DisplayName}</div>
-						<div class='d2l-body-small noMargin'>${this._getDisplayNumber()}</div>
+						<div class='d2l-body-compact noMargin displayName'>${this.userData.DisplayName}</div>
+						${displayNumber}
 					</div>
-					${expandIcon}
+					<div class="right">
+						${expandIcon}
+					</div>
 				</div>
 				${expandPanel}
 			</d2l-resize-aware>
@@ -237,6 +259,10 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			myAward: { type: Boolean },
 			sortByCreditsConfig: { type: Boolean },
 			_mobile: {
+				type: Boolean,
+				value: false
+			},
+			_full: {
 				type: Boolean,
 				value: false
 			}
