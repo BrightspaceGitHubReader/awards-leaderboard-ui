@@ -88,7 +88,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-top: 11px;
 				margin-bottom: -20px;
 				transition: max-height 0.2s ease-out;
-				padding-left: 9px;
+				padding-left: 13px;
 				background-color: var(--d2l-color-sylvite);
 				border-top: 1px solid var(--d2l-color-mica);
 			}
