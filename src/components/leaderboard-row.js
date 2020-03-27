@@ -42,7 +42,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			}
 			.profileImage {
 				border-radius: 5px;
-				margin: 9px;
+				margin-left: 12px;
 			}
 			.awardRank {
 				border-radius: 15px;
@@ -51,7 +51,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				height: 21px;
 				width: 21px;
 				padding: 9px;
-				margin: 9px;
+				margin-left: 17px;
 				align-items: center;
 				display: flex;
 				justify-content: center;
@@ -69,6 +69,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.creditCount {
 				display:flex;
 				flex-direction: column;
+				padding-left: 10px;
 			}
 			.resizeContainer[full] .creditCount {
 				flex-direction: row;
@@ -173,7 +174,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return html`
 			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
 				<div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
-					<div class="awardRank" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
+					<div class="awardRank d2l-body-compact" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
 					<d2l-profile-image
 						class="profileImage"
 						href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
