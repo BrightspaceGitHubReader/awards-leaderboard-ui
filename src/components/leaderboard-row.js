@@ -141,20 +141,23 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	render() {
-		let expandIcon;
-		let expandPanel;
 		let userAwards = html`${this._getAwards()}`;
+		
+		let expandPanel;
 		if (this._mobile) {
-			expandIcon = html`
-				<img id="ExpandIcon" class="expandButton" text="Expand" src="${this.fullURLExpand.toString()}"></img>
-			`;
 			expandPanel = html`
 				<div id="ExpandPanel" class="panel"> 
 					${userAwards}
 				</div>
 			`;
+		}
+		let rightPanel;
+		if (this._mobile) {
+			rightPanel = html`
+				<img id="ExpandIcon" class="expandButton" text="Expand" src="${this.fullURLExpand.toString()}"></img>
+			`;
 		} else {
-			expandIcon = userAwards;
+			rightPanel = userAwards;
 		}
 
 		let displayNumber;
@@ -184,7 +187,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 						${displayNumber}
 					</div>
 					<div class="right">
-						${expandIcon}
+						${rightPanel}
 					</div>
 				</div>
 				${expandPanel}
