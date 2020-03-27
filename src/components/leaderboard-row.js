@@ -13,8 +13,8 @@
 // limitations under the License.
 import './award-issued.js';
 import 'd2l-resize-aware/d2l-resize-aware.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
