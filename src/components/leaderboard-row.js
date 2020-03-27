@@ -17,8 +17,8 @@ import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/compon
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
-import 'd2l-resize-aware/resize-observer-module.js';
 import 'd2l-resize-aware/d2l-resize-aware.js';
+import 'd2l-resize-aware/resize-observer-module.js';
 import { TopStyleLimit } from '../constants/constants';
 
 const mobileWidthMax = 500;
@@ -71,14 +71,14 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				display:flex;
 				flex-direction: column;
 			}
-			.resizeContainer[full] .creditCount{
+			.resizeContainer[full] .creditCount {
 				flex-direction: row;
 				width: 40%;
 			}
-			.resizeContainer[full] .displayName{
+			.resizeContainer[full] .displayName {
 				width: 70%;
 			}
-			.resizeContainer[full] .displayNumber{
+			.resizeContainer[full] .displayNumber {
 				width: 30%;
 			}
 			.panel {
@@ -99,7 +99,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-left: auto;
 				margin-right: 25px;
 			}
-			.expandButton{
+			.expandButton {
 				transition: transform 0.2s;
 				-webkit-touch-callout: none; /* iOS Safari */
 				-webkit-user-select: none; /* Safari */
@@ -144,7 +144,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		let expandIcon;
 		let expandPanel;
 		let userAwards = html`${this._getAwards()}`;
-		if(this._mobile){
+		if (this._mobile) {
 			expandIcon = html`
 				<img id="ExpandIcon" class="expandButton" text="Expand" src="${this.fullURLExpand.toString()}"></img>
 			`;
@@ -158,7 +158,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		}
 
 		let displayNumber;
-		if(this._full){
+		if (this._full) {
 			displayNumber = html`
 				<div class='d2l-body-compact noMargin displayNumber'>${this._getDisplayNumber()}</div>
 			`;
@@ -204,7 +204,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	_expandClicked() {
-		if(!this._mobile){
+		if (!this._mobile) {
 			return;
 		}
 		const panel = this.shadowRoot.getElementById('ExpandPanel');
