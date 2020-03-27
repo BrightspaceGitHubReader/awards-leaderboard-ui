@@ -23,7 +23,6 @@ import { TopStyleLimit } from '../constants/constants';
 
 const mobileWidthMax = 500;
 const fullWidthMin = 800;
-export const eventHeight = 4.2;
 
 class LeaderboardRow extends BaseMixin(LitElement) {
 	static get styles() {
