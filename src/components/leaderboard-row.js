@@ -18,7 +18,6 @@ import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
 import 'd2l-resize-aware/d2l-resize-aware.js';
-import 'd2l-resize-aware/resize-observer-module.js';
 import { TopStyleLimit } from '../constants/constants';
 
 const mobileWidthMax = 500;
