@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import './award-issued.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+import 'd2l-resize-aware/d2l-resize-aware.js';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
-import 'd2l-resize-aware/d2l-resize-aware.js';
 import { TopStyleLimit } from '../constants/constants';
 
 const mobileWidthMax = 500;
@@ -141,8 +141,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	render() {
-		let userAwards = html`${this._getAwards()}`;
-		
+		const userAwards = html`${this._getAwards()}`;
+
 		let expandPanel;
 		if (this._mobile) {
 			expandPanel = html`
