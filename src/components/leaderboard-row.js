@@ -22,6 +22,7 @@ import { TopStyleLimit } from '../constants/constants';
 
 const mobileWidthMax = 500;
 const fullWidthMin = 800;
+const maxBadges = 10;
 
 class LeaderboardRow extends BaseMixin(LitElement) {
 	static get styles() {
@@ -227,8 +228,19 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	_getAwards() {
+		let additionalAwards;
+		if (this.userData.TotalAwardCount > maxBadges) {
+			let extraCount = this.userData.TotalAwardCount - maxBadges;
+			additionalAwards = html`
+				+${extraCount}
+			`;
+		}
+
 		if (this.userData.IssuedAwards.Objects.length) {
-			return html`${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}`;
+			return html`
+				${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}
+				${additionalAwards}
+			`;
 		} else {
 			return html``;
 		}
