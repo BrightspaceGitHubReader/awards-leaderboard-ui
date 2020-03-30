@@ -283,7 +283,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		this._mobile = currentWidth <= mobileWidthMax;
 		this._full = currentWidth > fullWidthMin;
 		if (!this._full) {
-			const awardMaxWidth = Math.floor((currentWidth - (PanelPadding * 2) - (BadgeImageSize + 10) ) / (BadgeImageSize + 10));
+			const awardMaxWidth = Math.floor((currentWidth - PanelPadding * 2 - BadgeImageSize + 10) / (BadgeImageSize + 10));
 			this._maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
 		} else {
 			this._maxBadges = maxFullBadges;
