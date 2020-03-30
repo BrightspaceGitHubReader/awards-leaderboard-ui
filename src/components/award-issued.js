@@ -23,8 +23,8 @@ class AwardIssued extends BaseMixin(LitElement) {
 				cursor: pointer;
 			}
 			.badgeEntry {
-				height: 34px;
-				width: 34px;
+				height: 35px;
+				width: 35px;
 				padding-right: 2px;
 				vertical-align: middle;
 				padding-top: 12px;
