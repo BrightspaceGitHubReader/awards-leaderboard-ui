@@ -165,7 +165,6 @@ class App extends BaseMixin(LitElement) {
 
 	async _getLeaderboard() {
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
-		console.log(myLeaderboard); // eslint-disable-line no-console
 		this.sortedLeaderboardArray = myLeaderboard.Objects;
 		this.doneLoading = true;
 	}
