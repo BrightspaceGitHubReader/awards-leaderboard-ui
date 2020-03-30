@@ -25,7 +25,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 			.badgeEntry {
 				height: 35px;
 				width: 35px;
-				padding-right: 2px;
+				padding-right: 3px;
 				vertical-align: middle;
 				padding-top: 12px;
 				padding-bottom: 12px;

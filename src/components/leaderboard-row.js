@@ -22,6 +22,7 @@ import { TopStyleLimit } from '../constants/constants';
 
 const mobileWidthMax = 500;
 const fullWidthMin = 800;
+const maxBadges = 10;
 
 class LeaderboardRow extends BaseMixin(LitElement) {
 	static get styles() {
@@ -42,7 +43,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			}
 			.profileImage {
 				border-radius: 5px;
-				margin: 9px;
+				margin-left: 12px;
 			}
 			.awardRank {
 				border-radius: 15px;
@@ -51,7 +52,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				height: 21px;
 				width: 21px;
 				padding: 9px;
-				margin: 9px;
+				margin-left: 17px;
 				align-items: center;
 				display: flex;
 				justify-content: center;
@@ -69,6 +70,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.creditCount {
 				display:flex;
 				flex-direction: column;
+				padding-left: 10px;
 			}
 			.resizeContainer[full] .creditCount {
 				flex-direction: row;
@@ -87,7 +89,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-top: 11px;
 				margin-bottom: -20px;
 				transition: max-height 0.2s ease-out;
-				padding-left: 9px;
+				padding-left: 13px;
 				background-color: var(--d2l-color-sylvite);
 				border-top: 1px solid var(--d2l-color-mica);
 			}
@@ -140,7 +142,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	render() {
-		const userAwards = html`${this._getAwards()}`;
+		const userAwards = html`${this._getAwardsDisplay()}`;
 
 		let expandPanel;
 		if (this._mobile) {
@@ -173,11 +175,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return html`
 			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
 				<div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
-					<div class="awardRank" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
+					<div class="awardRank d2l-body-compact" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
 					<d2l-profile-image
 						class="profileImage"
 						href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
-						medium=""
+						medium
 						token="token"
 						aria-hidden="true">
 					</d2l-profile-image>
@@ -225,9 +227,20 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		}
 	}
 
-	_getAwards() {
+	_getAwardsDisplay() {
+		let additionalAwards;
+		if (this.userData.TotalAwardCount > maxBadges) {
+			const extraCount = this.userData.TotalAwardCount - maxBadges;
+			additionalAwards = html`
+				+${extraCount}
+			`;
+		}
+
 		if (this.userData.IssuedAwards.Objects.length) {
-			return html`${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}`;
+			return html`
+				${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}
+				${additionalAwards}
+			`;
 		} else {
 			return html``;
 		}
