@@ -230,7 +230,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	_getAwardsDisplay() {
 		let additionalAwards;
 		if (this.userData.TotalAwardCount > maxBadges) {
-			let extraCount = this.userData.TotalAwardCount - maxBadges;
+			const extraCount = this.userData.TotalAwardCount - maxBadges;
 			additionalAwards = html`
 				+${extraCount}
 			`;
