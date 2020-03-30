@@ -170,7 +170,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			`;
 		}
 
-		let fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
+		const fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
 
 		return html`
 			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
