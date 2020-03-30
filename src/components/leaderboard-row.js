@@ -15,7 +15,7 @@ import './award-issued.js';
 import 'd2l-resize-aware/d2l-resize-aware.js';
 import { BadgeImageSize, PanelPadding, TopStyleLimit } from '../constants/constants';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
-import { css, html, LitElement } from 'lit-element/lit-element.js';
+import { css, html, LitElement, unsafeCSS } from 'lit-element/lit-element.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
@@ -90,7 +90,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-top: 11px;
 				margin-bottom: -20px;
 				transition: max-height 0.2s ease-out;
-				padding-left: ${PanelPadding}px;
+				padding-left: ${unsafeCSS(PanelPadding)}px;
 				background-color: var(--d2l-color-sylvite);
 				border-top: 1px solid var(--d2l-color-mica);
 			}
@@ -170,12 +170,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			`;
 		}
 
-		let fontStyle;
-		if (this._full) {
-			fontStyle = 'd2l-body-standard';
-		} else {
-			fontStyle = 'd2l-body-compact';
-		}
+		let fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
 
 		return html`
 			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
