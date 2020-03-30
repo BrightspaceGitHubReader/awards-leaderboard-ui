@@ -13,6 +13,7 @@
 // limitations under the License.
 import 'd2l-tooltip/d2l-tooltip.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
+import { BadgeImageSize } from '../constants/constants';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
 class AwardIssued extends BaseMixin(LitElement) {
@@ -23,8 +24,8 @@ class AwardIssued extends BaseMixin(LitElement) {
 				cursor: pointer;
 			}
 			.badgeEntry {
-				height: 35px;
-				width: 35px;
+				height: ${BadgeImageSize}px;
+				width: ${BadgeImageSize}px;
 				padding-right: 3px;
 				vertical-align: middle;
 				padding-top: 12px;

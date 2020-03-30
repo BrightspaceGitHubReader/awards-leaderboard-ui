@@ -14,15 +14,16 @@
 import './award-issued.js';
 import 'd2l-resize-aware/d2l-resize-aware.js';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
+import { BadgeImageSize, PanelPadding, TopStyleLimit } from '../constants/constants';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
-import { TopStyleLimit } from '../constants/constants';
 
-const mobileWidthMax = 500;
-const fullWidthMin = 800;
-const maxBadges = 10;
+const mobileWidthMax = 700;
+const fullWidthMin = 950;
+const maxMobileBadges = 8;
+const maxFullBadges = 10;
 
 class LeaderboardRow extends BaseMixin(LitElement) {
 	static get styles() {
@@ -74,7 +75,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			}
 			.resizeContainer[full] .creditCount {
 				flex-direction: row;
-				width: 40%;
+				width: 35%;
 			}
 			.resizeContainer[full] .displayName {
 				width: 70%;
@@ -89,7 +90,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-top: 11px;
 				margin-bottom: -20px;
 				transition: max-height 0.2s ease-out;
-				padding-left: 13px;
+				padding-left: ${PanelPadding}px;
 				background-color: var(--d2l-color-sylvite);
 				border-top: 1px solid var(--d2l-color-mica);
 			}
@@ -121,6 +122,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 		this.fullURLExpand = new URL('../../images/arrow-expand.svg', baseUrl);
 		this.fullURLCollapse = new URL('../../images/arrow-collapsed.svg', baseUrl);
+		this._maxBadges = maxMobileBadges;
 	}
 
 	connectedCallback() {
@@ -135,10 +137,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		super.disconnectedCallback();
 		const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
 		resizeAware.removeEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
-	}
-	_onResize(e) {
-		this._mobile = e.detail.current.width <= mobileWidthMax;
-		this._full = e.detail.current.width > fullWidthMin;
 	}
 
 	render() {
@@ -164,7 +162,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		let displayNumber;
 		if (this._full) {
 			displayNumber = html`
-				<div class='d2l-body-compact noMargin displayNumber'>${this._getDisplayNumber()}</div>
+				<div class='d2l-body-standard noMargin displayNumber'>${this._getDisplayNumber()}</div>
 			`;
 		} else {
 			displayNumber = html`
@@ -172,10 +170,17 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			`;
 		}
 
+		let fontStyle;
+		if (this._full) {
+			fontStyle = "d2l-body-standard";
+		} else {
+			fontStyle = "d2l-body-compact";
+		}
+
 		return html`
 			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
 				<div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
-					<div class="awardRank d2l-body-compact" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
+					<div class="awardRank ${fontStyle}" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
 					<d2l-profile-image
 						class="profileImage"
 						href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
@@ -184,7 +189,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 						aria-hidden="true">
 					</d2l-profile-image>
 					<div class='creditCount'>
-						<div class='d2l-body-compact noMargin displayName'>${this.userData.DisplayName}</div>
+						<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
 						${displayNumber}
 					</div>
 					<div class="right">
@@ -197,6 +202,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	_createAwardEntry(award) {
+		if (this._displayedBadges > (this._maxBadges - 1)) {
+			return html``;
+		}
+		this._displayedBadges = this._displayedBadges + 1;
+		
 		return html`
 			<award-issued 
 				awardId=${award.Award.AwardId} 
@@ -229,12 +239,13 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 	_getAwardsDisplay() {
 		let additionalAwards;
-		if (this.userData.TotalAwardCount > maxBadges) {
-			const extraCount = this.userData.TotalAwardCount - maxBadges;
+		if (this.userData.TotalAwardCount > this._maxBadges) {
+			const extraCount = this.userData.TotalAwardCount - this._maxBadges;
 			additionalAwards = html`
 				+${extraCount}
 			`;
 		}
+		this._displayedBadges = 0;
 
 		if (this.userData.IssuedAwards.Objects.length) {
 			return html`
@@ -267,9 +278,21 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return this._getAwardCountText();
 	}
 
+	_onResize(e) {
+		const currentWidth = e.detail.current.width;
+		this._mobile = currentWidth <= mobileWidthMax;
+		this._full = currentWidth > fullWidthMin;
+		if (!this._full) {
+			let awardMaxWidth = Math.floor(( currentWidth - ( PanelPadding * 2 ) - (BadgeImageSize + 10) ) / (BadgeImageSize + 10));
+			this._maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
+		} else {
+			this._maxBadges = maxFullBadges;
+		}
+	}
+
 	static get properties() {
 		return {
-			userData: {type: Object},
+			userData: { type: Object },
 			myAward: { type: Boolean },
 			sortByCreditsConfig: { type: Boolean },
 			_mobile: {
@@ -279,7 +302,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			_full: {
 				type: Boolean,
 				value: false
-			}
+			},
+			_maxBadges: { type: Number },
+			_displayedBadges: { type: Number }
 		};
 	}
 }
