@@ -142,7 +142,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	render() {
-		const userAwards = html`${this._getAwards()}`;
+		const userAwards = html`${this._getAwardsDisplay()}`;
 
 		let expandPanel;
 		if (this._mobile) {
@@ -179,7 +179,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 					<d2l-profile-image
 						class="profileImage"
 						href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
-						medium=""
+						medium
 						token="token"
 						aria-hidden="true">
 					</d2l-profile-image>
@@ -227,7 +227,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		}
 	}
 
-	_getAwards() {
+	_getAwardsDisplay() {
 		let additionalAwards;
 		if (this.userData.TotalAwardCount > maxBadges) {
 			let extraCount = this.userData.TotalAwardCount - maxBadges;
