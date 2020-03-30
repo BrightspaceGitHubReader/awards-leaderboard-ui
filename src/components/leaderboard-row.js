@@ -13,8 +13,8 @@
 // limitations under the License.
 import './award-issued.js';
 import 'd2l-resize-aware/d2l-resize-aware.js';
-import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { BadgeImageSize, PanelPadding, TopStyleLimit } from '../constants/constants';
+import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
@@ -172,9 +172,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 		let fontStyle;
 		if (this._full) {
-			fontStyle = "d2l-body-standard";
+			fontStyle = 'd2l-body-standard';
 		} else {
-			fontStyle = "d2l-body-compact";
+			fontStyle = 'd2l-body-compact';
 		}
 
 		return html`
@@ -206,7 +206,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			return html``;
 		}
 		this._displayedBadges = this._displayedBadges + 1;
-		
+
 		return html`
 			<award-issued 
 				awardId=${award.Award.AwardId} 
@@ -283,7 +283,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		this._mobile = currentWidth <= mobileWidthMax;
 		this._full = currentWidth > fullWidthMin;
 		if (!this._full) {
-			let awardMaxWidth = Math.floor(( currentWidth - ( PanelPadding * 2 ) - (BadgeImageSize + 10) ) / (BadgeImageSize + 10));
+			const awardMaxWidth = Math.floor((currentWidth - (PanelPadding * 2) - (BadgeImageSize + 10) ) / (BadgeImageSize + 10));
 			this._maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
 		} else {
 			this._maxBadges = maxFullBadges;
