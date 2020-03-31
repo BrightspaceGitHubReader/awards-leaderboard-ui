@@ -116,6 +116,14 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	render() {
+		const dialog = html`
+			<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
+				${this._renderDialogContents()}
+				<d2l-button slot="footer" dialog-action>Close</d2l-button>
+			</d2l-dialog>
+		`;
+
+		let listContent;
 		if (!this.doneLoading) {
 			const numberOfItems = 5;
 			const itemsSkeleton = html`
@@ -132,16 +140,19 @@ class App extends BaseMixin(LitElement) {
 					</d2l-list-item-content>
 				</d2l-list-item>
 			`;
-			return html`<d2l-list>${(new Array(numberOfItems)).fill(itemsSkeleton)}</d2l-list>`;
-		}
-		return html`
-			<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
-				${this._renderDialogContents()}
-				<d2l-button slot="footer" dialog-action>Close</d2l-button>
-			</d2l-dialog>
-			<d2l-list>
+			listContent = html`
+				${(new Array(numberOfItems)).fill(itemsSkeleton)}
+			`;
+		} else {
+			listContent = html`
 				${this._createLeaderboardEntry(this.myAwards, true)}
 				${this.sortedLeaderboardArray.map(item => this._createLeaderboardEntry(item, false))}
+			`;
+		}
+		return html`
+			${dialog}
+			<d2l-list aria-busy="${!this.doneLoading}">
+				${listContent}
 			</d2l-list>
 		`;
 	}
