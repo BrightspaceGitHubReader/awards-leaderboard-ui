@@ -203,11 +203,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		this._displayedBadges = this._displayedBadges + 1;
 
 		return html`
-			<award-issued 
-				awardId=${award.Award.AwardId} 
-				awardTitle=${award.Award.Title}
-				awardImageUrl=${award.Award.ImageData.Path}
-				issuedId=${award.IssuedId}>
+			<award-issued award=${JSON.stringify(award)} >
 			</award-issued>
 		`;
 	}

@@ -20,6 +20,7 @@ import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
 import './leaderboard-row.js';
 
+import { bodyCompactStyles, labelStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
@@ -29,7 +30,8 @@ class App extends BaseMixin(LitElement) {
 
 	static get styles() {
 		return [
-
+			bodyCompactStyles,
+			labelStyles,
 			css`
 			d2l-list {
 				max-height: 420px;
@@ -38,6 +40,20 @@ class App extends BaseMixin(LitElement) {
 			}
 			.myAwardItem {
 				background-color: var(--d2l-color-celestine-plus-2);
+			}
+			.awardDetailsRow {
+				display: flex;
+				flex-direction: row;
+			}
+			.awardImage {
+				overflow: auto;
+				max-width: 30%;
+			}
+			.awardImage img{
+				max-width: 85px;
+			}
+			.awardDescription {
+				max-width: 70%;
 			}
 			@keyframes loadingPulse {
 				0% { background-color: var(--d2l-color-sylvite); }
@@ -98,8 +114,15 @@ class App extends BaseMixin(LitElement) {
 			sortByCreditsConfig: { type: Boolean },
 			doneLoading: { type: Boolean },
 			awardsDialogOpen: { type: Boolean },
+			dialogIssuedId: { type: Number },
 			dialogAwardTitle: { type: String },
-			dialogIssuedId: { type: Number }
+			issuerName: { type: String },
+			awardDescription: { type: String },
+			awardIssued: { type: String },
+			awardCredit: { type: String },
+			awardEvidence: { type: String },
+			awardImage: { type: String },
+			awardExpiry: { type: String }
 		};
 	}
 
@@ -161,10 +184,48 @@ class App extends BaseMixin(LitElement) {
 		if (!this.awardsDialogOpen) {
 			return;
 		}
+		//parent.document.getElementById('dialogLoading')
+		//this.shadowRoot.querySelector('d2l-resize-aware')
+		// <!--<img src="http://localhost:44444/d2l/awards/v1/image/6606?imageId=45&v=20.20.4.0-11077716" id="dialogLoading" />
+		// 	<iframe frameBorder="0" width="100%" height="100%" onload="console.log(this.shadowRoot, parent.document.shadowRoot);"
+		// 		src="${LeaderboardService.getIssuedAward(this.dialogIssuedId)}">
+		// 	</iframe>-->
+
+		let credits = this.awardCredit === null || this.awardCredit === undefined ? 
+			html`` : 
+			html`
+				<div><span class="d2l-label-text">Credits:</span> ${this.awardCredit}</div>
+			`;
+
 		return html`
-			<iframe frameBorder="0" width="100%" height="100%" scrolling="no"
-				src="${LeaderboardService.getIssuedAward(this.dialogIssuedId)}">
-			</iframe>
+			<div class="awardDetailsRow">
+				<div class="awardImage">	
+					<img src="${this.awardImage}" />
+				</div>
+				<div class="awardDescription">
+					<div>
+						<span class="d2l-label-text">Description:</span> 
+						<span class="d2l-body-compact">${this.awardDescription}</span>
+					</div>
+					<div>
+						<span class="d2l-label-text">Expiry Date:</span> 
+						<span class="d2l-body-compact">${this.awardExpiry}</span>
+					</div>
+					<div>
+						<span class="d2l-label-text">Issue Date:</span> 
+						<span class="d2l-body-compact">${this.awardIssued}</span>
+					</div>
+					<div>
+						<span class="d2l-label-text">Issuer:</span> 
+						<span class="d2l-body-compact">${this.issuerName}</span>
+					</div>
+					${credits}
+					<div>
+						<span class="d2l-label-text">Evidence:</span> 
+						<span class="d2l-body-compact">${this.awardEvidence}</span>
+					</div>
+				</div>
+			</div>
 		`;
 	}
 
@@ -210,7 +271,14 @@ class App extends BaseMixin(LitElement) {
 	}
 	_openDialog(e) {
 		this.dialogAwardTitle = e.detail.awardTitle;
-		this.dialogIssuedId = e.detail.issuedId;
+		this.issuerName = e.detail.issuerName;
+		this.awardDescription = e.detail.awardDescription;
+		this.awardIssued = e.detail.awardIssued;
+		this.awardCredit = e.detail.awardCredit;
+		this.awardEvidence = e.detail.awardEvidence;
+		this.awardImage = e.detail.awardImage;
+		this.awardExpiry = e.detail.awardExpiry;
+
 		this.awardsDialogOpen = true;
 	}
 }
