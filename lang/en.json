@@ -1,6 +1,7 @@
 {
     "awards.many": "{numawards} awards",
     "awards.one": "1 award",
+    "closeDialog": "Close",
     "credits.many": "{numcredits} credits",
     "credits.one": "1 credits"
 }

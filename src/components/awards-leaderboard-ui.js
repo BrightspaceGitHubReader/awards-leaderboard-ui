@@ -117,11 +117,11 @@ class App extends BaseMixin(LitElement) {
 
 	render() {
 		const dialog = html`
-			<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
-				${this._renderDialogContents()}
-				<d2l-button slot="footer" dialog-action>Close</d2l-button>
-			</d2l-dialog>
-		`;
+				<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
+					${this._renderDialogContents()}
+					<d2l-button slot="footer" dialog-action>${this.localize('closeDialog')}</d2l-button>
+				</d2l-dialog>
+			`;
 
 		let listContent;
 		if (!this.doneLoading) {
