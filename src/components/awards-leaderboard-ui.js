@@ -38,7 +38,11 @@ class App extends BaseMixin(LitElement) {
 			}
 			.myAwardItem {
 				background-color: var(--d2l-color-celestine-plus-2);
+				position: -webkit-sticky; /* Safari */
+				position: sticky;
+				bottom: 0;
 			}
+
 			@keyframes loadingPulse {
 				0% { background-color: var(--d2l-color-sylvite); }
 				50% { background-color: var(--d2l-color-regolith); }
@@ -145,8 +149,8 @@ class App extends BaseMixin(LitElement) {
 			`;
 		} else {
 			listContent = html`
-				${this._createLeaderboardEntry(this.myAwards, true)}
 				${this.sortedLeaderboardArray.map(item => this._createLeaderboardEntry(item, false))}
+				${this._createLeaderboardEntry(this.myAwards, true)}
 			`;
 		}
 		return html`
@@ -170,25 +174,21 @@ class App extends BaseMixin(LitElement) {
 
 	firstUpdated() {
 		this._getLeaderboard();
-		this._getMyAwards();
 		this.addEventListener('award-issued-dialog', this._openDialog);
 	}
 
 	async _getLeaderboard() {
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
 		this.sortedLeaderboardArray = myLeaderboard.Objects;
-		this.doneLoading = true;
-	}
+		
+		const isUserIncluded = this._isLoggedInUserIncluded();
+		if (isUserIncluded) {
+			this.doneLoading = true;
+			return;
+		}
+		await this._getMyAwards();
 
-	async _getMyAwards() {
-		const myAwards = await LeaderboardService.getMyAwards(this.orgUnitId, this.userId);
-		if (myAwards === undefined || myAwards === null) {
-			return;
-		}
-		if (Object.prototype.hasOwnProperty.call(myAwards, 'Message')) {
-			return;
-		}
-		this.myAwards = myAwards;
+		this.doneLoading = true;
 	}
 
 	_createLeaderboardEntry(item, isMyAward) {
@@ -204,10 +204,31 @@ class App extends BaseMixin(LitElement) {
 			</d2l-list-item>
 		`;
 	}
+
 	_closeDialog() {
 		this.awardsDialogOpen = false;
 
+	}	
+
+	async _getMyAwards(){
+		//Obtain the currently logged in user's awards
+		const myAwards = await LeaderboardService.getMyAwards(this.orgUnitId, this.userId);
+		if (myAwards === undefined || myAwards === null) {
+			return;
+		}
+		if (Object.prototype.hasOwnProperty.call(myAwards, 'Message')) {
+			return;
+		}
+		this.myAwards = myAwards;
 	}
+
+	_isLoggedInUserIncluded(){
+		if(this.sortedLeaderboardArray.some(awards => awards.UserId === this.userId)){
+			return true;
+		} 
+		return false;
+	}
+
 	_openDialog(e) {
 		this.dialogAwardTitle = e.detail.awardTitle;
 		this.dialogIssuedId = e.detail.issuedId;
