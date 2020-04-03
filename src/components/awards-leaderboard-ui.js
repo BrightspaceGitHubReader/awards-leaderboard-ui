@@ -180,7 +180,7 @@ class App extends BaseMixin(LitElement) {
 	async _getLeaderboard() {
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
 		this.sortedLeaderboardArray = myLeaderboard.Objects;
-		
+
 		const isUserIncluded = this._isLoggedInUserIncluded();
 		if (isUserIncluded) {
 			this.doneLoading = true;
@@ -207,10 +207,9 @@ class App extends BaseMixin(LitElement) {
 
 	_closeDialog() {
 		this.awardsDialogOpen = false;
+	}
 
-	}	
-
-	async _getMyAwards(){
+	async _getMyAwards() {
 		//Obtain the currently logged in user's awards
 		const myAwards = await LeaderboardService.getMyAwards(this.orgUnitId, this.userId);
 		if (myAwards === undefined || myAwards === null) {
@@ -222,10 +221,10 @@ class App extends BaseMixin(LitElement) {
 		this.myAwards = myAwards;
 	}
 
-	_isLoggedInUserIncluded(){
-		if(this.sortedLeaderboardArray.some(awards => awards.UserId === this.userId)){
+	_isLoggedInUserIncluded() {
+		if (this.sortedLeaderboardArray.some(awards => awards.UserId === this.userId)) {
 			return true;
-		} 
+		}
 		return false;
 	}
 
