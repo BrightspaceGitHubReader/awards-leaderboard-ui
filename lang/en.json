@@ -3,5 +3,7 @@
     "awards.one": "1 award",
     "closeDialog": "Close",
     "credits.many": "{numcredits} credits",
-    "credits.one": "1 credits"
+    "credits.one": "1 credits",
+    "emptyBody": "Check back often for the latest rankings.",
+    "emptyHeading": "No awards have been earned yet."
 }
