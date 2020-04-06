@@ -28,8 +28,6 @@ class AwardIssued extends BaseMixin(LitElement) {
 				width: ${unsafeCSS(BadgeImageSize)}px;
 				padding-right: 3px;
 				vertical-align: middle;
-				padding-top: 12px;
-				padding-bottom: 12px;
 			}
 			`
 		];

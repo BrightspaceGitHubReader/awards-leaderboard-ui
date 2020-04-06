@@ -93,6 +93,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				padding-left: ${unsafeCSS(PanelPadding)}px;
 				background-color: var(--d2l-color-sylvite);
 				border-top: 1px solid var(--d2l-color-mica);
+				padding-top: 12px;
+				padding-bottom: 12px;
 			}
 			.noMargin {
 				margin: unset  !important;
