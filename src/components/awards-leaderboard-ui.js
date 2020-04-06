@@ -30,7 +30,7 @@ class App extends BaseMixin(LitElement) {
 
 	static get styles() {
 		return [
-			bodyStandardStyles, 
+			bodyStandardStyles,
 			heading2Styles,
 			css`
 			d2l-list {
@@ -162,7 +162,7 @@ class App extends BaseMixin(LitElement) {
 			listContent = html`
 				${(new Array(numberOfItems)).fill(itemsSkeleton)}
 			`;
-		} else if(this.isEmptyLeaderboard) {
+		} else if (this.isEmptyLeaderboard) {
 			return this._displayEmptyLeaderboard();
 		} else {
 			listContent = html`
@@ -231,7 +231,7 @@ class App extends BaseMixin(LitElement) {
 		this.awardsDialogOpen = false;
 	}
 
-	_displayEmptyLeaderboard(){
+	_displayEmptyLeaderboard() {
 		return html`
 			<div class="emptyState">
 				<div class="emptyImage"></div>
@@ -253,7 +253,7 @@ class App extends BaseMixin(LitElement) {
 		this.myAwards = myAwards;
 	}
 
-	_isEmptyLeaderboard(){
+	_isEmptyLeaderboard() {
 		if (this.sortedLeaderboardArray.some(awards => awards.TotalAwardCount > 0)) {
 			return false;
 		}
