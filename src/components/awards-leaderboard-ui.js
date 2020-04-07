@@ -72,11 +72,19 @@ class App extends BaseMixin(LitElement) {
 				height: 42px;
 				margin-left: 7px;
 			}
-			.skeleton-info{
+			:host([dir="rtl"]) .skeleton-profilePic {
+				margin-right: 7px;
+				margin-left: 0px;
+			}
+			.skeleton-info {
 				display: flex;
 				flex-direction: column;
 				width: 50%;
 				padding-left: 10px;
+			}
+			:host([dir="rtl"]) .skeleton-info {
+				padding-left: 10px;
+				padding-right: 0px;
 			}
 			.skeleton-name {
 				animation: loadingPulse 1.8s linear infinite;

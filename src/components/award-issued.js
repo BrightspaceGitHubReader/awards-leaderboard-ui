@@ -29,6 +29,10 @@ class AwardIssued extends BaseMixin(LitElement) {
 				padding-right: 3px;
 				vertical-align: middle;
 			}
+			:host([dir="rtl"]) .badgeEntry {
+				padding-right: 3px;
+				padding-left: 0px;
+			}
 			`
 		];
 	}
