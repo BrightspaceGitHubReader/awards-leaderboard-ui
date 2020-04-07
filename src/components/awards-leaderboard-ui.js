@@ -20,6 +20,7 @@ import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
 import './leaderboard-row.js';
 
+import { bodyStandardStyles, heading2Styles} from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
@@ -29,7 +30,8 @@ class App extends BaseMixin(LitElement) {
 
 	static get styles() {
 		return [
-
+			bodyStandardStyles,
+			heading2Styles,
 			css`
 			d2l-list {
 				max-height: 420px;
@@ -91,6 +93,17 @@ class App extends BaseMixin(LitElement) {
 				margin-top: 4px;
 				border-radius: 4px;
 			}
+			.emptyState {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.emptyImage {
+				max-width: 100%;
+				width: 255px;
+				height: 140px;
+				background-color: var(--d2l-color-sylvite);
+			}
         `];
 	}
 
@@ -103,7 +116,8 @@ class App extends BaseMixin(LitElement) {
 			doneLoading: { type: Boolean },
 			awardsDialogOpen: { type: Boolean },
 			dialogAwardTitle: { type: String },
-			dialogIssuedId: { type: Number }
+			dialogIssuedId: { type: Number },
+			isEmptyLeaderboard: { type: Boolean }
 		};
 	}
 
@@ -120,6 +134,7 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	render() {
+
 		const dialog = html`
 				<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
 					${this._renderDialogContents()}
@@ -147,6 +162,8 @@ class App extends BaseMixin(LitElement) {
 			listContent = html`
 				${(new Array(numberOfItems)).fill(itemsSkeleton)}
 			`;
+		} else if (this.isEmptyLeaderboard) {
+			return this._displayEmptyLeaderboard();
 		} else {
 			listContent = html`
 				${this.sortedLeaderboardArray.map(item => this._createLeaderboardEntry(item, false))}
@@ -180,6 +197,11 @@ class App extends BaseMixin(LitElement) {
 	async _getLeaderboard() {
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
 		this.sortedLeaderboardArray = myLeaderboard.Objects;
+		this.isEmptyLeaderboard = this._isEmptyLeaderboard();
+		if (this.isEmptyLeaderboard) {
+			this.doneLoading = true;
+			return;
+		}
 
 		const isUserIncluded = this._isLoggedInUserIncluded();
 		if (isUserIncluded) {
@@ -209,6 +231,16 @@ class App extends BaseMixin(LitElement) {
 		this.awardsDialogOpen = false;
 	}
 
+	_displayEmptyLeaderboard() {
+		return html`
+			<div class="emptyState">
+				<div class="emptyImage"></div>
+				<div class="d2l-heading-2">${this.localize('emptyHeading')}</div>
+				<div class="d2l-body-standard">${this.localize('emptyBody')}</div>
+			</div>
+		`;
+	}
+
 	async _getMyAwards() {
 		//Obtain the currently logged in user's awards
 		const myAwards = await LeaderboardService.getMyAwards(this.orgUnitId, this.userId);
@@ -219,6 +251,13 @@ class App extends BaseMixin(LitElement) {
 			return;
 		}
 		this.myAwards = myAwards;
+	}
+
+	_isEmptyLeaderboard() {
+		if (this.sortedLeaderboardArray.some(awards => awards.TotalAwardCount > 0)) {
+			return false;
+		}
+		return true;
 	}
 
 	_isLoggedInUserIncluded() {
