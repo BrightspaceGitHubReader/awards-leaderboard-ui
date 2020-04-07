@@ -13,11 +13,12 @@
 // limitations under the License.
 
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin';
+import { RtlMixin } from '@brightspace-ui/core/mixins/rtl-mixin';
 
 const langTerms = {};
 const baseUrl = import.meta.url;
 
-export const BaseMixin = superclass => class extends LocalizeMixin(superclass) {
+export const BaseMixin = superclass => class extends LocalizeMixin(RtlMixin(superclass)) {
 
 	static async getLocalizeResources(langs) {
 		const uniqueLangs = new Set(langs);

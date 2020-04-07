@@ -42,7 +42,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.awardRow :last-child {
 				margin-left: auto;
 			}
-			:host([dir="rtl"]) .awardRow :last-child {
+			:host([dir="rtl"]) :host .awardRow :last-child {
 				margin-right: auto;
 				margin-left: 25px;
 			}
@@ -50,7 +50,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				border-radius: 5px;
 				margin-left: 12px;
 			}
-			:host([dir="rtl"]) .profileImage {
+			:host([dir="rtl"]) :host .profileImage {
 				margin-right: 12px;
 				margin-left: 0;
 			}
@@ -68,7 +68,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				-moz-border-radius:50%;
 				-webkit-border-radius:50%;
 			}
-			:host([dir="rtl"]) .awardRank {
+			:host([dir="rtl"]) :host .awardRank {
 				margin-right: 17px;
 				margin-left: 0px;
 			}
@@ -85,7 +85,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				flex-direction: column;
 				padding-left: 10px;
 			}
-			:host([dir="rtl"]) .creditCount {
+			:host([dir="rtl"]) :host .creditCount {
 				padding-right: 10px;
 				padding-left: 0px;
 			}
@@ -112,7 +112,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				padding-top: 12px;
 				padding-bottom: 12px;
 			}
-			:host([dir="rtl"]) .panel {
+			:host([dir="rtl"]) :host .panel {
 				padding-right: ${unsafeCSS(PanelPadding)}px;
 				padding-left: 0px;
 			}
@@ -123,7 +123,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-left: auto;
 				margin-right: 25px;
 			}
-			:host([dir="rtl"]) .side {
+			:host([dir="rtl"]) :host .side {
 				margin-right: auto;
 				margin-left: 25px;
 			}
