@@ -83,8 +83,8 @@ class App extends BaseMixin(LitElement) {
 				padding-left: 10px;
 			}
 			:host([dir="rtl"]) .skeleton-info {
-				padding-left: 10px;
-				padding-right: 0px;
+				padding-right: 10px;
+				padding-left: 0px;
 			}
 			.skeleton-name {
 				animation: loadingPulse 1.8s linear infinite;
