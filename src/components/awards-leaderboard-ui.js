@@ -109,8 +109,6 @@ class App extends BaseMixin(LitElement) {
 			.emptyImage {
 				max-width: 100%;
 				width: 255px;
-				height: 140px;
-				background-color: var(--d2l-color-sylvite);
 			}
         `];
 	}
@@ -139,6 +137,9 @@ class App extends BaseMixin(LitElement) {
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
 		this.awardsDialogOpen = false;
+
+		const baseUrl = import.meta.url;
+		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
 	}
 
 	render() {
@@ -242,7 +243,7 @@ class App extends BaseMixin(LitElement) {
 	_displayEmptyLeaderboard() {
 		return html`
 			<div class="emptyState">
-				<div class="emptyImage"></div>
+				<img src="${this.emptyImage}" class="emptyImage" />
 				<div class="d2l-heading-2">${this.localize('emptyHeading')}</div>
 				<div class="d2l-body-standard">${this.localize('emptyBody')}</div>
 			</div>
