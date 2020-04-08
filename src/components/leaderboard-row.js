@@ -39,18 +39,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				flex-direction: row;
 				align-items: center;
 			}
-			.awardRow :last-child {
-				margin-left: auto;
-			}
-			:host([dir="rtl"]) :host .awardRow :last-child {
-				margin-right: auto;
-				margin-left: 25px;
-			}
 			.profileImage {
 				border-radius: 5px;
 				margin-left: 12px;
 			}
-			:host([dir="rtl"]) :host .profileImage {
+			:host([dir="rtl"]) .profileImage {
 				margin-right: 12px;
 				margin-left: 0;
 			}
@@ -68,7 +61,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				-moz-border-radius:50%;
 				-webkit-border-radius:50%;
 			}
-			:host([dir="rtl"]) :host .awardRank {
+			:host([dir="rtl"]) .awardRank {
 				margin-right: 17px;
 				margin-left: 0px;
 			}
@@ -85,7 +78,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				flex-direction: column;
 				padding-left: 10px;
 			}
-			:host([dir="rtl"]) :host .creditCount {
+			:host([dir="rtl"]) .creditCount {
 				padding-right: 10px;
 				padding-left: 0px;
 			}
@@ -112,7 +105,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				padding-top: 12px;
 				padding-bottom: 12px;
 			}
-			:host([dir="rtl"]) :host .panel {
+			:host([dir="rtl"]) .panel {
 				padding-right: ${unsafeCSS(PanelPadding)}px;
 				padding-left: 0px;
 			}
@@ -123,7 +116,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-left: auto;
 				margin-right: 25px;
 			}
-			:host([dir="rtl"]) :host .side {
+			:host([dir="rtl"]) .side {
 				margin-right: auto;
 				margin-left: 25px;
 			}
