@@ -2,7 +2,9 @@
 
 [![Build Status][CI Badge]][CI Branch] 
 
-This project displays a list of awards as a leaderboard widget.
+This a leaderboard widget of users in a course with the top 10 awards.
+A maximum of 10 awards will be shown for each user.
+The widget allows configuring it to display users listed by top awards or top credits.
 
 ## Quick start
 
@@ -34,7 +36,7 @@ Awards Leaderboard is maintained under [the Semantic Versioning guidelines](http
 
 To create a new version bump:
 * Tag a new release in awards-leaderboard
-* Ensure awards-leaderboard is no longer linked to bsi - Follow Option 2 https://github.com/Brightspace/brightspace-integration#running-locally---bundled-production-build
+* Ensure awards-leaderboard-ui is no longer linked to bsi - Follow Option 2 https://github.com/Brightspace/brightspace-integration#running-locally---bundled-production-build
 * Don't forget to restart IIS
 * Within BSI, run the following commands:
   * `rm package-lock.json`
@@ -43,7 +45,8 @@ To create a new version bump:
   * `npm install`
   * `npm run build`
 * Ensure everything is working as expected
-* Checkin the `package-lock.json` file and ensure that has picked up the correct revision for awards-leaderboard
+* Bump BSI by updating the `package-lock.json` file
+  * Ensure `package-lock.json` has picked up the new version revision for awards-leaderboard-ui
 
 <!-- links -->
 [CI Branch]:https://travis-ci.com/Brightspace/awards-leaderboard-ui
