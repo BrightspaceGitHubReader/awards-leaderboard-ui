@@ -23,7 +23,7 @@ To run this solution, you will need BSI
 ## Dependencies
 
 This solution is run by widget code within the LMS
-* [Awards Leaderboard]:https://git.dev.d2l/projects/CORE/repos/lms/browse/awards-leaderboard
+* [Awards Leaderboard](https://git.dev.d2l/projects/CORE/repos/lms/browse/awards-leaderboard)
 
 This also makes Valence API calls to Awards tool
 * [Valence Awards API](https://docs.valence.desire2learn.com/res/awards.html)
