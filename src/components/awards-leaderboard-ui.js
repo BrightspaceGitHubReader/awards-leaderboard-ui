@@ -243,7 +243,7 @@ class App extends BaseMixin(LitElement) {
 	_displayEmptyLeaderboard() {
 		return html`
 			<div class="emptyState">
-				<img src="${this.emptyImage}" class="emptyImage" />
+				<img src="${this.emptyImage}" class="emptyImage" alt="" />
 				<div class="d2l-heading-2">${this.localize('emptyHeading')}</div>
 				<div class="d2l-body-standard">${this.localize('emptyBody')}</div>
 			</div>
