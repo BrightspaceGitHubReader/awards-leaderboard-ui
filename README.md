@@ -6,7 +6,7 @@ This a leaderboard widget of users in a course with the top 10 awards.
 
 A maximum of 10 awards will be shown for each user.
 
-The widget allows configuring it to display users listed by top awards or top credits.
+The widget can be configured to display users listed by top awards or top credits.
 
 ## Quick start
 
