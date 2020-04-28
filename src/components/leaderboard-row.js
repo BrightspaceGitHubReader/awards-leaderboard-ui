@@ -197,8 +197,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 					<div 
 						class="awardRank ${fontStyle}" 
 						?topRank="${this.userData.Rank <= TopStyleLimit}" 
-						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}"
-					>
+						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
 						${this.userData.Rank}
 					</div>
 					<d2l-profile-image
