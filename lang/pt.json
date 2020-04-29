@@ -1,0 +1,10 @@
+{
+   "awards.many" : "{numawards} prêmios",
+   "awards.one" : "1 prêmio",
+   "closeDialog" : "Fechar",
+   "credits.many" : "{numcredits} créditos",
+   "credits.one" : "1 crédito",
+   "emptyBody" : "Verifique sempre as classificações mais recentes.",
+   "emptyHeading" : "Ainda não foi atribuído nenhum prêmio.",
+   "rankingAria" : "Rank {rank}"
+}

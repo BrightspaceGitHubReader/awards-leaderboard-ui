@@ -1,0 +1,10 @@
+{
+   "awards.many" : "{Numawards}번 수상",
+   "awards.one" : "1번 수상",
+   "closeDialog" : "닫기",
+   "credits.many" : "{numcredits} 학점",
+   "credits.one" : "1 학점",
+   "emptyBody" : "최종 순위를 위해 자주 확인하십시오.",
+   "emptyHeading" : "아직 수상 이력이 없습니다.",
+   "rankingAria" : "Rank {rank}"
+}
