@@ -1,0 +1,10 @@
+{
+   "awards.many" : "{numawards} 项奖励",
+   "awards.one" : "1 项奖励",
+   "closeDialog" : "关闭",
+   "credits.many" : "{numcredits} 个学分",
+   "credits.one" : "1 个学分",
+   "emptyBody" : "请稍后时常查看最新排名。",
+   "emptyHeading" : "尚未获得奖励。",
+   "rankingAria" : "Rank {rank}"
+}

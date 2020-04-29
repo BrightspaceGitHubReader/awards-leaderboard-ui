@@ -1,0 +1,10 @@
+{
+   "awards.many" : "{numawards} ödül",
+   "awards.one" : "1 ödül",
+   "closeDialog" : "Kapat",
+   "credits.many" : "{numcredits} kredi",
+   "credits.one" : "1 kredi",
+   "emptyBody" : "Güncel derecelendirmeler için sık sık kontrol edin.",
+   "emptyHeading" : "Henüz bir ödül kazanılmadı.",
+   "rankingAria" : "Rank {rank}"
+}
