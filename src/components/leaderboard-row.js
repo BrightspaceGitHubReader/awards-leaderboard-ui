@@ -194,7 +194,12 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return html`
 			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
 				<div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
-					<div class="awardRank ${fontStyle}" ?topRank="${this.userData.Rank <= TopStyleLimit}">${this.userData.Rank}</div>
+					<div 
+						class="awardRank ${fontStyle}" 
+						?topRank="${this.userData.Rank <= TopStyleLimit}" 
+						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+						${this.userData.Rank}
+					</div>
 					<d2l-profile-image
 						class="profileImage"
 						href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
