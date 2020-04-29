@@ -1,0 +1,10 @@
+{
+   "awards.many" : "{numawards} 個獎勵",
+   "awards.one" : "1 個獎勵",
+   "closeDialog" : "關閉",
+   "credits.many" : "{numcredits} 個學分",
+   "credits.one" : "1 個學分",
+   "emptyBody" : "請經常返回查看最新的排名。",
+   "emptyHeading" : "尚未獲得任何獎勵。",
+   "rankingAria" : "Rank {rank}"
+}

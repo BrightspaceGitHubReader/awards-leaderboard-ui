@@ -1,0 +1,10 @@
+{
+   "awards.many" : "{numawards} priser",
+   "awards.one" : "1 pris",
+   "closeDialog" : "Luk",
+   "credits.many" : "{numcredits} meritter",
+   "credits.one" : "1 merit",
+   "emptyBody" : "Kom tilbage med jævne mellemrum for at se seneste rangordninger.",
+   "emptyHeading" : "Ingen priser er blevet optjent endnu.",
+   "rankingAria" : "Rank {rank}"
+}
