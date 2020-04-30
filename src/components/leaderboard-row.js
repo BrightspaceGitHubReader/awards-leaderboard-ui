@@ -130,12 +130,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		this._maxBadges = maxMobileBadges;
 	}
 
-	/* //TODO: Delete this
-	firstUpdated() {
-		console.log('helloooo');
-		console.log(this.shadowRoot.querySelector("d2l-labs-accordion-collapse").shadowRoot.querySelector("a") );
-	}
-*/
 	render() {
 		const userAwards = html`${this._getAwardsDisplay()}`;
 
