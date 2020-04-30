@@ -144,20 +144,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		this._maxBadges = maxMobileBadges;
 	}
 
-	connectedCallback() {
-		super.connectedCallback();
-		afterNextRender(this, () => {
-			const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
-			resizeAware.addEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
-			resizeAware._onResize();
-		});
-	}
-	disconnectedCallback() {
-		super.disconnectedCallback();
-		const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
-		resizeAware.removeEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
-	}
-
 	render() {
 		const userAwards = html`${this._getAwardsDisplay()}`;
 
@@ -192,7 +178,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		const fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
 
 		return html`
-			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
+			<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
 				<div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
 					<div 
 						class="awardRank ${fontStyle}" 
@@ -297,15 +283,27 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return this._getAwardCountText();
 	}
 
-	_onResize(e) {
+	async _handleResized(e) {
+		if (!e || !e.detail || !e.detail.current) {
+			return;
+		}
+
 		const currentWidth = e.detail.current.width;
-		this._mobile = currentWidth <= mobileWidthMax;
-		this._full = currentWidth > fullWidthMin;
+		const mobile = currentWidth <= mobileWidthMax;
+		const full = currentWidth > fullWidthMin;
+		let maxBadges;
 		if (!this._full) {
 			const awardMaxWidth = Math.floor((currentWidth - PanelPadding * 2 - BadgeImageSize + 10) / (BadgeImageSize + 10));
-			this._maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
+			maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
 		} else {
-			this._maxBadges = maxFullBadges;
+			maxBadges = maxFullBadges;
+		}
+		if (this._mobile !== mobile || this._full !== full || this._maxBadges !== maxBadges) {
+			this._mobile = mobile;
+			this._full = full;
+			this._maxBadges = maxBadges;
+
+			await this.requestUpdate();
 		}
 	}
 
