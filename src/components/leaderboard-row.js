@@ -169,37 +169,66 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 		const fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
 
+		if (this._mobile) {
+			return html`
+				<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
+					<d2l-labs-accordion>
+						<d2l-labs-accordion-collapse flex>
+							<div class='awardRow' ?myAward="${this.myAward}" slot="header">
+								<div 
+									class="awardRank ${fontStyle}" 
+									?topRank="${this.userData.Rank <= TopStyleLimit}" 
+									aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+									${this.userData.Rank}
+								</div>
+								<d2l-profile-image
+									class="profileImage"
+									href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
+									medium
+									token="token"
+									aria-hidden="true">
+								</d2l-profile-image>
+								<div class='creditCount'>
+									<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
+									${displayNumber}
+								</div>
+								<div class="side">
+									${sidePanel}
+								</div>
+							</div>
+							${expandPanel}
+						</d2l-labs-accordion-collapse>
+					</d2l-labs-accordion>
+				</d2l-resize-aware>
+			`;
+		}
 		return html`
 			<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
-				<d2l-labs-accordion>
-					<d2l-labs-accordion-collapse flex>
-						<div class='awardRow' ?myAward="${this.myAward}" slot="header">
-							<div 
-								class="awardRank ${fontStyle}" 
-								?topRank="${this.userData.Rank <= TopStyleLimit}" 
-								aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
-								${this.userData.Rank}
-							</div>
-							<d2l-profile-image
-								class="profileImage"
-								href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
-								medium
-								token="token"
-								aria-hidden="true">
-							</d2l-profile-image>
-							<div class='creditCount'>
-								<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
-								${displayNumber}
-							</div>
-							<div class="side">
-								${sidePanel}
-							</div>
-						</div>
-						${expandPanel}
-					</d2l-labs-accordion-collapse>
-				</d2l-labs-accordion>
+				<div class='awardRow' ?myAward="${this.myAward}">
+					<div 
+						class="awardRank ${fontStyle}" 
+						?topRank="${this.userData.Rank <= TopStyleLimit}" 
+						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+						${this.userData.Rank}
+					</div>
+					<d2l-profile-image
+						class="profileImage"
+						href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
+						medium
+						token="token"
+						aria-hidden="true">
+					</d2l-profile-image>
+					<div class='creditCount'>
+						<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
+						${displayNumber}
+					</div>
+					<div class="side">
+						${sidePanel}
+					</div>
+				</div>
+				${expandPanel}
 			</d2l-resize-aware>
-    	`;
+		`;
 	}
 
 	_createAwardEntry(award) {
