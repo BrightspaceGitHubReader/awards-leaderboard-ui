@@ -17,7 +17,6 @@ import 'd2l-resize-aware/d2l-resize-aware.js';
 import { BadgeImageSize, PanelPadding, TopStyleLimit } from '../constants/constants';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement, unsafeCSS } from 'lit-element/lit-element.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
 
@@ -131,19 +130,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		this._maxBadges = maxMobileBadges;
 	}
 
-	connectedCallback() {
-		super.connectedCallback();
-		afterNextRender(this, () => {
-			const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
-			resizeAware.addEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
-			resizeAware._onResize();
-		});
-	}
-	disconnectedCallback() {
-		super.disconnectedCallback();
-		const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
-		resizeAware.removeEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
-	}
 	/* //TODO: Delete this
 	firstUpdated() {
 		console.log('helloooo');
@@ -184,7 +170,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		const fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
 
 		return html`
-			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
+			<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
 				<d2l-labs-accordion>
 					<d2l-labs-accordion-collapse flex>
 						<div class='awardRow' ?myAward="${this.myAward}" slot="header">
@@ -273,15 +259,27 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return this._getAwardCountText();
 	}
 
-	_onResize(e) {
+	async _handleResized(e) {
+		if (!e || !e.detail || !e.detail.current) {
+			return;
+		}
+
 		const currentWidth = e.detail.current.width;
-		this._mobile = currentWidth <= mobileWidthMax;
-		this._full = currentWidth > fullWidthMin;
+		const mobile = currentWidth <= mobileWidthMax;
+		const full = currentWidth > fullWidthMin;
+		let maxBadges;
 		if (!this._full) {
 			const awardMaxWidth = Math.floor((currentWidth - PanelPadding * 2 - BadgeImageSize + 10) / (BadgeImageSize + 10));
-			this._maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
+			maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
 		} else {
-			this._maxBadges = maxFullBadges;
+			maxBadges = maxFullBadges;
+		}
+		if (this._mobile !== mobile || this._full !== full || this._maxBadges !== maxBadges) {
+			this._mobile = mobile;
+			this._full = full;
+			this._maxBadges = maxBadges;
+
+			await this.requestUpdate();
 		}
 	}
 
