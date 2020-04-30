@@ -16,7 +16,6 @@ import 'd2l-resize-aware/d2l-resize-aware.js';
 import { BadgeImageSize, PanelPadding, TopStyleLimit } from '../constants/constants';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement, unsafeCSS } from 'lit-element/lit-element.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
 
