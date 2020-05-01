@@ -1,0 +1,10 @@
+{
+   "awards.many" : "{numawards} onderscheidingen",
+   "awards.one" : "1 onderscheiding",
+   "closeDialog" : "Sluiten",
+   "credits.many" : "{numcredits} studiepunten",
+   "credits.one" : "1 studiepunt",
+   "emptyBody" : "Kom regelmatig terug om de meeste recente scorelijsten te bekijken.",
+   "emptyHeading" : "Er zijn nog geen onderscheidingen verdiend.",
+   "rankingAria" : "Rank {rank}"
+}

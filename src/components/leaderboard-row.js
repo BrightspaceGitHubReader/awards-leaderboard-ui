@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import './award-issued.js';
+import '@brightspace-ui-labs/accordion/accordion-collapse.js';
 import 'd2l-resize-aware/d2l-resize-aware.js';
 import { BadgeImageSize, PanelPadding, TopStyleLimit } from '../constants/constants';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement, unsafeCSS } from 'lit-element/lit-element.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
 
@@ -93,12 +93,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				width: 30%;
 			}
 			.panel {
-				display: none;
 				overflow: hidden;
-				max-height: 0px;
 				margin-top: 11px;
 				margin-bottom: -20px;
-				transition: max-height 0.2s ease-out;
 				padding-left: ${unsafeCSS(PanelPadding)}px;
 				background-color: var(--d2l-color-sylvite);
 				border-top: 1px solid var(--d2l-color-mica);
@@ -120,16 +117,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-right: auto;
 				margin-left: 25px;
 			}
-			.expandButton {
-				transition: transform 0.2s;
-				-webkit-touch-callout: none; /* iOS Safari */
-				-webkit-user-select: none; /* Safari */
-				-moz-user-select: none; /* Old versions of Firefox */
-				-ms-user-select: none; /* Internet Explorer/Edge */
-				user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
-			}
-			.expandButtonRotated {
-				transform: rotate(90deg);
+			d2l-labs-accordion-collapse::slotted(d2l-icon){
+				padding-right: 10px;
 			}
 			`
 		];
@@ -137,25 +126,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 	constructor() {
 		super();
-		const baseUrl = import.meta.url;
 
-		this.fullURLExpand = new URL('../../images/arrow-expand.svg', baseUrl);
-		this.fullURLCollapse = new URL('../../images/arrow-collapsed.svg', baseUrl);
 		this._maxBadges = maxMobileBadges;
-	}
-
-	connectedCallback() {
-		super.connectedCallback();
-		afterNextRender(this, () => {
-			const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
-			resizeAware.addEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
-			resizeAware._onResize();
-		});
-	}
-	disconnectedCallback() {
-		super.disconnectedCallback();
-		const resizeAware = this.shadowRoot.querySelector('d2l-resize-aware');
-		resizeAware.removeEventListener('d2l-resize-aware-resized', this._onResize.bind(this));
 	}
 
 	render() {
@@ -164,7 +136,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		let expandPanel;
 		if (this._mobile) {
 			expandPanel = html`
-				<div id="ExpandPanel" class="panel"> 
+				<div class="panel"> 
 					${userAwards}
 				</div>
 			`;
@@ -172,7 +144,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		let sidePanel;
 		if (this._mobile) {
 			sidePanel = html`
-				<img id="ExpandIcon" class="expandButton" text="Expand" src="${this.fullURLExpand.toString()}"></img>
+				
 			`;
 		} else {
 			sidePanel = userAwards;
@@ -191,14 +163,46 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 		const fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
 
+		if (this._mobile) {
+			return html`
+				<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
+					<d2l-labs-accordion>
+						<d2l-labs-accordion-collapse flex>
+							<div class='awardRow' ?myAward="${this.myAward}" slot="header">
+								<div 
+									class="awardRank ${fontStyle}" 
+									?topRank="${this.userData.Rank <= TopStyleLimit}" 
+									aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+									${this.userData.Rank}
+								</div>
+								<d2l-profile-image
+									class="profileImage"
+									href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
+									medium
+									token="token"
+									aria-hidden="true">
+								</d2l-profile-image>
+								<div class='creditCount'>
+									<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
+									${displayNumber}
+								</div>
+								<div class="side">
+									${sidePanel}
+								</div>
+							</div>
+							${expandPanel}
+						</d2l-labs-accordion-collapse>
+					</d2l-labs-accordion>
+				</d2l-resize-aware>
+			`;
+		}
 		return html`
-			<d2l-resize-aware id="resize-detector" class="resizeContainer" ?mobile="${this._mobile}" ?full="${this._full}">
-				<div class='awardRow' id="$Expandable" @click="${this._expandClicked}" ?myAward="${this.myAward}">
+			<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
+				<div class='awardRow' ?myAward="${this.myAward}">
 					<div 
 						class="awardRank ${fontStyle}" 
 						?topRank="${this.userData.Rank <= TopStyleLimit}" 
-						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}"
-					>
+						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
 						${this.userData.Rank}
 					</div>
 					<d2l-profile-image
@@ -218,7 +222,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				</div>
 				${expandPanel}
 			</d2l-resize-aware>
-    	`;
+		`;
 	}
 
 	_createAwardEntry(award) {
@@ -235,26 +239,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				issuedId=${award.IssuedId}>
 			</award-issued>
 		`;
-	}
-
-	_expandClicked() {
-		if (!this._mobile) {
-			return;
-		}
-		const panel = this.shadowRoot.getElementById('ExpandPanel');
-		const icon = this.shadowRoot.getElementById('ExpandIcon');
-		if (panel.style.maxHeight) {
-			panel.style.maxHeight = null;
-			panel.style.display = 'none';
-			icon.classList.remove('expandButtonRotated');
-			icon.src = this.fullURLExpand.toString();
-		} else {
-			panel.style.display = 'block';
-			panel.style.maxHeight = `${panel.scrollHeight}px`;
-			icon.classList.add('expandButtonRotated');
-			icon.src = '../images/arrow-collapsed.svg';
-			icon.src = this.fullURLCollapse.toString();
-		}
 	}
 
 	_getAwardsDisplay() {
@@ -298,15 +282,27 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return this._getAwardCountText();
 	}
 
-	_onResize(e) {
+	async _handleResized(e) {
+		if (!e || !e.detail || !e.detail.current) {
+			return;
+		}
+
 		const currentWidth = e.detail.current.width;
-		this._mobile = currentWidth <= mobileWidthMax;
-		this._full = currentWidth > fullWidthMin;
+		const mobile = currentWidth <= mobileWidthMax;
+		const full = currentWidth > fullWidthMin;
+		let maxBadges;
 		if (!this._full) {
 			const awardMaxWidth = Math.floor((currentWidth - PanelPadding * 2 - BadgeImageSize + 10) / (BadgeImageSize + 10));
-			this._maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
+			maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
 		} else {
-			this._maxBadges = maxFullBadges;
+			maxBadges = maxFullBadges;
+		}
+		if (this._mobile !== mobile || this._full !== full || this._maxBadges !== maxBadges) {
+			this._mobile = mobile;
+			this._full = full;
+			this._maxBadges = maxBadges;
+
+			await this.requestUpdate();
 		}
 	}
 

@@ -1,0 +1,10 @@
+{
+   "awards.many" : "{numawards} utdelningar",
+   "awards.one" : "1 utdelning",
+   "closeDialog" : "Stäng",
+   "credits.many" : "{numcredits} poäng",
+   "credits.one" : "1 poäng",
+   "emptyBody" : "Du bör ta en titt på rangordningarna med regelbundna intervall.",
+   "emptyHeading" : "Du har inte fått några utdelningar.",
+   "rankingAria" : "Rank {rank}"
+}
