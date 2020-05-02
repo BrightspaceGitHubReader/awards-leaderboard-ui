@@ -23,6 +23,9 @@ class AwardIssued extends BaseMixin(LitElement) {
 			.awardBtn:hover, .awardBtn:focus-within {
 				cursor: pointer;
 			}
+			.awardBtn{
+				text-decoration: none;
+			}
 			.badgeEntry {
 				height: ${unsafeCSS(BadgeImageSize)}px;
 				width: ${unsafeCSS(BadgeImageSize)}px;
@@ -40,7 +43,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 	render() {
 		this.badgeId = `Badge_${this.awardId}`;
 		return html`
-			<a id="${this.badgeId}" @click="${this._awardClick}" class="awardBtn">
+			<a href="#" id="${this.badgeId}" @click="${this._awardClick}" class="awardBtn">
 				<img src=${this.awardImageUrl} class='badgeEntry' alt='${this.awardTitle}'></img>
 			</a>
 			<d2l-tooltip for="${this.badgeId}">${this.awardTitle}</d2l-tooltip>
