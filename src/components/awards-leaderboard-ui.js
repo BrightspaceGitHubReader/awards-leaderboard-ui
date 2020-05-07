@@ -20,7 +20,7 @@ import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
 import './leaderboard-row.js';
 
-import { bodyCompactStyles, labelStyles  } from '@brightspace-ui/core/components/typography/styles.js';
+import { bodyStandardStyles, heading2Styles, labelStyles} from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
@@ -30,7 +30,8 @@ class App extends BaseMixin(LitElement) {
 
 	static get styles() {
 		return [
-			bodyCompactStyles,
+			bodyStandardStyles,
+			heading2Styles,
 			labelStyles,
 			css`
 			d2l-list {
@@ -40,6 +41,9 @@ class App extends BaseMixin(LitElement) {
 			}
 			.myAwardItem {
 				background-color: var(--d2l-color-celestine-plus-2);
+				position: -webkit-sticky; /* Safari */
+				position: sticky;
+				bottom: 0;
 			}
 			.awardDetailsRow {
 				display: flex;
@@ -84,11 +88,19 @@ class App extends BaseMixin(LitElement) {
 				height: 42px;
 				margin-left: 7px;
 			}
-			.skeleton-info{
+			:host([dir="rtl"]) .skeleton-profilePic {
+				margin-right: 7px;
+				margin-left: 0px;
+			}
+			.skeleton-info {
 				display: flex;
 				flex-direction: column;
 				width: 50%;
 				padding-left: 10px;
+			}
+			:host([dir="rtl"]) .skeleton-info {
+				padding-right: 10px;
+				padding-left: 0px;
 			}
 			.skeleton-name {
 				animation: loadingPulse 1.8s linear infinite;
@@ -103,6 +115,15 @@ class App extends BaseMixin(LitElement) {
 				margin-top: 4px;
 				border-radius: 4px;
 			}
+			.emptyState {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.emptyImage {
+				max-width: 100%;
+				width: 255px;
+			}
         `];
 	}
 
@@ -116,6 +137,8 @@ class App extends BaseMixin(LitElement) {
 			awardsDialogOpen: { type: Boolean },
 			dialogIssuedId: { type: Number },
 			dialogAwardTitle: { type: String },
+			dialogIssuedId: { type: Number },
+			isEmptyLeaderboard: { type: Boolean },
 			issuerName: { type: String },
 			awardDescription: { type: String },
 			awardIssued: { type: String },
@@ -136,9 +159,13 @@ class App extends BaseMixin(LitElement) {
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
 		this.awardsDialogOpen = false;
+
+		const baseUrl = import.meta.url;
+		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
 	}
 
 	render() {
+
 		const dialog = html`
 				<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
 					${this._renderDialogContents()}
@@ -166,10 +193,12 @@ class App extends BaseMixin(LitElement) {
 			listContent = html`
 				${(new Array(numberOfItems)).fill(itemsSkeleton)}
 			`;
+		} else if (this.isEmptyLeaderboard) {
+			return this._displayEmptyLeaderboard();
 		} else {
 			listContent = html`
-				${this._createLeaderboardEntry(this.myAwards, true)}
 				${this.sortedLeaderboardArray.map(item => this._createLeaderboardEntry(item, false))}
+				${this._createLeaderboardEntry(this.myAwards, true)}
 			`;
 		}
 		return html`
@@ -231,25 +260,26 @@ class App extends BaseMixin(LitElement) {
 
 	firstUpdated() {
 		this._getLeaderboard();
-		this._getMyAwards();
 		this.addEventListener('award-issued-dialog', this._openDialog);
 	}
 
 	async _getLeaderboard() {
 		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
 		this.sortedLeaderboardArray = myLeaderboard.Objects;
-		this.doneLoading = true;
-	}
+		this.isEmptyLeaderboard = this._isEmptyLeaderboard();
+		if (this.isEmptyLeaderboard) {
+			this.doneLoading = true;
+			return;
+		}
 
-	async _getMyAwards() {
-		const myAwards = await LeaderboardService.getMyAwards(this.orgUnitId, this.userId);
-		if (myAwards === undefined || myAwards === null) {
+		const isUserIncluded = this._isLoggedInUserIncluded();
+		if (isUserIncluded) {
+			this.doneLoading = true;
 			return;
 		}
-		if (Object.prototype.hasOwnProperty.call(myAwards, 'Message')) {
-			return;
-		}
-		this.myAwards = myAwards;
+		await this._getMyAwards();
+
+		this.doneLoading = true;
 	}
 
 	_createLeaderboardEntry(item, isMyAward) {
@@ -265,10 +295,47 @@ class App extends BaseMixin(LitElement) {
 			</d2l-list-item>
 		`;
 	}
+
 	_closeDialog() {
 		this.awardsDialogOpen = false;
-
 	}
+
+	_displayEmptyLeaderboard() {
+		return html`
+			<div class="emptyState">
+				<img src="${this.emptyImage}" class="emptyImage" alt="" />
+				<div class="d2l-heading-2">${this.localize('emptyHeading')}</div>
+				<div class="d2l-body-standard">${this.localize('emptyBody')}</div>
+			</div>
+		`;
+	}
+
+	async _getMyAwards() {
+		//Obtain the currently logged in user's awards
+		const myAwards = await LeaderboardService.getMyAwards(this.orgUnitId, this.userId);
+		if (myAwards === undefined || myAwards === null) {
+			return;
+		}
+		if (Object.prototype.hasOwnProperty.call(myAwards, 'Message')) {
+			return;
+		}
+		this.myAwards = myAwards;
+	}
+
+	_isEmptyLeaderboard() {
+		if (this.sortedLeaderboardArray.some(awards => awards.TotalAwardCount > 0)) {
+			return false;
+		}
+		return true;
+	}
+
+	_isLoggedInUserIncluded() {
+		if (this.sortedLeaderboardArray.some(awards => awards.UserId === this.userId)) {
+			return true;
+		}
+		return false;
+	}
+
 	_openDialog(e) {
 		this.dialogAwardTitle = e.detail.awardTitle;
 		this.issuerName = e.detail.issuerName;

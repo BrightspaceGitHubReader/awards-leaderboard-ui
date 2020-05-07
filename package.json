@@ -26,6 +26,7 @@
   "homepage": "https://github.com/Brightspace/awards-leaderboard-ui#readme",
   "dependencies": {
     "@brightspace-ui/core": "^1",
+    "@brightspace-ui-labs/accordion": "^2",
     "@polymer/polymer": "^3",
     "@webcomponents/webcomponentsjs": "^2",
     "d2l-fetch": "github:Brightspace/d2l-fetch#semver:^2",
@@ -34,7 +35,6 @@
     "d2l-inputs": "github:BrightspaceUI/inputs#semver:^2",
     "d2l-loading-spinner": "github:BrightspaceUI/loading-spinner#semver:^7",
     "d2l-resize-aware": "github:BrightspaceUI/resize-aware#semver:^1",
-    "d2l-tooltip": "github:BrightspaceUI/tooltip#semver:^3",
     "d2l-users": "github:BrightspaceHypermediaComponents/users#semver:^2",
     "lit-element": "^2",
     "lit-html": "^1"

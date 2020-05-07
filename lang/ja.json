@@ -1,0 +1,10 @@
+{
+   "awards.many" : "{numawards} 個の授与",
+   "awards.one" : "1 つの授与",
+   "closeDialog" : "閉じる",
+   "credits.many" : "{numcredits} 個のクレジット",
+   "credits.one" : "1 つのクレジット",
+   "emptyBody" : "最新のランキングを頻繁に確認してください。",
+   "emptyHeading" : "まだ授与を獲得していません。",
+   "rankingAria" : "Rank {rank}"
+}
