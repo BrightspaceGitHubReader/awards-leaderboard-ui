@@ -51,7 +51,7 @@ class App extends BaseMixin(LitElement) {
 			}
 			.awardImage {
 				overflow: auto;
-				max-width: 30%;
+				width: 20%;
 			}
 			.awardImage img{
 				max-width: 85px;
@@ -220,10 +220,18 @@ class App extends BaseMixin(LitElement) {
 		// 		src="${LeaderboardService.getIssuedAward(this.dialogIssuedId)}">
 		// 	</iframe>-->
 
-		let credits = this.awardCredit === null || this.awardCredit === undefined ? 
-			html`` : 
+		const credits = this.awardCredit === null || this.awardCredit === undefined ?
+			html`` :
 			html`
 				<div><span class="d2l-label-text">Credits:</span> ${this.awardCredit}</div>
+			`;
+		const expiry = this.expiry === null || this.expiry === undefined ?
+			html`` :
+			html`
+			<div>
+				<span class="d2l-label-text">Expiry Date:</span> 
+				<span class="d2l-body-compact">${this.awardExpiry}</span>
+			</div>
 			`;
 
 		return html`
@@ -236,10 +244,7 @@ class App extends BaseMixin(LitElement) {
 						<span class="d2l-label-text">Description:</span> 
 						<span class="d2l-body-compact">${this.awardDescription}</span>
 					</div>
-					<div>
-						<span class="d2l-label-text">Expiry Date:</span> 
-						<span class="d2l-body-compact">${this.awardExpiry}</span>
-					</div>
+					${expiry}
 					<div>
 						<span class="d2l-label-text">Issue Date:</span> 
 						<span class="d2l-body-compact">${this.awardIssued}</span>
