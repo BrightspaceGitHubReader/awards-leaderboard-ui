@@ -136,7 +136,7 @@ class App extends BaseMixin(LitElement) {
 			doneLoading: { type: Boolean },
 			awardsDialogOpen: { type: Boolean },
 			dialogIssuedId: { type: Number },
-			dialogAwardTitle: { type: String },
+			awardTitle: { type: String },
 			dialogIssuedId: { type: Number },
 			isEmptyLeaderboard: { type: Boolean },
 			issuerName: { type: String },
@@ -167,7 +167,7 @@ class App extends BaseMixin(LitElement) {
 	render() {
 
 		const dialog = html`
-				<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
+				<d2l-dialog title-text="${this.awardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
 					${this._renderDialogContents()}
 					<d2l-button slot="footer" dialog-action>${this.localize('closeDialog')}</d2l-button>
 				</d2l-dialog>
@@ -240,7 +240,7 @@ class App extends BaseMixin(LitElement) {
 		return html`
 			<div class="awardDetailsRow">
 				<div class="awardImage">	
-					<img src="${this.awardImage}" />
+					<img src="${this.awardImage}" alt="${this.awardTitle}" />
 				</div>
 				<div class="awardDescription">
 					<div>
@@ -345,7 +345,7 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	_openDialog(e) {
-		this.dialogAwardTitle = e.detail.awardTitle;
+		this.awardTitle = e.detail.awardTitle;
 		this.issuerName = e.detail.issuerName;
 		this.awardDescription = e.detail.awardDescription;
 		this.awardIssued = e.detail.awardIssued;
