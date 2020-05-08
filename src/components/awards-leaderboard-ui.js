@@ -233,7 +233,7 @@ class App extends BaseMixin(LitElement) {
 			html`
 			<div>
 				<span class="d2l-label-text">Expiry Date:</span> 
-				<span class="d2l-body-compact">${this.awardExpiry}</span>
+				<span class="d2l-body-compact">${this.formatDateTime(this.awardExpiry)}</span>
 			</div>
 			`;
 

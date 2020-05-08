@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { formatDateTime, parseDate } from '@brightspace-ui/intl/lib/dateTime.js';
+import { formatDateTime } from '@brightspace-ui/intl/lib/dateTime.js';
+import { getLocalDateTimeFromUTCDateTime } from '@brightspace-ui/core/helpers/dateTime.js';
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin';
 import { RtlMixin } from '@brightspace-ui/core/mixins/rtl-mixin';
 
@@ -67,14 +68,9 @@ export const BaseMixin = superclass => class extends LocalizeMixin(RtlMixin(supe
 	}
 
 	formatDateTime(date) {
-		let newDate = date.replace('T', ' ').replace('U', '');
-		const parts = newDate.split(' ');
-		const datePart = parts[0].split('-');
-		const timePart = parts[1].split('.')[0].split(':');
-		newDate = `${datePart[1]}/${datePart[2]}/${datePart[0]} ${timePart[0]}:${timePart[1]}`;
-		const myDate = parseDate(newDate);
+		const myDate = getLocalDateTimeFromUTCDateTime(date);
 		return formatDateTime(
-			myDate,
+			new Date(myDate),
 			{format: 'medium'}
 		);
 	}
