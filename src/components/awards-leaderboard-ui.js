@@ -223,9 +223,12 @@ class App extends BaseMixin(LitElement) {
 		const credits = this.awardCredit === null || this.awardCredit === undefined ?
 			html`` :
 			html`
-				<div><span class="d2l-label-text">Credits:</span> ${this.awardCredit}</div>
+				<div>
+					<span class="d2l-label-text">Credits:</span> 
+					<span class="d2l-body-compact">${this.awardCredit}</span>
+				</div>
 			`;
-		const expiry = this.expiry === null || this.expiry === undefined ?
+		const expiry = this.awardExpiry === null || this.awardExpiry === undefined ?
 			html`` :
 			html`
 			<div>
@@ -247,7 +250,7 @@ class App extends BaseMixin(LitElement) {
 					${expiry}
 					<div>
 						<span class="d2l-label-text">Issue Date:</span> 
-						<span class="d2l-body-compact">${this.awardIssued}</span>
+						<span class="d2l-body-compact">${this.formatDateTime(this.awardIssued)}</span>
 					</div>
 					<div>
 						<span class="d2l-label-text">Issuer:</span> 
