@@ -20,7 +20,7 @@ import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
 import './leaderboard-row.js';
 
-import { bodyStandardStyles, heading2Styles, labelStyles} from '@brightspace-ui/core/components/typography/styles.js';
+import { bodyStandardStyles, labelStyles} from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
@@ -29,7 +29,6 @@ class AwardDetails extends BaseMixin(LitElement) {
 	static get styles() {
 		return [
 			bodyStandardStyles,
-			heading2Styles,
 			labelStyles,
 			css`
 			.awardDetailsRow {
