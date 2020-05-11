@@ -134,11 +134,9 @@ class App extends BaseMixin(LitElement) {
 			userId: { type: Number },
 			sortByCreditsConfig: { type: Boolean },
 			doneLoading: { type: Boolean },
-			awardsDialogOpen: { type: Boolean },
-			dialogIssuedId: { type: Number },
-			awardTitle: { type: String },
-			dialogIssuedId: { type: Number },
 			isEmptyLeaderboard: { type: Boolean },
+			awardsDialogOpen: { type: Boolean },
+			awardTitle: { type: String },
 			issuerName: { type: String },
 			awardDescription: { type: String },
 			awardIssued: { type: String },
@@ -213,28 +211,18 @@ class App extends BaseMixin(LitElement) {
 		if (!this.awardsDialogOpen) {
 			return;
 		}
-		//parent.document.getElementById('dialogLoading')
-		//this.shadowRoot.querySelector('d2l-resize-aware')
-		// <!--<img src="http://localhost:44444/d2l/awards/v1/image/6606?imageId=45&v=20.20.4.0-11077716" id="dialogLoading" />
-		// 	<iframe frameBorder="0" width="100%" height="100%" onload="console.log(this.shadowRoot, parent.document.shadowRoot);"
-		// 		src="${LeaderboardService.getIssuedAward(this.dialogIssuedId)}">
-		// 	</iframe>-->
 
 		const credits = this.awardCredit === null || this.awardCredit === undefined ?
 			html`` :
 			html`
-				<div>
-					<span class="d2l-label-text">Credits:</span> 
-					<span class="d2l-body-compact">${this.awardCredit}</span>
-				</div>
+				<div class="d2l-label-text">Credits:</div> 
+				<div class="d2l-body-compact">${this.awardCredit}</div>
 			`;
 		const expiry = this.awardExpiry === null || this.awardExpiry === undefined ?
 			html`` :
 			html`
-			<div>
-				<span class="d2l-label-text">Expiry Date:</span> 
-				<span class="d2l-body-compact">${this.formatDateTime(this.awardExpiry)}</span>
-			</div>
+				<div class="d2l-label-text">Expiry Date:</div> 
+				<div class="d2l-body-compact">${this.formatDateTime(this.awardExpiry)}</div>
 			`;
 
 		return html`
@@ -242,25 +230,22 @@ class App extends BaseMixin(LitElement) {
 				<div class="awardImage">	
 					<img src="${this.awardImage}" alt="${this.awardTitle}" />
 				</div>
-				<div class="awardDescription">
-					<div>
-						<span class="d2l-label-text">Description:</span> 
-						<span class="d2l-body-compact">${this.awardDescription}</span>
-					</div>
+				<div class="awardDescription">				
+					<div class="d2l-label-text">Description:</div> 
+					<div class="d2l-body-compact">${this.awardDescription}</div>
+
 					${expiry}
-					<div>
-						<span class="d2l-label-text">Issue Date:</span> 
-						<span class="d2l-body-compact">${this.formatDateTime(this.awardIssued)}</span>
-					</div>
-					<div>
-						<span class="d2l-label-text">Issuer:</span> 
-						<span class="d2l-body-compact">${this.issuerName}</span>
-					</div>
+					
+					<div class="d2l-label-text">Issue Date:</div> 
+					<div class="d2l-body-compact">${this.formatDateTime(this.awardIssued)}</div>
+					
+					<div class="d2l-label-text">Issuer:</div> 
+					<div class="d2l-body-compact">${this.issuerName}</div>
+					
 					${credits}
-					<div>
-						<span class="d2l-label-text">Evidence:</span> 
-						<span class="d2l-body-compact">${this.awardEvidence}</span>
-					</div>
+					
+					<div class="d2l-label-text">Evidence:</div> 
+					<div class="d2l-body-compact">${this.awardEvidence}</div>
 				</div>
 			</div>
 		`;

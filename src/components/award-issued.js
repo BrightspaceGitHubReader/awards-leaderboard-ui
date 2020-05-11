@@ -60,7 +60,6 @@ class AwardIssued extends BaseMixin(LitElement) {
 	}
 
 	_awardClick() {
-		console.log(this.award);
 		const event = new CustomEvent('award-issued-dialog', {
 			bubbles: true,
 			composed: true,
