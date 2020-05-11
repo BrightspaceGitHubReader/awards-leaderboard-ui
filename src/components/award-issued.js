@@ -49,7 +49,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 			<a href="#" id="${this.badgeId}" @click="${this._awardClick}" class="awardBtn">
 				<img src=${this.awardImageUrl} class='badgeEntry' alt='${this.awardTitle}'></img>
 			</a>
-			<d2l-tooltip for="${this.badgeId}" disable-focus-lock>
+			<d2l-tooltip for="${this.badgeId}">
 				${this.awardTitle}
 			</d2l-tooltip>
     	`;
