@@ -68,6 +68,9 @@ export const BaseMixin = superclass => class extends LocalizeMixin(RtlMixin(supe
 	}
 
 	formatDateTime(date) {
+		if (date === null || date === undefined) {
+			return '';
+		}
 		const myDate = getLocalDateTimeFromUTCDateTime(date);
 		return formatDateTime(
 			new Date(myDate),
