@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import './award-details.js';
 import '@brightspace-ui/core/components/colors/colors.js';
+import '@brightspace-ui/core/components/dialog/dialog.js';
 import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/list/list.js';
 import '@brightspace-ui/core/components/list/list-item.js';
@@ -24,9 +24,7 @@ import { bodyStandardStyles, heading2Styles, labelStyles} from '@brightspace-ui/
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
-import { LeaderboardService } from '../services/awards-leaderboard-service.js';
-
-class App extends BaseMixin(LitElement) {
+class AwardDetails extends BaseMixin(LitElement) {
 
 	static get styles() {
 		return [
@@ -129,7 +127,6 @@ class App extends BaseMixin(LitElement) {
 
 	static get properties() {
 		return {
-			label: { type: String },
 			orgUnitId: { type: Number },
 			userId: { type: Number },
 			sortByCreditsConfig: { type: Boolean },
@@ -157,127 +154,78 @@ class App extends BaseMixin(LitElement) {
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
 		this.awardsDialogOpen = false;
-
-		const baseUrl = import.meta.url;
-		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
 	}
 
 	render() {
-		const dialog = html`<award-details id="awarddetails"></award-details>`;
-
-		let listContent;
-		if (!this.doneLoading) {
-			const numberOfItems = 5;
-			const itemsSkeleton = html`
-				<d2l-list-item>
-					<d2l-list-item-content>
-						<div class="skeleton-awardRow">
-							<div class="skeleton-awardRank"></div>
-							<div class="skeleton-profilePic"></div>
-							<div class="skeleton-info">
-								<div class="skeleton-name"></div>
-								<div class="skeleton-count"></div>
-							</div>
-						</div>					
-					</d2l-list-item-content>
-				</d2l-list-item>
-			`;
-			listContent = html`
-				${(new Array(numberOfItems)).fill(itemsSkeleton)}
-			`;
-		} else if (this.isEmptyLeaderboard) {
-			return this._displayEmptyLeaderboard();
-		} else {
-			listContent = html`
-				${this.sortedLeaderboardArray.map(item => this._createLeaderboardEntry(item, false))}
-				${this._createLeaderboardEntry(this.myAwards, true)}
-			`;
-		}
 		return html`
-			${dialog}
-			<d2l-list aria-busy="${!this.doneLoading}">
-				${listContent}
-			</d2l-list>
-		`;
+				<d2l-dialog title-text="${this.awardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
+					${this._renderDialogContents()}
+					<d2l-button slot="footer" dialog-action>${this.localize('closeDialog')}</d2l-button>
+				</d2l-dialog>
+			`;
 	}
 
-	firstUpdated() {
-		this._getLeaderboard();
-		this.addEventListener('award-issued-dialog', this._openDialog);
-	}
-
-	async _getLeaderboard() {
-		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
-		this.sortedLeaderboardArray = myLeaderboard.Objects;
-		this.isEmptyLeaderboard = this._isEmptyLeaderboard();
-		if (this.isEmptyLeaderboard) {
-			this.doneLoading = true;
+	_renderDialogContents() {
+		if (!this.awardsDialogOpen) {
 			return;
 		}
 
-		const isUserIncluded = this._isLoggedInUserIncluded();
-		if (isUserIncluded) {
-			this.doneLoading = true;
-			return;
-		}
-		await this._getMyAwards();
+		const credits = this.awardCredit === null || this.awardCredit === undefined ?
+			html`` :
+			html`
+				<div class="d2l-label-text">Credits:</div> 
+				<div class="d2l-body-compact">${this.awardCredit}</div>
+			`;
+		const expiry = this.awardExpiry === null || this.awardExpiry === undefined ?
+			html`` :
+			html`
+				<div class="d2l-label-text">Expiry Date:</div> 
+				<div class="d2l-body-compact">${this.formatDateTime(this.awardExpiry)}</div>
+			`;
 
-		this.doneLoading = true;
-	}
-
-	_createLeaderboardEntry(item, isMyAward) {
-		if (item.UserId === undefined) {
-			return;
-		}
-		if (item.UserId === this.userId) {
-			isMyAward = true;
-		}
 		return html`
-			<d2l-list-item class="${ isMyAward ? 'myAwardItem' : '' }">
-				<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
-			</d2l-list-item>
-		`;
-	}
+			<div class="awardDetailsRow">
+				<div class="awardImage">	
+					<img src="${this.awardImage}" alt="${this.awardTitle}" />
+				</div>
+				<div class="awardDescription">				
+					<div class="d2l-label-text">Description:</div> 
+					<div class="d2l-body-compact">${this.awardDescription}</div>
 
-	_displayEmptyLeaderboard() {
-		return html`
-			<div class="emptyState">
-				<img src="${this.emptyImage}" class="emptyImage" alt="" />
-				<div class="d2l-heading-2">${this.localize('emptyHeading')}</div>
-				<div class="d2l-body-standard">${this.localize('emptyBody')}</div>
+					${expiry}
+					
+					<div class="d2l-label-text">Issue Date:</div> 
+					<div class="d2l-body-compact">${this.formatDateTime(this.awardIssued)}</div>
+					
+					<div class="d2l-label-text">Issuer:</div> 
+					<div class="d2l-body-compact">${this.issuerName}</div>
+					
+					${credits}
+					
+					<div class="d2l-label-text">Evidence:</div> 
+					<div class="d2l-body-compact">${this.awardEvidence}</div>
+				</div>
 			</div>
 		`;
 	}
 
-	async _getMyAwards() {
-		//Obtain the currently logged in user's awards
-		const myAwards = await LeaderboardService.getMyAwards(this.orgUnitId, this.userId);
-		if (myAwards === undefined || myAwards === null) {
-			return;
-		}
-		if (Object.prototype.hasOwnProperty.call(myAwards, 'Message')) {
-			return;
-		}
-		this.myAwards = myAwards;
+	_closeDialog() {
+		this.awardsDialogOpen = false;
+		requestAnimationFrame(() => document.activeElement.blur());
 	}
 
-	_isEmptyLeaderboard() {
-		if (this.sortedLeaderboardArray.some(awards => awards.TotalAwardCount > 0)) {
-			return false;
-		}
-		return true;
-	}
+	openDialog(e) {
+		this.awardTitle = e.detail.awardTitle;
+		this.issuerName = e.detail.issuerName;
+		this.awardDescription = e.detail.awardDescription;
+		this.awardIssued = e.detail.awardIssued;
+		this.awardCredit = e.detail.awardCredit;
+		this.awardEvidence = e.detail.awardEvidence;
+		this.awardImage = e.detail.awardImage;
+		this.awardExpiry = e.detail.awardExpiry;
 
-	_isLoggedInUserIncluded() {
-		if (this.sortedLeaderboardArray.some(awards => awards.UserId === this.userId)) {
-			return true;
-		}
-		return false;
-	}
-
-	_openDialog(e) {
-		this.shadowRoot.getElementById('awarddetails').openDialog(e);
+		this.awardsDialogOpen = true;
 	}
 }
 
-window.customElements.define('d2l-awards-leaderboard-ui', App);
+window.customElements.define('award-details', AwardDetails);
