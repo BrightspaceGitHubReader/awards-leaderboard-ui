@@ -163,7 +163,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 		const fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
 
-		let isDisabled = this.userData.TotalAwardCount === 0 ? true : false;
+		const isDisabled = this.userData.TotalAwardCount === 0 ? true : false;
 
 		if (this._mobile) {
 			return html`
