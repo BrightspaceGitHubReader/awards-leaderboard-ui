@@ -163,11 +163,13 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 		const fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
 
+		const isDisabled = this.userData.TotalAwardCount === 0 ? true : false;
+
 		if (this._mobile) {
 			return html`
 				<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
 					<d2l-labs-accordion>
-						<d2l-labs-accordion-collapse flex>
+						<d2l-labs-accordion-collapse flex icon-has-padding ?disabled="${isDisabled}">
 							<div class='awardRow' ?myAward="${this.myAward}" slot="header">
 								<div 
 									class="awardRank ${fontStyle}" 
