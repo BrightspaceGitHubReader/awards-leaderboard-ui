@@ -45,7 +45,7 @@ class AwardDetails extends BaseMixin(LitElement) {
 			.awardDescription {
 				max-width: 70%;
 			}
-        `];
+		`];
 	}
 
 	static get properties() {

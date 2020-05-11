@@ -109,7 +109,7 @@ class App extends BaseMixin(LitElement) {
 				max-width: 100%;
 				width: 255px;
 			}
-        `];
+		`];
 	}
 
 	static get properties() {
