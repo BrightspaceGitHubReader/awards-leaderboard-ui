@@ -32,17 +32,6 @@ class AwardDetails extends BaseMixin(LitElement) {
 			heading2Styles,
 			labelStyles,
 			css`
-			d2l-list {
-				max-height: 420px;
-				overflow: hidden;
-				overflow-y: scroll;
-			}
-			.myAwardItem {
-				background-color: var(--d2l-color-celestine-plus-2);
-				position: -webkit-sticky; /* Safari */
-				position: sticky;
-				bottom: 0;
-			}
 			.awardDetailsRow {
 				display: flex;
 				flex-direction: row;
@@ -57,81 +46,11 @@ class AwardDetails extends BaseMixin(LitElement) {
 			.awardDescription {
 				max-width: 70%;
 			}
-			@keyframes loadingPulse {
-				0% { background-color: var(--d2l-color-sylvite); }
-				50% { background-color: var(--d2l-color-regolith); }
-				75% { background-color: var(--d2l-color-sylvite); }
-				100% { background-color: var(--d2l-color-sylvite); }
-			}
-			.skeleton-awardRow{
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				padding: 3px;
-			}
-			.skeleton-awardRank{
-				animation: loadingPulse 1.8s linear infinite;
-				border-radius: 15px;
-				height: 21px;
-				width: 21px;
-				padding: 9px;
-				margin: 9px;
-				-moz-border-radius:50%;
-				-webkit-border-radius:50%;
-			}
-			.skeleton-profilePic {
-				animation: loadingPulse 1.8s linear infinite;
-				border-radius: 6px;
-				width: 42px;
-				height: 42px;
-				margin-left: 7px;
-			}
-			:host([dir="rtl"]) .skeleton-profilePic {
-				margin-right: 7px;
-				margin-left: 0px;
-			}
-			.skeleton-info {
-				display: flex;
-				flex-direction: column;
-				width: 50%;
-				padding-left: 10px;
-			}
-			:host([dir="rtl"]) .skeleton-info {
-				padding-right: 10px;
-				padding-left: 0px;
-			}
-			.skeleton-name {
-				animation: loadingPulse 1.8s linear infinite;
-				height: 0.8rem;
-				width: 60%;
-				border-radius: 6px;
-			}
-			.skeleton-count {
-				animation: loadingPulse 1.8s linear infinite;
-				height: 0.7rem;
-				width: 40%;
-				margin-top: 4px;
-				border-radius: 4px;
-			}
-			.emptyState {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-			}
-			.emptyImage {
-				max-width: 100%;
-				width: 255px;
-			}
         `];
 	}
 
 	static get properties() {
 		return {
-			orgUnitId: { type: Number },
-			userId: { type: Number },
-			sortByCreditsConfig: { type: Boolean },
-			doneLoading: { type: Boolean },
-			isEmptyLeaderboard: { type: Boolean },
 			awardsDialogOpen: { type: Boolean },
 			awardTitle: { type: String },
 			issuerName: { type: String },
@@ -146,13 +65,6 @@ class AwardDetails extends BaseMixin(LitElement) {
 
 	constructor() {
 		super();
-		this.label = '';
-		this.orgUnitId = 0;
-		this.userId = 0;
-		this.sortedLeaderboardArray = [];
-		this.myAwards = {};
-		this.sortByCreditsConfig = false;
-		this.doneLoading = false;
 		this.awardsDialogOpen = false;
 	}
 

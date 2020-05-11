@@ -20,7 +20,7 @@ import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
 import './leaderboard-row.js';
 
-import { bodyStandardStyles, heading2Styles, labelStyles} from '@brightspace-ui/core/components/typography/styles.js';
+import { bodyStandardStyles, heading2Styles } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
@@ -32,7 +32,6 @@ class App extends BaseMixin(LitElement) {
 		return [
 			bodyStandardStyles,
 			heading2Styles,
-			labelStyles,
 			css`
 			d2l-list {
 				max-height: 420px;
@@ -44,20 +43,6 @@ class App extends BaseMixin(LitElement) {
 				position: -webkit-sticky; /* Safari */
 				position: sticky;
 				bottom: 0;
-			}
-			.awardDetailsRow {
-				display: flex;
-				flex-direction: row;
-			}
-			.awardImage {
-				overflow: auto;
-				width: 20%;
-			}
-			.awardImage img{
-				max-width: 85px;
-			}
-			.awardDescription {
-				max-width: 70%;
 			}
 			@keyframes loadingPulse {
 				0% { background-color: var(--d2l-color-sylvite); }
@@ -129,34 +114,22 @@ class App extends BaseMixin(LitElement) {
 
 	static get properties() {
 		return {
-			label: { type: String },
 			orgUnitId: { type: Number },
 			userId: { type: Number },
 			sortByCreditsConfig: { type: Boolean },
 			doneLoading: { type: Boolean },
-			isEmptyLeaderboard: { type: Boolean },
-			awardsDialogOpen: { type: Boolean },
-			awardTitle: { type: String },
-			issuerName: { type: String },
-			awardDescription: { type: String },
-			awardIssued: { type: String },
-			awardCredit: { type: String },
-			awardEvidence: { type: String },
-			awardImage: { type: String },
-			awardExpiry: { type: String }
+			isEmptyLeaderboard: { type: Boolean }
 		};
 	}
 
 	constructor() {
 		super();
-		this.label = '';
 		this.orgUnitId = 0;
 		this.userId = 0;
 		this.sortedLeaderboardArray = [];
 		this.myAwards = {};
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
-		this.awardsDialogOpen = false;
 
 		const baseUrl = import.meta.url;
 		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
