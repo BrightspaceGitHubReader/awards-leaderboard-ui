@@ -238,7 +238,7 @@ class App extends BaseMixin(LitElement) {
 
 	_closeDialog() {
 		this.awardsDialogOpen = false;
-		setTimeout(() => { console.log(document.activeElement); }, 200);	
+		requestAnimationFrame(() => document.activeElement.blur());
 	}
 
 	_displayEmptyLeaderboard() {
