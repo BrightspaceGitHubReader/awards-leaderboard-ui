@@ -17,6 +17,13 @@ import { BadgeImageSize } from '../constants/constants';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
 class AwardIssued extends BaseMixin(LitElement) {
+
+	static get properties() {
+		return {
+			award: {type: Object}
+		};
+	}
+
 	static get styles() {
 		return [
 			css`
@@ -24,20 +31,20 @@ class AwardIssued extends BaseMixin(LitElement) {
 				cursor: pointer;
 			}
 			.awardBtn {
-				text-decoration: none;
-				margin-right: 3px;
 				display: inline-block;
+				margin-right: 3px;
+				text-decoration: none;
 				width: ${unsafeCSS(BadgeImageSize)}px;
 			}
 			:host([dir="rtl"]) .awardBtn {
-				text-decoration: none;
 				margin-left: 3px;
 				margin-right: 0px;
+				text-decoration: none;
 			}
 			.badgeEntry {
 				height: ${unsafeCSS(BadgeImageSize)}px;
-				width: ${unsafeCSS(BadgeImageSize)}px;
 				vertical-align: middle;
+				width: ${unsafeCSS(BadgeImageSize)}px;
 			}
 			`
 		];
@@ -51,12 +58,6 @@ class AwardIssued extends BaseMixin(LitElement) {
 			</a>
 			<d2l-tooltip for="${this.badgeId}">${this.award.Award.Title}</d2l-tooltip>
     	`;
-	}
-
-	static get properties() {
-		return {
-			award: {type: Object}
-		};
 	}
 
 	_awardClick() {
