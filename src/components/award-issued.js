@@ -44,24 +44,18 @@ class AwardIssued extends BaseMixin(LitElement) {
 	}
 
 	render() {
-		this.badgeId = `Badge_${this.awardId}`;
+		this.badgeId = `Badge_${this.award.Award.AwardId}`;
 		return html`
 			<a href="#" id="${this.badgeId}" @click="${this._awardClick}" class="awardBtn">
-				<img src=${this.awardImageUrl} class='badgeEntry' alt='${this.awardTitle}'></img>
+				<img id="${this.badgeId}" src=${this.award.Award.ImageData.Path} class='badgeEntry' alt='${this.awardTitle}'></img>
 			</a>
-			<d2l-tooltip for="${this.badgeId}">
-				${this.awardTitle}
-			</d2l-tooltip>
+			<d2l-tooltip for="${this.badgeId}">${this.award.Award.Title}</d2l-tooltip>
     	`;
 	}
 
 	static get properties() {
 		return {
-			awardTitle: {type: String},
-			awardId: { type: Number },
-			awardImageUrl: { type: String },
-			issuedId: { type: Number },
-			badgeId: { type: String }
+			award: {type: Object}
 		};
 	}
 
@@ -70,8 +64,14 @@ class AwardIssued extends BaseMixin(LitElement) {
 			bubbles: true,
 			composed: true,
 			detail: {
-				awardTitle: this.awardTitle,
-				issuedId: this.issuedId
+				awardTitle: this.award.Award.Title,
+				issuerName: this.award.Award.IssuerName,
+				awardDescription: this.award.Award.Description,
+				awardIssued: this.award.IssuedDate,
+				awardExpiry: this.award.ExpiryDate,
+				awardCredit: this.award.Credit,
+				awardEvidence: this.award.Evidence,
+				awardImage: this.award.Award.ImageData.Path
 			}
 		});
 		this.dispatchEvent(event);

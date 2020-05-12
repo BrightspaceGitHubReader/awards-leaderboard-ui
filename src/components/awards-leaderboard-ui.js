@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import './award-details.js';
 import '@brightspace-ui/core/components/colors/colors.js';
-import '@brightspace-ui/core/components/dialog/dialog.js';
 import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/list/list.js';
 import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
 import './leaderboard-row.js';
 
-import { bodyStandardStyles, heading2Styles} from '@brightspace-ui/core/components/typography/styles.js';
+import { bodyStandardStyles, heading2Styles } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
@@ -44,7 +44,6 @@ class App extends BaseMixin(LitElement) {
 				position: sticky;
 				bottom: 0;
 			}
-
 			@keyframes loadingPulse {
 				0% { background-color: var(--d2l-color-sylvite); }
 				50% { background-color: var(--d2l-color-regolith); }
@@ -110,46 +109,34 @@ class App extends BaseMixin(LitElement) {
 				max-width: 100%;
 				width: 255px;
 			}
-        `];
+		`];
 	}
 
 	static get properties() {
 		return {
-			label: { type: String },
 			orgUnitId: { type: Number },
 			userId: { type: Number },
 			sortByCreditsConfig: { type: Boolean },
 			doneLoading: { type: Boolean },
-			awardsDialogOpen: { type: Boolean },
-			dialogAwardTitle: { type: String },
-			dialogIssuedId: { type: Number },
 			isEmptyLeaderboard: { type: Boolean }
 		};
 	}
 
 	constructor() {
 		super();
-		this.label = '';
 		this.orgUnitId = 0;
 		this.userId = 0;
 		this.sortedLeaderboardArray = [];
 		this.myAwards = {};
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
-		this.awardsDialogOpen = false;
 
 		const baseUrl = import.meta.url;
 		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
 	}
 
 	render() {
-
-		const dialog = html`
-				<d2l-dialog title-text="${this.dialogAwardTitle}" ?opened="${this.awardsDialogOpen}" @d2l-dialog-close="${this._closeDialog}">
-					${this._renderDialogContents()}
-					<d2l-button slot="footer" dialog-action>${this.localize('closeDialog')}</d2l-button>
-				</d2l-dialog>
-			`;
+		const dialog = html`<award-details id="awarddetails"></award-details>`;
 
 		let listContent;
 		if (!this.doneLoading) {
@@ -184,17 +171,6 @@ class App extends BaseMixin(LitElement) {
 			<d2l-list aria-busy="${!this.doneLoading}">
 				${listContent}
 			</d2l-list>
-		`;
-	}
-
-	_renderDialogContents() {
-		if (!this.awardsDialogOpen) {
-			return;
-		}
-		return html`
-			<iframe frameBorder="0" width="100%" height="100%" scrolling="no"
-				src="${LeaderboardService.getIssuedAward(this.dialogIssuedId)}">
-			</iframe>
 		`;
 	}
 
@@ -236,11 +212,6 @@ class App extends BaseMixin(LitElement) {
 		`;
 	}
 
-	_closeDialog() {
-		this.awardsDialogOpen = false;
-		requestAnimationFrame(() => document.activeElement.blur());
-	}
-
 	_displayEmptyLeaderboard() {
 		return html`
 			<div class="emptyState">
@@ -278,9 +249,7 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	_openDialog(e) {
-		this.dialogAwardTitle = e.detail.awardTitle;
-		this.dialogIssuedId = e.detail.issuedId;
-		this.awardsDialogOpen = true;
+		this.shadowRoot.getElementById('awarddetails').openDialog(e);
 	}
 }
 

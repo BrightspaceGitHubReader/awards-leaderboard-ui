@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { formatDateTime } from '@brightspace-ui/intl/lib/dateTime.js';
+import { getLocalDateTimeFromUTCDateTime } from '@brightspace-ui/core/helpers/dateTime.js';
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin';
 import { RtlMixin } from '@brightspace-ui/core/mixins/rtl-mixin';
 
@@ -63,6 +65,17 @@ export const BaseMixin = superclass => class extends LocalizeMixin(RtlMixin(supe
 
 	localize(key, values) {
 		return super.localize(key, values) || `{language term '${key}' not found}`;
+	}
+
+	formatDateTime(date) {
+		if (date === null || date === undefined) {
+			return '';
+		}
+		const myDate = getLocalDateTimeFromUTCDateTime(date);
+		return formatDateTime(
+			new Date(myDate),
+			{format: 'medium'}
+		);
 	}
 
 };
