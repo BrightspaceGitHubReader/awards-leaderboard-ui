@@ -28,6 +28,16 @@ import { LeaderboardService } from '../services/awards-leaderboard-service.js';
 
 class App extends BaseMixin(LitElement) {
 
+	static get properties() {
+		return {
+			orgUnitId: { type: Number },
+			userId: { type: Number },
+			sortByCreditsConfig: { type: Boolean },
+			doneLoading: { type: Boolean },
+			isEmptyLeaderboard: { type: Boolean }
+		};
+	}
+
 	static get styles() {
 		return [
 			bodyStandardStyles,
@@ -40,9 +50,9 @@ class App extends BaseMixin(LitElement) {
 			}
 			.myAwardItem {
 				background-color: var(--d2l-color-celestine-plus-2);
+				bottom: 0;
 				position: -webkit-sticky; /* Safari */
 				position: sticky;
-				bottom: 0;
 			}
 			@keyframes loadingPulse {
 				0% { background-color: var(--d2l-color-sylvite); }
@@ -51,75 +61,65 @@ class App extends BaseMixin(LitElement) {
 				100% { background-color: var(--d2l-color-sylvite); }
 			}
 			.skeleton-awardRow{
+				align-items: center;
 				display: flex;
 				flex-direction: row;
-				align-items: center;
 				padding: 3px;
 			}
 			.skeleton-awardRank{
 				animation: loadingPulse 1.8s linear infinite;
 				border-radius: 15px;
 				height: 21px;
-				width: 21px;
-				padding: 9px;
 				margin: 9px;
+				padding: 9px;
+				width: 21px;
 				-moz-border-radius:50%;
 				-webkit-border-radius:50%;
 			}
 			.skeleton-profilePic {
 				animation: loadingPulse 1.8s linear infinite;
 				border-radius: 6px;
-				width: 42px;
 				height: 42px;
 				margin-left: 7px;
+				width: 42px;
 			}
 			:host([dir="rtl"]) .skeleton-profilePic {
-				margin-right: 7px;
 				margin-left: 0px;
+				margin-right: 7px;
 			}
 			.skeleton-info {
 				display: flex;
 				flex-direction: column;
-				width: 50%;
 				padding-left: 10px;
+				width: 50%;
 			}
 			:host([dir="rtl"]) .skeleton-info {
-				padding-right: 10px;
 				padding-left: 0px;
+				padding-right: 10px;
 			}
 			.skeleton-name {
 				animation: loadingPulse 1.8s linear infinite;
+				border-radius: 6px;
 				height: 0.8rem;
 				width: 60%;
-				border-radius: 6px;
 			}
 			.skeleton-count {
 				animation: loadingPulse 1.8s linear infinite;
-				height: 0.7rem;
-				width: 40%;
-				margin-top: 4px;
 				border-radius: 4px;
+				height: 0.7rem;
+				margin-top: 4px;
+				width: 40%;
 			}
 			.emptyState {
+				align-items: center;
 				display: flex;
 				flex-direction: column;
-				align-items: center;
 			}
 			.emptyImage {
 				max-width: 100%;
 				width: 255px;
 			}
 		`];
-	}
-
-	static get properties() {
-		return {
-			orgUnitId: { type: Number },
-			userId: { type: Number },
-			sortByCreditsConfig: { type: Boolean },
-			doneLoading: { type: Boolean },
-			isEmptyLeaderboard: { type: Boolean }
-		};
 	}
 
 	constructor() {
@@ -133,6 +133,11 @@ class App extends BaseMixin(LitElement) {
 
 		const baseUrl = import.meta.url;
 		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
+	}
+
+	firstUpdated() {
+		this._getLeaderboard();
+		this.addEventListener('award-issued-dialog', this._openDialog);
 	}
 
 	render() {
@@ -174,30 +179,6 @@ class App extends BaseMixin(LitElement) {
 		`;
 	}
 
-	firstUpdated() {
-		this._getLeaderboard();
-		this.addEventListener('award-issued-dialog', this._openDialog);
-	}
-
-	async _getLeaderboard() {
-		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
-		this.sortedLeaderboardArray = myLeaderboard.Objects;
-		this.isEmptyLeaderboard = this._isEmptyLeaderboard();
-		if (this.isEmptyLeaderboard) {
-			this.doneLoading = true;
-			return;
-		}
-
-		const isUserIncluded = this._isLoggedInUserIncluded();
-		if (isUserIncluded) {
-			this.doneLoading = true;
-			return;
-		}
-		await this._getMyAwards();
-
-		this.doneLoading = true;
-	}
-
 	_createLeaderboardEntry(item, isMyAward) {
 		if (item.UserId === undefined) {
 			return;
@@ -220,6 +201,25 @@ class App extends BaseMixin(LitElement) {
 				<div class="d2l-body-standard">${this.localize('emptyBody')}</div>
 			</div>
 		`;
+	}
+
+	async _getLeaderboard() {
+		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
+		this.sortedLeaderboardArray = myLeaderboard.Objects;
+		this.isEmptyLeaderboard = this._isEmptyLeaderboard();
+		if (this.isEmptyLeaderboard) {
+			this.doneLoading = true;
+			return;
+		}
+
+		const isUserIncluded = this._isLoggedInUserIncluded();
+		if (isUserIncluded) {
+			this.doneLoading = true;
+			return;
+		}
+		await this._getMyAwards();
+
+		this.doneLoading = true;
 	}
 
 	async _getMyAwards() {

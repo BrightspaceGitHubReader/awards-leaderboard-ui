@@ -26,6 +26,20 @@ import { BaseMixin } from '../mixins/base-mixin.js';
 
 class AwardDetails extends BaseMixin(LitElement) {
 
+	static get properties() {
+		return {
+			awardsDialogOpen: { type: Boolean },
+			awardTitle: { type: String },
+			issuerName: { type: String },
+			awardDescription: { type: String },
+			awardIssued: { type: String },
+			awardCredit: { type: String },
+			awardEvidence: { type: String },
+			awardImage: { type: String },
+			awardExpiry: { type: String }
+		};
+	}
+
 	static get styles() {
 		return [
 			bodyStandardStyles,
@@ -48,20 +62,6 @@ class AwardDetails extends BaseMixin(LitElement) {
 		`];
 	}
 
-	static get properties() {
-		return {
-			awardsDialogOpen: { type: Boolean },
-			awardTitle: { type: String },
-			issuerName: { type: String },
-			awardDescription: { type: String },
-			awardIssued: { type: String },
-			awardCredit: { type: String },
-			awardEvidence: { type: String },
-			awardImage: { type: String },
-			awardExpiry: { type: String }
-		};
-	}
-
 	constructor() {
 		super();
 		this.awardsDialogOpen = false;
@@ -74,6 +74,12 @@ class AwardDetails extends BaseMixin(LitElement) {
 					<d2l-button slot="footer" dialog-action>${this.localize('closeDialog')}</d2l-button>
 				</d2l-dialog>
 			`;
+	}
+
+	_closeDialog() {
+		this.awardsDialogOpen = false;
+		//When dialog closes, reset blur to hide tooltip
+		requestAnimationFrame(() => document.activeElement.blur());
 	}
 
 	_renderDialogContents() {
@@ -118,12 +124,6 @@ class AwardDetails extends BaseMixin(LitElement) {
 				</div>
 			</div>
 		`;
-	}
-
-	_closeDialog() {
-		this.awardsDialogOpen = false;
-		//When dialog closes, reset blur to hide tooltip
-		requestAnimationFrame(() => document.activeElement.blur());
 	}
 
 	openDialog(e) {

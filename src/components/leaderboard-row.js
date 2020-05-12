@@ -26,6 +26,25 @@ const maxMobileBadges = 8;
 const maxFullBadges = 10;
 
 class LeaderboardRow extends BaseMixin(LitElement) {
+
+	static get properties() {
+		return {
+			userData: { type: Object },
+			myAward: { type: Boolean },
+			sortByCreditsConfig: { type: Boolean },
+			_mobile: {
+				type: Boolean,
+				value: false
+			},
+			_full: {
+				type: Boolean,
+				value: false
+			},
+			_maxBadges: { type: Number },
+			_displayedBadges: { type: Number }
+		};
+	}
+
 	static get styles() {
 		return [
 			bodyCompactStyles,
@@ -35,9 +54,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				width: 100%;
 			}
             .awardRow {
+				align-items: center;
 				display: flex;
 				flex-direction: row;
-				align-items: center;
 			}
 			.profileImage {
 				border-radius: 5px;
@@ -48,22 +67,22 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-left: 0;
 			}
 			.awardRank {
-				border-radius: 15px;
+				align-items: center;
 				background-color: #E3E9F1;
 				border: 1px solid #E3E9F1;
-				height: 21px;
-				width: 21px;
-				padding: 9px;
-				margin-left: 17px;
-				align-items: center;
+				border-radius: 15px;
 				display: flex;
+				height: 21px;
 				justify-content: center;
+				margin-left: 17px;
+				padding: 9px;
+				width: 21px;
 				-moz-border-radius:50%;
 				-webkit-border-radius:50%;
 			}
 			:host([dir="rtl"]) .awardRank {
-				margin-right: 17px;
 				margin-left: 0px;
+				margin-right: 17px;
 			}
 			.awardRank[topRank] {
 				background-color: white;
@@ -79,8 +98,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				padding-left: 10px;
 			}
 			:host([dir="rtl"]) .creditCount {
-				padding-right: 10px;
 				padding-left: 0px;
+				padding-right: 10px;
 			}
 			.resizeContainer[full] .creditCount {
 				flex-direction: row;
@@ -93,18 +112,18 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				width: 30%;
 			}
 			.panel {
-				overflow: hidden;
-				margin-top: 11px;
-				margin-bottom: -20px;
-				padding-left: ${unsafeCSS(PanelPadding)}px;
 				background-color: var(--d2l-color-sylvite);
 				border-top: 1px solid var(--d2l-color-mica);
-				padding-top: 12px;
+				margin-top: 11px;
+				margin-bottom: -20px;
+				overflow: hidden;
 				padding-bottom: 12px;
+				padding-left: ${unsafeCSS(PanelPadding)}px;
+				padding-top: 12px;
 			}
 			:host([dir="rtl"]) .panel {
-				padding-right: ${unsafeCSS(PanelPadding)}px;
 				padding-left: 0px;
+				padding-right: ${unsafeCSS(PanelPadding)}px;
 			}
 			.noMargin {
 				margin: unset  !important;
@@ -114,8 +133,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin-right: 25px;
 			}
 			:host([dir="rtl"]) .side {
-				margin-right: auto;
 				margin-left: 25px;
+				margin-right: auto;
 			}
 			d2l-labs-accordion-collapse::slotted(d2l-icon){
 				padding-right: 10px;
@@ -302,24 +321,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 			await this.requestUpdate();
 		}
-	}
-
-	static get properties() {
-		return {
-			userData: { type: Object },
-			myAward: { type: Boolean },
-			sortByCreditsConfig: { type: Boolean },
-			_mobile: {
-				type: Boolean,
-				value: false
-			},
-			_full: {
-				type: Boolean,
-				value: false
-			},
-			_maxBadges: { type: Number },
-			_displayedBadges: { type: Number }
-		};
 	}
 }
 
