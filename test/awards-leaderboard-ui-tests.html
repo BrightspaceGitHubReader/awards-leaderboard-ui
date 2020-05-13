@@ -52,6 +52,30 @@
                     awardsLeaderboard = fixture('basic');
                     await awardsLeaderboard.updateComplete;
                 });
+                it('list item returns if userid not matching', () => {
+                    const item = { userid: 1234 };
+                    awardsLeaderboard.userId = 5;
+                    const ret = awardsLeaderboard._createLeaderboardEntry(item, false);
+                    expect(ret).to.contain('true');
+                });
+                it('list item returns nothing if userid not set', () => {
+                    const item = {};
+                    awardsLeaderboard.userId = 5;
+                    const ret = awardsLeaderboard._createLeaderboardEntry(item, false);
+                    expect(ret).to.equal('');
+                });
+                it('is a different user', () => {
+                    awardsLeaderboard.sortedLeaderboardArray = { award: { UserId: 567}};
+                    awardsLeaderboard.userId = 123;
+                    const ret = awardsLeaderboard._isLoggedInUserIncluded();
+                    expect(ret).to.be.false;
+                });
+                it('is same user', () => {
+                    awardsLeaderboard.sortedLeaderboardArray = { award: { UserId: 567}};
+                    awardsLeaderboard.userId = 567;
+                    const ret = awardsLeaderboard._isLoggedInUserIncluded();
+                    expect(ret).to.be.false;
+                });
             });
         });
     </script>
