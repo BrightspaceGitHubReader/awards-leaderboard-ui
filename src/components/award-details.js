@@ -90,7 +90,7 @@ class AwardDetails extends BaseMixin(LitElement) {
 		const credits = this.awardCredit === null || this.awardCredit === undefined ?
 			html`` :
 			html`
-				<div class="d2l-label-text">${this.localize('label.credit')}</div> 
+				<div class="d2l-label-text">${this.localize('label.credits')}</div> 
 				<div class="d2l-body-compact">${this.awardCredit}</div>
 			`;
 		const expiry = this.awardExpiry === null || this.awardExpiry === undefined ?
