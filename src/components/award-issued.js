@@ -54,7 +54,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 		if (this.award.Award === undefined ||
 			this.award.Award.AwardId === undefined
 		) {
-			return html``;
+			return;
 		}
 		this.badgeId = `Badge_${this.award.Award.AwardId}`;
 		return html`
