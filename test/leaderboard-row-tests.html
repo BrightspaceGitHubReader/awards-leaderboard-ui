@@ -75,6 +75,35 @@
                     expect(ret).to.not.be.null;
                     expect(ret.strings[0]).to.equal(``);
                 });
+                it('should have extra count of badges for display', () => {
+                    const totalAwards = 20;
+                    leaderboardRow.userData = {
+                        "UserId": 1234, 
+                        "TotalAwardCount": totalAwards,
+                        "IssuedAwards": { "Objects": [ { "AwardId": 1 } ] }
+                    };
+                    const ret = leaderboardRow._getExtraAwardCount();
+                    expect(ret).to.be.equal(12);
+                });
+                it('should not have extra count for less than limit', () => {
+                    const totalAwards = 1;
+                    leaderboardRow.userData = {
+                        "UserId": 1234, 
+                        "TotalAwardCount": totalAwards,
+                        "IssuedAwards": { "Objects": [ { "AwardId": 1 } ] }
+                    };
+                    const ret = leaderboardRow._getExtraAwardCount();
+                    expect(ret).to.be.equal(0);
+                });
+                it('should return 0 when user has no issued awards', () => {
+                    const totalAwards = 1;
+                    leaderboardRow.userData = {
+                        "UserId": 1234, 
+                        "TotalAwardCount": totalAwards
+                    };
+                    const ret = leaderboardRow._getExtraAwardCount();
+                    expect(ret).to.be.equal(0);
+                });
                 it('should return 0 awards', () => {
                     leaderboardRow.userData = { UserId: 1234, TotalAwardCount: 0 };
                     const ret = leaderboardRow._getAwardCountText();

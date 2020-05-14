@@ -261,37 +261,30 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		`;
 	}
 
+	_getAwardCountText() {
+		if (this.userData.TotalAwardCount === 1) {
+			return this.localize('awards.one');
+		}
+		return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
+	}
+
 	_getAwardsDisplay() {
-		if (this.userData === undefined ||
-			this.userData.IssuedAwards === undefined ||
-			this.userData.IssuedAwards.Objects === undefined
-		) {
+		if (!this._hasAwardsToDisplay()) {
 			return html``;
 		}
+		const extraCount = this._getExtraAwardCount();
 		let additionalAwards;
-		if (this.userData.TotalAwardCount > this._maxBadges) {
-			const extraCount = this.userData.TotalAwardCount - this._maxBadges;
+		if (extraCount > 0) {
 			additionalAwards = html`
 				+${extraCount}
 			`;
 		}
 		this._displayedBadges = 0;
 
-		if (this.userData.IssuedAwards.Objects.length) {
-			return html`
-				${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}
-				${additionalAwards}
-			`;
-		} else {
-			return html``;
-		}
-	}
-
-	_getAwardCountText() {
-		if (this.userData.TotalAwardCount === 1) {
-			return this.localize('awards.one');
-		}
-		return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
+		return html`
+			${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}
+			${additionalAwards}
+		`;
 	}
 
 	_getCreditCountText() {
@@ -306,6 +299,14 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			return this._getCreditCountText();
 		}
 		return this._getAwardCountText();
+	}
+
+	_getExtraAwardCount() {
+		if (this.userData.TotalAwardCount > this._maxBadges) {
+			const extraCount = this.userData.TotalAwardCount - this._maxBadges;
+			return extraCount;
+		}
+		return 0;
 	}
 
 	async _handleResized(e) {
@@ -330,6 +331,17 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 			await this.requestUpdate();
 		}
+	}
+
+	_hasAwardsToDisplay() {
+		if (this.userData === undefined ||
+			this.userData.IssuedAwards === undefined ||
+			this.userData.IssuedAwards.Objects === undefined ||
+			!this.userData.IssuedAwards.Objects.length
+		) {
+			return false;
+		}
+		return true;
 	}
 }
 
