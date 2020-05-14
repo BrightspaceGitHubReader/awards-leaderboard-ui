@@ -17,7 +17,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>d2l-menu unit tests</title>
+    <title>awards-leaderboard-ui unit tests</title>
 
     <script>
         //This is a hack to fix the issue whereby redux tries to access a process variable
@@ -72,18 +72,6 @@
                     const ret = awardsLeaderboard._createLeaderboardEntry(item, false);
                     expect(ret).to.be.undefined;
                 });
-                // it('should return true logged in user is included', () => {
-                //     awardsLeaderboard.sortedLeaderboardArray = { "Objects": [ { "UserId": 567} ] };
-                //     awardsLeaderboard.userId = 567;
-                //     const ret = awardsLeaderboard._isLoggedInUserIncluded();
-                //     expect(ret).to.be.true;
-                // });
-                // it('is same user', () => {
-                //     awardsLeaderboard.sortedLeaderboardArray = { award: { UserId: 567}};
-                //     awardsLeaderboard.userId = 567;
-                //     const ret = awardsLeaderboard._isLoggedInUserIncluded();
-                //     expect(ret).to.be.false;
-                // });
             });
         });
     </script>

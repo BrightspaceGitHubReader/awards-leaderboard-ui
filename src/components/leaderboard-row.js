@@ -150,6 +150,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	render() {
+		if (this.userData === undefined) {
+			return html``;
+		}
 		const userAwards = html`${this._getAwardsDisplay()}`;
 
 		let expandPanel;
@@ -259,6 +262,12 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	_getAwardsDisplay() {
+		if (this.userData === undefined ||
+			this.userData.IssuedAwards === undefined ||
+			this.userData.IssuedAwards.Objects === undefined
+		) {
+			return html``;
+		}
 		let additionalAwards;
 		if (this.userData.TotalAwardCount > this._maxBadges) {
 			const extraCount = this.userData.TotalAwardCount - this._maxBadges;
