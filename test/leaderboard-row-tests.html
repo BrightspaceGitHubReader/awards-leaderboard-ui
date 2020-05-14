@@ -65,15 +65,13 @@
                     const award = { UserId: 1234, TotalAwardCount: 3 };
                     leaderboardRow._displayedBadges = 100;
                     const ret = leaderboardRow._createAwardEntry(award);
-                    expect(ret).to.not.be.null;
-                    expect(ret.strings[0]).to.equal(``);
+                    expect(ret).to.be.undefined;
                 });
                 it('should not return award displayed same as max', () => {
                     const award = { UserId: 1234, TotalAwardCount: 3 };
                     leaderboardRow._displayedBadges = 8;
                     const ret = leaderboardRow._createAwardEntry(award);
-                    expect(ret).to.not.be.null;
-                    expect(ret.strings[0]).to.equal(``);
+                    expect(ret).to.be.undefined;
                 });
                 it('should have extra count of badges for display', () => {
                     const totalAwards = 20;
