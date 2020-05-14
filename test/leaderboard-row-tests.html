@@ -98,7 +98,6 @@
                 it('should return 1 credit', () => {
                     leaderboardRow.userData = { UserId: 1234, TotalCreditCount: 1 };
                     const ret = leaderboardRow._getCreditCountText();
-                    console.log(ret);
                     expect(ret).to.equal('1 credit');
                 });
                 it('should return 3 credits', () => {
@@ -123,30 +122,35 @@
                     const ret = leaderboardRow._handleResized(e);
                     expect(leaderboardRow._mobile).to.be.true;
                     expect(leaderboardRow._full).to.be.false;
+                    expect(leaderboardRow._maxBadges).to.equal(8);
                 });
                 it('should return true mobile, false full for tiny', () => {
                     const e = { detail: { current: { width: 200}}};
                     const ret = leaderboardRow._handleResized(e);
                     expect(leaderboardRow._mobile).to.be.true;
                     expect(leaderboardRow._full).to.be.false;
+                    expect(leaderboardRow._maxBadges).to.equal(3);
                 });
                 it('should return true mobile, false full for just over mobile', () => {
                     const e = { detail: { current: { width: 701}}};
                     const ret = leaderboardRow._handleResized(e);
                     expect(leaderboardRow._mobile).to.be.false;
                     expect(leaderboardRow._full).to.be.false;
+                    expect(leaderboardRow._maxBadges).to.equal(8);
                 });
                 it('should return false mobile, false full for under full', () => {
                     const e = { detail: { current: { width: 900}}};
                     const ret = leaderboardRow._handleResized(e);
                     expect(leaderboardRow._mobile).to.be.false;
                     expect(leaderboardRow._full).to.be.false;
+                    expect(leaderboardRow._maxBadges).to.equal(8);
                 });
                 it('should return false mobile, true full for over full', () => {
                     const e = { detail: { current: { width: 951}}};
                     const ret = leaderboardRow._handleResized(e);
                     expect(leaderboardRow._mobile).to.be.false;
                     expect(leaderboardRow._full).to.be.true;
+                    expect(leaderboardRow._maxBadges).to.equal(10);
                 });
             });
         });
