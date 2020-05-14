@@ -90,13 +90,13 @@ class AwardDetails extends BaseMixin(LitElement) {
 		const credits = this.awardCredit === null || this.awardCredit === undefined ?
 			html`` :
 			html`
-				<div class="d2l-label-text">Credits:</div> 
+				<div class="d2l-label-text">${this.localize('label.credits')}</div> 
 				<div class="d2l-body-compact">${this.awardCredit}</div>
 			`;
 		const expiry = this.awardExpiry === null || this.awardExpiry === undefined ?
 			html`` :
 			html`
-				<div class="d2l-label-text">Expiry Date:</div> 
+				<div class="d2l-label-text">${this.localize('label.expiryDate')}</div> 
 				<div class="d2l-body-compact">${this.formatDateTime(this.awardExpiry)}</div>
 			`;
 
@@ -106,20 +106,20 @@ class AwardDetails extends BaseMixin(LitElement) {
 					<img src="${this.awardImage}" alt="${this.awardTitle}" />
 				</div>
 				<div class="awardDescription">				
-					<div class="d2l-label-text">Description:</div> 
+					<div class="d2l-label-text">${this.localize('label.description')}</div> 
 					<div class="d2l-body-compact">${this.awardDescription}</div>
 
 					${expiry}
 					
-					<div class="d2l-label-text">Issue Date:</div> 
+					<div class="d2l-label-text">${this.localize('label.issueDate')}</div> 
 					<div class="d2l-body-compact">${this.formatDateTime(this.awardIssued)}</div>
 					
-					<div class="d2l-label-text">Issuer:</div> 
+					<div class="d2l-label-text">${this.localize('label.issuer')}</div> 
 					<div class="d2l-body-compact">${this.issuerName}</div>
 					
 					${credits}
 					
-					<div class="d2l-label-text">Evidence:</div> 
+					<div class="d2l-label-text">${this.localize('label.evidence')}</div> 
 					<div class="d2l-body-compact">${this.awardEvidence}</div>
 				</div>
 			</div>
