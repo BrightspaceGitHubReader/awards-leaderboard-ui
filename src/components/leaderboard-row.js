@@ -105,10 +105,15 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				flex-direction: row;
 				width: 35%;
 			}
-			.resizeContainer[full] .displayName {
+			.resizeContainer[full] .displayName {  
+				line-height: 1rem;
+				overflow: hidden;
+				text-overflow: ellipsis;
 				width: 70%;
 			}
 			.resizeContainer[full] .displayNumber {
+				align-items: center;
+				display: flex;
 				width: 30%;
 			}
 			.panel {
