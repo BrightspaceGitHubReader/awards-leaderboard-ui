@@ -150,6 +150,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	render() {
+		if (this.userData === undefined) {
+			return;
+		}
 		const userAwards = html`${this._getAwardsDisplay()}`;
 
 		let expandPanel;
@@ -248,7 +251,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 	_createAwardEntry(award) {
 		if (this._displayedBadges > (this._maxBadges - 1)) {
-			return html``;
+			return;
 		}
 		this._displayedBadges = this._displayedBadges + 1;
 
@@ -258,31 +261,30 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		`;
 	}
 
+	_getAwardCountText() {
+		if (this.userData.TotalAwardCount === 1) {
+			return this.localize('awards.one');
+		}
+		return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
+	}
+
 	_getAwardsDisplay() {
+		if (!this._hasAwardsToDisplay()) {
+			return;
+		}
+		const extraCount = this._getExtraAwardCount();
 		let additionalAwards;
-		if (this.userData.TotalAwardCount > this._maxBadges) {
-			const extraCount = this.userData.TotalAwardCount - this._maxBadges;
+		if (extraCount > 0) {
 			additionalAwards = html`
 				+${extraCount}
 			`;
 		}
 		this._displayedBadges = 0;
 
-		if (this.userData.IssuedAwards.Objects.length) {
-			return html`
-				${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}
-				${additionalAwards}
-			`;
-		} else {
-			return html``;
-		}
-	}
-
-	_getAwardCountText() {
-		if (this.userData.TotalAwardCount === 1) {
-			return this.localize('awards.one');
-		}
-		return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
+		return html`
+			${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}
+			${additionalAwards}
+		`;
 	}
 
 	_getCreditCountText() {
@@ -299,6 +301,14 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return this._getAwardCountText();
 	}
 
+	_getExtraAwardCount() {
+		if (this.userData.TotalAwardCount > this._maxBadges) {
+			const extraCount = this.userData.TotalAwardCount - this._maxBadges;
+			return extraCount;
+		}
+		return 0;
+	}
+
 	async _handleResized(e) {
 		if (!e || !e.detail || !e.detail.current) {
 			return;
@@ -308,7 +318,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		const mobile = currentWidth <= mobileWidthMax;
 		const full = currentWidth > fullWidthMin;
 		let maxBadges;
-		if (!this._full) {
+		if (!full) {
 			const awardMaxWidth = Math.floor((currentWidth - PanelPadding * 2 - BadgeImageSize + 10) / (BadgeImageSize + 10));
 			maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
 		} else {
@@ -321,6 +331,17 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 			await this.requestUpdate();
 		}
+	}
+
+	_hasAwardsToDisplay() {
+		if (this.userData === undefined ||
+			this.userData.IssuedAwards === undefined ||
+			this.userData.IssuedAwards.Objects === undefined ||
+			!this.userData.IssuedAwards.Objects.length
+		) {
+			return false;
+		}
+		return true;
 	}
 }
 

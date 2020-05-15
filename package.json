@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/Brightspace/awards-leaderboard-ui#readme",
   "dependencies": {
-    "@brightspace-ui/core": "^1",
     "@brightspace-ui-labs/accordion": "^2",
+    "@brightspace-ui/core": "^1",
     "@polymer/polymer": "^3",
     "@webcomponents/webcomponentsjs": "^2",
     "d2l-fetch": "github:Brightspace/d2l-fetch#semver:^2",
@@ -42,6 +42,7 @@
   "devDependencies": {
     "@polymer/test-fixture": "^4",
     "babel-eslint": "^10",
+    "chai": "^4.2.0",
     "d2l-license-checker": "^3",
     "del": "^3",
     "eslint": "^5",

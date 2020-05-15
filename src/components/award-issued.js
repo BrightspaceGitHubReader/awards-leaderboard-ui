@@ -51,6 +51,11 @@ class AwardIssued extends BaseMixin(LitElement) {
 	}
 
 	render() {
+		if (this.award.Award === undefined ||
+			this.award.Award.AwardId === undefined
+		) {
+			return;
+		}
 		this.badgeId = `Badge_${this.award.Award.AwardId}`;
 		return html`
 			<a href="#" id="${this.badgeId}" @click="${this._awardClick}" class="awardBtn">
