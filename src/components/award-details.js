@@ -78,7 +78,7 @@ class AwardDetails extends BaseMixin(LitElement) {
 
 	_closeDialog() {
 		this.awardsDialogOpen = false;
-		//When dialog closes, reset blur to hide tooltip
+		// When dialog closes, reset blur to hide tooltip
 		requestAnimationFrame(() => document.activeElement.blur());
 	}
 
