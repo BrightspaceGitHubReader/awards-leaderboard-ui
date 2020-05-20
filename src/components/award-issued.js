@@ -38,6 +38,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 				height: ${unsafeCSS(BadgeImageSize)}px;
 				margin-right: 3px;
 				text-decoration: none;
+				vertical-align: middle;
 				width: ${unsafeCSS(BadgeImageSize)}px;
 			}
 			:host([dir="rtl"]) .awardBtn {
