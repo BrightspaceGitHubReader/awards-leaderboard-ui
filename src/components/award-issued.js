@@ -56,7 +56,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 		) {
 			return;
 		}
-		
+
 		this.badgeId = `Badge_${this.award.Award.AwardId}`;
 		return html`
 			<button 
