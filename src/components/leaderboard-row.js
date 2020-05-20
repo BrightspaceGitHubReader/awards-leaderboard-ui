@@ -283,7 +283,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		let additionalAwards;
 		if (extraCount > 0) {
 			additionalAwards = html`
-				+${extraCount}
+				<span role="img" aria-label="${this.localize('extraCountDescription', {extracount:`${extraCount}`})}">+${extraCount}</span>
 			`;
 		}
 		this._displayedBadges = 0;
