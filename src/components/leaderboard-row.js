@@ -121,10 +121,10 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				border-top: 1px solid var(--d2l-color-mica);
 				margin-top: 11px;
 				margin-bottom: -20px;
-				overflow: hidden;
 				padding-bottom: 12px;
 				padding-left: ${unsafeCSS(PanelPadding)}px;
 				padding-top: 12px;
+				position: relative;
 			}
 			:host([dir="rtl"]) .panel {
 				padding-left: 0px;
@@ -200,6 +200,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 							<div class='awardRow' ?myAward="${this.myAward}" slot="header">
 								<div 
 									class="awardRank ${fontStyle}" 
+									role="img"
 									?topRank="${this.userData.Rank <= TopStyleLimit}" 
 									aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
 									${this.userData.Rank}
@@ -230,6 +231,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				<div class='awardRow' ?myAward="${this.myAward}">
 					<div 
 						class="awardRank ${fontStyle}" 
+						role="img" 
 						?topRank="${this.userData.Rank <= TopStyleLimit}" 
 						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
 						${this.userData.Rank}
@@ -281,7 +283,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		let additionalAwards;
 		if (extraCount > 0) {
 			additionalAwards = html`
-				+${extraCount}
+				<span role="img" aria-label="${this.localize('extraCountDescription', {extracount:`${extraCount}`})}">+${extraCount}</span>
 			`;
 		}
 		this._displayedBadges = 0;

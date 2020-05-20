@@ -102,8 +102,8 @@ class AwardDetails extends BaseMixin(LitElement) {
 
 		return html`
 			<div class="awardDetailsRow">
-				<div class="awardImage">	
-					<img src="${this.awardImage}" alt="${this.awardTitle}" />
+				<div class="awardImage">
+					<img src="${this.awardImage}" alt="${this.awardTitle}" tabindex="-1" />
 				</div>
 				<div class="awardDescription">				
 					<div class="d2l-label-text">${this.localize('label.description')}</div> 

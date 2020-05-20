@@ -31,20 +31,20 @@ class AwardIssued extends BaseMixin(LitElement) {
 				cursor: pointer;
 			}
 			.awardBtn {
+				background-color: transparent;
+				background-size: ${unsafeCSS(BadgeImageSize)}px;
+				border: 0px;
 				display: inline-block;
+				height: ${unsafeCSS(BadgeImageSize)}px;
 				margin-right: 3px;
 				text-decoration: none;
+				vertical-align: middle;
 				width: ${unsafeCSS(BadgeImageSize)}px;
 			}
 			:host([dir="rtl"]) .awardBtn {
 				margin-left: 3px;
 				margin-right: 0px;
 				text-decoration: none;
-			}
-			.badgeEntry {
-				height: ${unsafeCSS(BadgeImageSize)}px;
-				vertical-align: middle;
-				width: ${unsafeCSS(BadgeImageSize)}px;
 			}
 			`
 		];
@@ -56,11 +56,16 @@ class AwardIssued extends BaseMixin(LitElement) {
 		) {
 			return;
 		}
+
 		this.badgeId = `Badge_${this.award.Award.AwardId}`;
 		return html`
-			<a href="#" id="${this.badgeId}" @click="${this._awardClick}" class="awardBtn">
-				<img id="${this.badgeId}" src=${this.award.Award.ImageData.Path} class='badgeEntry' alt='${this.awardTitle}'></img>
-			</a>
+			<button 
+				id="${this.badgeId}" 
+				style="background-image:url(${this.award.Award.ImageData.Path})" 
+				tabindex="0"
+				@click="${this._awardClick}" 
+				class="awardBtn">
+			</button>
 			<d2l-tooltip for="${this.badgeId}">${this.award.Award.Title}</d2l-tooltip>
     	`;
 	}
