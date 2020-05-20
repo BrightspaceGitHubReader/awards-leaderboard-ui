@@ -61,6 +61,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 			<button 
 				id="${this.badgeId}" 
 				style="background-image:url(${this.award.Award.ImageData.Path})" 
+				tabindex="0"
 				@click="${this._awardClick}" 
 				class="awardBtn">
 			</button>
