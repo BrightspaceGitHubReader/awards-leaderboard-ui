@@ -200,6 +200,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 							<div class='awardRow' ?myAward="${this.myAward}" slot="header">
 								<div 
 									class="awardRank ${fontStyle}" 
+									role="img"
 									?topRank="${this.userData.Rank <= TopStyleLimit}" 
 									aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
 									${this.userData.Rank}
@@ -230,6 +231,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				<div class='awardRow' ?myAward="${this.myAward}">
 					<div 
 						class="awardRank ${fontStyle}" 
+						role="img" 
 						?topRank="${this.userData.Rank <= TopStyleLimit}" 
 						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
 						${this.userData.Rank}
