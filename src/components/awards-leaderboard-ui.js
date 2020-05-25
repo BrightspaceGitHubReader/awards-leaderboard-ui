@@ -45,7 +45,7 @@ class App extends BaseMixin(LitElement) {
 			css`
 			d2l-list {
 				max-height: 420px;
-				overflow: hidden scroll;
+				overflow: hidden;
 				overflow-y: auto;
 			}
 			.myAwardItem {
