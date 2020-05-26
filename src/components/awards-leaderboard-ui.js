@@ -188,7 +188,7 @@ class App extends BaseMixin(LitElement) {
 		}
 		return html`
 			<d2l-list-item class="${ isMyAward ? 'myAwardItem' : '' }">
-				<leaderboard-row ?myAward=${isMyAward} userData=${JSON.stringify(item)} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
+				<leaderboard-row ?myAward=${isMyAward} .userData=${item} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
 			</d2l-list-item>
 		`;
 	}
