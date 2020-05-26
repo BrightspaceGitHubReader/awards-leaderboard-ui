@@ -14,16 +14,11 @@
 import './award-issued.js';
 import '@brightspace-ui-labs/accordion/accordion-collapse.js';
 import 'd2l-resize-aware/d2l-resize-aware.js';
-import { BadgeImageSize, PanelPadding, TopStyleLimit } from '../constants/constants';
 import { bodyCompactStyles, bodySmallStyles  } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement, unsafeCSS } from 'lit-element/lit-element.js';
+import { PanelPadding, TopStyleLimit } from '../constants/constants';
 import { BaseMixin } from '../mixins/base-mixin.js';
 import { LeaderboardRoutes } from '../helpers/leaderboardRoutes';
-
-const mobileWidthMax = 700;
-const fullWidthMin = 950;
-const maxMobileBadges = 8;
-const maxFullBadges = 10;
 
 class LeaderboardRow extends BaseMixin(LitElement) {
 
@@ -50,9 +45,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			bodyCompactStyles,
 			bodySmallStyles,
 			css`
-			d2l-resize-aware {
-				width: 100%;
-			}
             .awardRow {
 				align-items: center;
 				display: flex;
@@ -151,12 +143,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		];
 	}
 
-	constructor() {
-		super();
-
-		this._maxBadges = maxMobileBadges;
-	}
-
 	render() {
 		if (this.userData === undefined) {
 			return;
@@ -197,69 +183,65 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 
 		if (this._mobile) {
 			return html`
-				<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
-					<d2l-labs-accordion>
-						<d2l-labs-accordion-collapse flex icon-has-padding ?disabled="${isDisabled}">
-							<div class='awardRow' ?myAward="${this.myAward}" slot="header">
-								<div class="ranking">
-									<div 
-										class="awardRank ${fontStyle}" 
-										role="img"
-										?topRank="${this.userData.Rank <= TopStyleLimit}" 
-										aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
-										${this.userData.Rank}
-									</div>
-								</div>
-								<d2l-profile-image
-									class="profileImage"
-									href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
-									medium
-									token="token"
-									aria-hidden="true">
-								</d2l-profile-image>
-								<div class='creditCount'>
-									<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
-									${displayNumber}
-								</div>
-								<div class="side">
-									${sidePanel}
+				<d2l-labs-accordion>
+					<d2l-labs-accordion-collapse flex icon-has-padding ?disabled="${isDisabled}">
+						<div class='awardRow' ?myAward="${this.myAward}" slot="header">
+							<div class="ranking">
+								<div 
+									class="awardRank ${fontStyle}" 
+									role="img"
+									?topRank="${this.userData.Rank <= TopStyleLimit}" 
+									aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+									${this.userData.Rank}
 								</div>
 							</div>
-							${expandPanel}
-						</d2l-labs-accordion-collapse>
-					</d2l-labs-accordion>
-				</d2l-resize-aware>
+							<d2l-profile-image
+								class="profileImage"
+								href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
+								medium
+								token="token"
+								aria-hidden="true">
+							</d2l-profile-image>
+							<div class='creditCount'>
+								<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
+								${displayNumber}
+							</div>
+							<div class="side">
+								${sidePanel}
+							</div>
+						</div>
+						${expandPanel}
+					</d2l-labs-accordion-collapse>
+				</d2l-labs-accordion>
 			`;
 		}
 		return html`
-			<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
-				<div class='awardRow' ?myAward="${this.myAward}">
-					<div class="ranking">	
-						<div 
-							class="awardRank ${fontStyle}" 
-							role="img" 
-							?topRank="${this.userData.Rank <= TopStyleLimit}" 
-							aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
-							${this.userData.Rank}
-						</div>
-					</div>
-					<d2l-profile-image
-						class="profileImage"
-						href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
-						medium
-						token="token"
-						aria-hidden="true">
-					</d2l-profile-image>
-					<div class='creditCount'>
-						<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
-						${displayNumber}
-					</div>
-					<div class="side">
-						${sidePanel}
+			<div class='awardRow' ?myAward="${this.myAward}">
+				<div class="ranking">	
+					<div 
+						class="awardRank ${fontStyle}" 
+						role="img" 
+						?topRank="${this.userData.Rank <= TopStyleLimit}" 
+						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+						${this.userData.Rank}
 					</div>
 				</div>
-				${expandPanel}
-			</d2l-resize-aware>
+				<d2l-profile-image
+					class="profileImage"
+					href="${LeaderboardRoutes.ProfileImage(this.userData.UserId)}"
+					medium
+					token="token"
+					aria-hidden="true">
+				</d2l-profile-image>
+				<div class='creditCount'>
+					<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
+					${displayNumber}
+				</div>
+				<div class="side">
+					${sidePanel}
+				</div>
+			</div>
+			${expandPanel}
 		`;
 	}
 
@@ -321,30 +303,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			return extraCount;
 		}
 		return 0;
-	}
-
-	async _handleResized(e) {
-		if (!e || !e.detail || !e.detail.current) {
-			return;
-		}
-
-		const currentWidth = e.detail.current.width;
-		const mobile = currentWidth <= mobileWidthMax;
-		const full = currentWidth > fullWidthMin;
-		let maxBadges;
-		if (!full) {
-			const awardMaxWidth = Math.floor((currentWidth - PanelPadding * 2 - BadgeImageSize + 10) / (BadgeImageSize + 10));
-			maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
-		} else {
-			maxBadges = maxFullBadges;
-		}
-		if (this._mobile !== mobile || this._full !== full || this._maxBadges !== maxBadges) {
-			this._mobile = mobile;
-			this._full = full;
-			this._maxBadges = maxBadges;
-
-			await this.requestUpdate();
-		}
 	}
 
 	_hasAwardsToDisplay() {
