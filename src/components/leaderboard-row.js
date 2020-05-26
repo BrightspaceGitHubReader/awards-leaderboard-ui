@@ -80,6 +80,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				-moz-border-radius:50%;
 				-webkit-border-radius:50%;
 			}
+			.ranking{
+				width: 58px;
+			}
 			:host([dir="rtl"]) .awardRank {
 				margin-left: 0px;
 				margin-right: 17px;
@@ -198,12 +201,14 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 					<d2l-labs-accordion>
 						<d2l-labs-accordion-collapse flex icon-has-padding ?disabled="${isDisabled}">
 							<div class='awardRow' ?myAward="${this.myAward}" slot="header">
-								<div 
-									class="awardRank ${fontStyle}" 
-									role="img"
-									?topRank="${this.userData.Rank <= TopStyleLimit}" 
-									aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
-									${this.userData.Rank}
+								<div class="ranking">
+									<div 
+										class="awardRank ${fontStyle}" 
+										role="img"
+										?topRank="${this.userData.Rank <= TopStyleLimit}" 
+										aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+										${this.userData.Rank}
+									</div>
 								</div>
 								<d2l-profile-image
 									class="profileImage"
@@ -229,12 +234,14 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		return html`
 			<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
 				<div class='awardRow' ?myAward="${this.myAward}">
-					<div 
-						class="awardRank ${fontStyle}" 
-						role="img" 
-						?topRank="${this.userData.Rank <= TopStyleLimit}" 
-						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
-						${this.userData.Rank}
+					<div class="ranking">	
+						<div 
+							class="awardRank ${fontStyle}" 
+							role="img" 
+							?topRank="${this.userData.Rank <= TopStyleLimit}" 
+							aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+							${this.userData.Rank}
+						</div>
 					</div>
 					<d2l-profile-image
 						class="profileImage"
