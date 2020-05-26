@@ -27,15 +27,15 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			userData: { type: Object },
 			myAward: { type: Boolean },
 			sortByCreditsConfig: { type: Boolean },
-			_mobile: {
+			mobile: {
 				type: Boolean,
 				value: false
 			},
-			_full: {
+			full: {
 				type: Boolean,
 				value: false
 			},
-			_maxBadges: { type: Number },
+			maxBadges: { type: Number },
 			_displayedBadges: { type: Number }
 		};
 	}
@@ -96,17 +96,17 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				padding-left: 0px;
 				padding-right: 10px;
 			}
-			.resizeContainer[full] .creditCount {
+			:host([full]) .creditCount {
 				flex-direction: row;
 				width: 35%;
 			}
-			.resizeContainer[full] .displayName {  
+			:host([full]) .displayName {  
 				line-height: 1rem;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				width: 70%;
 			}
-			.resizeContainer[full] .displayNumber {
+			:host([full]) .displayNumber {
 				align-items: center;
 				display: flex;
 				width: 30%;
@@ -150,7 +150,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		const userAwards = html`${this._getAwardsDisplay()}`;
 
 		let expandPanel;
-		if (this._mobile) {
+		if (this.mobile) {
 			expandPanel = html`
 				<div class="panel"> 
 					${userAwards}
@@ -158,7 +158,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			`;
 		}
 		let sidePanel;
-		if (this._mobile) {
+		if (this.mobile) {
 			sidePanel = html`
 				
 			`;
@@ -167,7 +167,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		}
 
 		let displayNumber;
-		if (this._full) {
+		if (this.full) {
 			displayNumber = html`
 				<div class='d2l-body-standard noMargin displayNumber'>${this._getDisplayNumber()}</div>
 			`;
@@ -177,11 +177,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			`;
 		}
 
-		const fontStyle = this._full ? 'd2l-body-standard' : 'd2l-body-compact';
+		const fontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-compact';
 
 		const isDisabled = this.userData.TotalAwardCount === 0 ? true : false;
 
-		if (this._mobile) {
+		if (this.mobile) {
 			return html`
 				<d2l-labs-accordion>
 					<d2l-labs-accordion-collapse flex icon-has-padding ?disabled="${isDisabled}">
@@ -246,7 +246,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	_createAwardEntry(award) {
-		if (this._displayedBadges > (this._maxBadges - 1)) {
+		if (this._displayedBadges > (this.maxBadges - 1)) {
 			return;
 		}
 		this._displayedBadges = this._displayedBadges + 1;
@@ -298,8 +298,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 	}
 
 	_getExtraAwardCount() {
-		if (this.userData.TotalAwardCount > this._maxBadges) {
-			const extraCount = this.userData.TotalAwardCount - this._maxBadges;
+		if (this.userData.TotalAwardCount > this.maxBadges) {
+			const extraCount = this.userData.TotalAwardCount - this.maxBadges;
 			return extraCount;
 		}
 		return 0;

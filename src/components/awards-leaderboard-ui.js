@@ -39,15 +39,15 @@ class App extends BaseMixin(LitElement) {
 			userId: { type: Number },
 			sortByCreditsConfig: { type: Boolean },
 			doneLoading: { type: Boolean },
-			_mobile: {
+			mobile: {
 				type: Boolean,
 				value: false
 			},
-			_full: {
+			full: {
 				type: Boolean,
 				value: false
 			},
-			_maxBadges: { type: Number },
+			maxBadges: { type: Number },
 			isEmptyLeaderboard: { type: Boolean }
 		};
 	}
@@ -150,7 +150,7 @@ class App extends BaseMixin(LitElement) {
 
 		const baseUrl = import.meta.url;
 		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
-		this._maxBadges = maxMobileBadges;
+		this.maxBadges = maxMobileBadges;
 	}
 
 	firstUpdated() {
@@ -191,7 +191,7 @@ class App extends BaseMixin(LitElement) {
 		}
 		return html`
 			${dialog}
-			<d2l-resize-aware class="resizeContainer" @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this._mobile}" ?full="${this._full}">
+			<d2l-resize-aware @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this.mobile}" ?full="${this.full}">
 				<d2l-list aria-busy="${!this.doneLoading}">
 					${listContent}
 				</d2l-list>
@@ -212,9 +212,9 @@ class App extends BaseMixin(LitElement) {
 					?myAward=${isMyAward} 
 					.userData=${item} 
 					?sortByCreditsConfig=${this.sortByCreditsConfig} 
-					?_mobile="${this._mobile}" 
-					?_full="${this._full}"
-					_maxBadges="${this._maxBadges}">
+					?mobile="${this.mobile}" 
+					?full="${this.full}"
+					maxBadges="${this.maxBadges}">
 				</leaderboard-row>
 			</d2l-list-item>
 		`;
@@ -265,8 +265,6 @@ class App extends BaseMixin(LitElement) {
 		if (!e || !e.detail || !e.detail.current) {
 			return;
 		}
-		
-		console.log('resize me', e.detail.current.width);
 
 		const currentWidth = e.detail.current.width;
 		const mobile = currentWidth <= mobileWidthMax;
@@ -278,10 +276,10 @@ class App extends BaseMixin(LitElement) {
 		} else {
 			maxBadges = maxFullBadges;
 		}
-		if (this._mobile !== mobile || this._full !== full || this._maxBadges !== maxBadges) {
-			this._mobile = mobile;
-			this._full = full;
-			this._maxBadges = maxBadges;
+		if (this.mobile !== mobile || this.full !== full || this.maxBadges !== maxBadges) {
+			this.mobile = mobile;
+			this.full = full;
+			this.maxBadges = maxBadges;
 
 			await this.requestUpdate();
 		}
