@@ -270,7 +270,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		this._displayedBadges = this._displayedBadges + 1;
 
 		return html`
-			<award-issued award=${JSON.stringify(award)} >
+			<award-issued .award=${award} >
 			</award-issued>
 		`;
 	}
