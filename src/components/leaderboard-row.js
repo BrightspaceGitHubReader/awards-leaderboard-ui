@@ -90,20 +90,25 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.creditCount {
 				display:flex;
 				flex-direction: column;
-				padding-left: 10px;
+				overflow: hidden;
+				margin-left: 10px;
 			}
 			:host([dir="rtl"]) .creditCount {
-				padding-left: 0px;
-				padding-right: 10px;
+				margin-left: 0px;
+				margin-right: 10px;
 			}
 			:host([full]) .creditCount {
 				flex-direction: row;
 				width: 35%;
 			}
-			:host([full]) .displayName {  
+			.displayName {
+				align-items: center;
+				display: flex;
 				line-height: 1rem;
 				overflow: hidden;
 				text-overflow: ellipsis;
+			}
+			:host([full]) .displayName {  
 				width: 70%;
 			}
 			:host([full]) .displayNumber {
@@ -129,15 +134,13 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				margin: unset  !important;
 			}
 			.side {
+				flex-shrink: 0;
 				margin-left: auto;
 				margin-right: 25px;
 			}
 			:host([dir="rtl"]) .side {
 				margin-left: 25px;
 				margin-right: auto;
-			}
-			d2l-labs-accordion-collapse::slotted(d2l-icon){
-				padding-right: 10px;
 			}
 			`
 		];
