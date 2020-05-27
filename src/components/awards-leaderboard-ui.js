@@ -20,11 +20,16 @@ import '@brightspace-ui/core/components/list/list-item.js';
 import 'd2l-users/components/d2l-profile-image.js';
 import './leaderboard-row.js';
 
+import { BadgeImageSize, PanelPadding } from '../constants/constants';
 import { bodyStandardStyles, heading2Styles } from '@brightspace-ui/core/components/typography/styles.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
 import { LeaderboardService } from '../services/awards-leaderboard-service.js';
+const mobileWidthMax = 700;
+const fullWidthMin = 950;
+const maxFullBadges = 10;
+const maxMobileBadges = 8;
 
 class App extends BaseMixin(LitElement) {
 
@@ -34,6 +39,15 @@ class App extends BaseMixin(LitElement) {
 			userId: { type: Number },
 			sortByCreditsConfig: { type: Boolean },
 			doneLoading: { type: Boolean },
+			mobile: {
+				type: Boolean,
+				value: false
+			},
+			full: {
+				type: Boolean,
+				value: false
+			},
+			maxBadges: { type: Number },
 			isEmptyLeaderboard: { type: Boolean }
 		};
 	}
@@ -47,6 +61,9 @@ class App extends BaseMixin(LitElement) {
 				max-height: 420px;
 				overflow: hidden;
 				overflow-y: auto;
+			}
+			d2l-resize-aware {
+				width: 100%;
 			}
 			.myAwardItem {
 				background-color: var(--d2l-color-celestine-plus-2);
@@ -133,6 +150,7 @@ class App extends BaseMixin(LitElement) {
 
 		const baseUrl = import.meta.url;
 		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
+		this.maxBadges = maxMobileBadges;
 	}
 
 	firstUpdated() {
@@ -173,9 +191,11 @@ class App extends BaseMixin(LitElement) {
 		}
 		return html`
 			${dialog}
-			<d2l-list aria-busy="${!this.doneLoading}">
-				${listContent}
-			</d2l-list>
+			<d2l-resize-aware @d2l-resize-aware-resized=${this._handleResized} ?mobile="${this.mobile}" ?full="${this.full}">
+				<d2l-list aria-busy="${!this.doneLoading}">
+					${listContent}
+				</d2l-list>
+			</d2l-resize-aware>			
 		`;
 	}
 
@@ -188,7 +208,14 @@ class App extends BaseMixin(LitElement) {
 		}
 		return html`
 			<d2l-list-item class="${ isMyAward ? 'myAwardItem' : '' }">
-				<leaderboard-row ?myAward=${isMyAward} .userData=${item} ?sortByCreditsConfig=${this.sortByCreditsConfig}></leaderboard-row>
+				<leaderboard-row 
+					?myAward=${isMyAward} 
+					.userData=${item} 
+					?sortByCreditsConfig=${this.sortByCreditsConfig} 
+					?mobile="${this.mobile}" 
+					?full="${this.full}"
+					maxBadges="${this.maxBadges}">
+				</leaderboard-row>
 			</d2l-list-item>
 		`;
 	}
@@ -232,6 +259,30 @@ class App extends BaseMixin(LitElement) {
 			return;
 		}
 		this.myAwards = myAwards;
+	}
+
+	async _handleResized(e) {
+		if (!e || !e.detail || !e.detail.current) {
+			return;
+		}
+
+		const currentWidth = e.detail.current.width;
+		const mobile = currentWidth <= mobileWidthMax;
+		const full = currentWidth > fullWidthMin;
+		let maxBadges;
+		if (!full) {
+			const awardMaxWidth = Math.floor((currentWidth - PanelPadding * 2 - BadgeImageSize + 10) / (BadgeImageSize + 10));
+			maxBadges = awardMaxWidth > maxMobileBadges ? maxMobileBadges : awardMaxWidth;
+		} else {
+			maxBadges = maxFullBadges;
+		}
+		if (this.mobile !== mobile || this.full !== full || this.maxBadges !== maxBadges) {
+			this.mobile = mobile;
+			this.full = full;
+			this.maxBadges = maxBadges;
+
+			await this.requestUpdate();
+		}
 	}
 
 	_isEmptyLeaderboard() {

@@ -64,17 +64,20 @@
                 it('should not return award, displayed more than max', () => {
                     const award = { UserId: 1234, TotalAwardCount: 3 };
                     leaderboardRow._displayedBadges = 100;
+                    leaderboardRow.maxBadges = 8;
                     const ret = leaderboardRow._createAwardEntry(award);
                     expect(ret).to.be.undefined;
                 });
                 it('should not return award displayed same as max', () => {
                     const award = { UserId: 1234, TotalAwardCount: 3 };
                     leaderboardRow._displayedBadges = 8;
+                    leaderboardRow.maxBadges = 8;
                     const ret = leaderboardRow._createAwardEntry(award);
                     expect(ret).to.be.undefined;
                 });
                 it('should have extra count of badges for display', () => {
                     const totalAwards = 20;
+                    leaderboardRow.maxBadges = 8;
                     leaderboardRow.userData = {
                         "UserId": 1234, 
                         "TotalAwardCount": totalAwards,
@@ -143,41 +146,6 @@
                     leaderboardRow.userData = { UserId: 1234, TotalCreditCount: 1 };
                     const ret = leaderboardRow._getDisplayNumber();
                     expect(ret).to.equal('1 credit');
-                });
-                it('should return true mobile, false full match the mobile value', () => {
-                    const e = { detail: { current: { width: 700}}};
-                    const ret = leaderboardRow._handleResized(e);
-                    expect(leaderboardRow._mobile).to.be.true;
-                    expect(leaderboardRow._full).to.be.false;
-                    expect(leaderboardRow._maxBadges).to.equal(8);
-                });
-                it('should return true mobile, false full for tiny', () => {
-                    const e = { detail: { current: { width: 200}}};
-                    const ret = leaderboardRow._handleResized(e);
-                    expect(leaderboardRow._mobile).to.be.true;
-                    expect(leaderboardRow._full).to.be.false;
-                    expect(leaderboardRow._maxBadges).to.equal(3);
-                });
-                it('should return true mobile, false full for just over mobile', () => {
-                    const e = { detail: { current: { width: 701}}};
-                    const ret = leaderboardRow._handleResized(e);
-                    expect(leaderboardRow._mobile).to.be.false;
-                    expect(leaderboardRow._full).to.be.false;
-                    expect(leaderboardRow._maxBadges).to.equal(8);
-                });
-                it('should return false mobile, false full for under full', () => {
-                    const e = { detail: { current: { width: 900}}};
-                    const ret = leaderboardRow._handleResized(e);
-                    expect(leaderboardRow._mobile).to.be.false;
-                    expect(leaderboardRow._full).to.be.false;
-                    expect(leaderboardRow._maxBadges).to.equal(8);
-                });
-                it('should return false mobile, true full for over full', () => {
-                    const e = { detail: { current: { width: 951}}};
-                    const ret = leaderboardRow._handleResized(e);
-                    expect(leaderboardRow._mobile).to.be.false;
-                    expect(leaderboardRow._full).to.be.true;
-                    expect(leaderboardRow._maxBadges).to.equal(10);
                 });
             });
         });
