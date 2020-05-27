@@ -73,36 +73,36 @@
                     expect(ret).to.be.undefined;
                 });
                 it('should return true mobile, false full match the mobile value', () => {
-                    const e = { detail: { current: { width: 700}}};
-                    const ret = awardsLeaderboard._handleResized(e);
+                    const event = { detail: { current: { width: 700}}};
+                    const ret = awardsLeaderboard._handleResized(event);
                     expect(awardsLeaderboard.mobile).to.be.true;
                     expect(awardsLeaderboard.full).to.be.false;
                     expect(awardsLeaderboard.maxBadges).to.equal(8);
                 });
                 it('should return true mobile, false full for tiny', () => {
-                    const e = { detail: { current: { width: 200}}};
-                    const ret = awardsLeaderboard._handleResized(e);
+                    const event = { detail: { current: { width: 200}}};
+                    const ret = awardsLeaderboard._handleResized(event);
                     expect(awardsLeaderboard.mobile).to.be.true;
                     expect(awardsLeaderboard.full).to.be.false;
                     expect(awardsLeaderboard.maxBadges).to.equal(3);
                 });
                 it('should return true mobile, false full for just over mobile', () => {
-                    const e = { detail: { current: { width: 701}}};
-                    const ret = awardsLeaderboard._handleResized(e);
+                    const event = { detail: { current: { width: 701}}};
+                    const ret = awardsLeaderboard._handleResized(event);
                     expect(awardsLeaderboard.mobile).to.be.false;
                     expect(awardsLeaderboard.full).to.be.false;
                     expect(awardsLeaderboard.maxBadges).to.equal(8);
                 });
                 it('should return false mobile, false full for under full', () => {
-                    const e = { detail: { current: { width: 900}}};
-                    const ret = awardsLeaderboard._handleResized(e);
+                    const event = { detail: { current: { width: 900}}};
+                    const ret = awardsLeaderboard._handleResized(event);
                     expect(awardsLeaderboard.mobile).to.be.false;
                     expect(awardsLeaderboard.full).to.be.false;
                     expect(awardsLeaderboard.maxBadges).to.equal(8);
                 });
                 it('should return false mobile, true full for over full', () => {
-                    const e = { detail: { current: { width: 951}}};
-                    const ret = awardsLeaderboard._handleResized(e);
+                    const event = { detail: { current: { width: 951}}};
+                    const ret = awardsLeaderboard._handleResized(event);
                     expect(awardsLeaderboard.mobile).to.be.false;
                     expect(awardsLeaderboard.full).to.be.true;
                     expect(awardsLeaderboard.maxBadges).to.equal(10);

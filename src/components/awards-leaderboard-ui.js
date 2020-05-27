@@ -261,12 +261,12 @@ class App extends BaseMixin(LitElement) {
 		this.myAwards = myAwards;
 	}
 
-	async _handleResized(e) {
-		if (!e || !e.detail || !e.detail.current) {
+	async _handleResized(event) {
+		if (!event || !event.detail || !event.detail.current) {
 			return;
 		}
 
-		const currentWidth = e.detail.current.width;
+		const currentWidth = event.detail.current.width;
 		const mobile = currentWidth <= mobileWidthMax;
 		const full = currentWidth > fullWidthMin;
 		let maxBadges;
@@ -299,8 +299,8 @@ class App extends BaseMixin(LitElement) {
 		return false;
 	}
 
-	_openDialog(e) {
-		this.shadowRoot.getElementById('awarddetails').openDialog(e);
+	_openDialog(event) {
+		this.shadowRoot.getElementById('awarddetails').openDialog(event);
 	}
 }
 
