@@ -102,6 +102,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				width: 35%;
 			}
 			.displayName {
+				align-items: center;
+				display: flex;
 				line-height: 1rem;
 				overflow: hidden;
 				text-overflow: ellipsis;
