@@ -126,15 +126,15 @@ class AwardDetails extends BaseMixin(LitElement) {
 		`;
 	}
 
-	openDialog(e) {
-		this.awardTitle = e.detail.awardTitle;
-		this.issuerName = e.detail.issuerName;
-		this.awardDescription = e.detail.awardDescription;
-		this.awardIssued = e.detail.awardIssued;
-		this.awardCredit = e.detail.awardCredit;
-		this.awardEvidence = e.detail.awardEvidence;
-		this.awardImage = e.detail.awardImage;
-		this.awardExpiry = e.detail.awardExpiry;
+	openDialog(event) {
+		this.awardTitle = event.detail.awardTitle;
+		this.issuerName = event.detail.issuerName;
+		this.awardDescription = event.detail.awardDescription;
+		this.awardIssued = event.detail.awardIssued;
+		this.awardCredit = event.detail.awardCredit;
+		this.awardEvidence = event.detail.awardEvidence;
+		this.awardImage = event.detail.awardImage;
+		this.awardExpiry = event.detail.awardExpiry;
 
 		this.awardsDialogOpen = true;
 	}
