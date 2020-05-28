@@ -6,5 +6,12 @@
    "credits.one" : "1 つのクレジット",
    "emptyBody" : "最新のランキングを頻繁に確認してください。",
    "emptyHeading" : "まだ授与を獲得していません。",
-   "rankingAria" : "Rank {rank}"
+   "extraCountDescription" : "{extracount} more awards",
+   "label.credits" : "クレジット:",
+   "label.description" : "説明:",
+   "label.evidence" : "証明:",
+   "label.expiryDate" : "有効期限:",
+   "label.issueDate" : "発行日:",
+   "label.issuer" : "発行者:",
+   "rankingAria" : "ランク {rank}"
 }

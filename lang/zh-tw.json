@@ -6,5 +6,12 @@
    "credits.one" : "1 個學分",
    "emptyBody" : "請經常返回查看最新的排名。",
    "emptyHeading" : "尚未獲得任何獎勵。",
-   "rankingAria" : "Rank {rank}"
+   "extraCountDescription" : "{extracount} more awards",
+   "label.credits" : "學分：",
+   "label.description" : "說明：",
+   "label.evidence" : "證明：",
+   "label.expiryDate" : "到期日：",
+   "label.issueDate" : "發行日：",
+   "label.issuer" : "發行者：",
+   "rankingAria" : "排名 {rank}"
 }
