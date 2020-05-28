@@ -6,5 +6,12 @@
    "credits.one" : "1 merit",
    "emptyBody" : "Kom tilbage med jævne mellemrum for at se seneste rangordninger.",
    "emptyHeading" : "Ingen priser er blevet optjent endnu.",
-   "rankingAria" : "Rank {rank}"
+   "extraCountDescription" : "{extracount} more awards",
+   "label.credits" : "Meritter:",
+   "label.description" : "Beskrivelse:",
+   "label.evidence" : "Dokumentation:",
+   "label.expiryDate" : "Udløbsdato:",
+   "label.issueDate" : "Udstedelsesdato:",
+   "label.issuer" : "Udsteder:",
+   "rankingAria" : "Rækkefølge {rank}"
 }

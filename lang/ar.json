@@ -6,5 +6,12 @@
    "credits.one" : "رصيد واحد",
    "emptyBody" : "تحقق باستمرار للاطّلاع على آخر التصنيفات.",
    "emptyHeading" : "لم يتم اكتساب أي جوائز بعد.",
-   "rankingAria" : "Rank {rank}"
+   "extraCountDescription" : "{extracount} more awards",
+   "label.credits" : "الأرصدة:",
+   "label.description" : "الوصف:",
+   "label.evidence" : "الدليل:",
+   "label.expiryDate" : "تاريخ انتهاء الصلاحية:",
+   "label.issueDate" : "تاريخ الإصدار:",
+   "label.issuer" : "جهة الإصدار:",
+   "rankingAria" : "الترتيب {rank}"
 }

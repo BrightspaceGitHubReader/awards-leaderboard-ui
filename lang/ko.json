@@ -3,8 +3,15 @@
    "awards.one" : "1번 수상",
    "closeDialog" : "닫기",
    "credits.many" : "{numcredits} 학점",
-   "credits.one" : "1 학점",
+   "credits.one" : "1학점",
    "emptyBody" : "최종 순위를 위해 자주 확인하십시오.",
    "emptyHeading" : "아직 수상 이력이 없습니다.",
-   "rankingAria" : "Rank {rank}"
+   "extraCountDescription" : "{extracount} more awards",
+   "label.credits" : "학점:",
+   "label.description" : "설명:",
+   "label.evidence" : "근거:",
+   "label.expiryDate" : "만료일:",
+   "label.issueDate" : "발행일:",
+   "label.issuer" : "발행자:",
+   "rankingAria" : "순위 {rank}"
 }
