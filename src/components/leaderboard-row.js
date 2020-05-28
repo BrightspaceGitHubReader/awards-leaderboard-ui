@@ -102,14 +102,15 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				width: 35%;
 			}
 			.displayName {
-				align-items: center;
-				display: flex;
-				line-height: 1rem;
 				overflow: hidden;
 				text-overflow: ellipsis;
 			}
 			:host([full]) .displayName {  
 				width: 70%;
+			}
+			.displayNumber {
+				margin-left: 0;
+				margin-right: 0;
 			}
 			:host([full]) .displayNumber {
 				align-items: center;
@@ -129,9 +130,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			:host([dir="rtl"]) .panel {
 				padding-left: 0px;
 				padding-right: ${unsafeCSS(PanelPadding)}px;
-			}
-			.noMargin {
-				margin: unset  !important;
 			}
 			.side {
 				flex-shrink: 0;
