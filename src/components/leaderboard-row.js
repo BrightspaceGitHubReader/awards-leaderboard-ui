@@ -152,35 +152,8 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		}
 		const userAwards = html`${this._getAwardsDisplay()}`;
 
-		let expandPanel;
-		if (this.mobile) {
-			expandPanel = html`
-				<div class="panel"> 
-					${userAwards}
-				</div>
-			`;
-		}
-		let sidePanel;
-		if (this.mobile) {
-			sidePanel = html`
-				
-			`;
-		} else {
-			sidePanel = userAwards;
-		}
-
-		let displayNumber;
-		if (this.full) {
-			displayNumber = html`
-				<div class='d2l-body-standard noMargin displayNumber'>${this._getDisplayNumber()}</div>
-			`;
-		} else {
-			displayNumber = html`
-				<div class='d2l-body-small noMargin'>${this._getDisplayNumber()}</div>
-			`;
-		}
-
-		const fontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-compact';
+		const mainFontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-compact';
+		const secondFontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-small';
 
 		const isDisabled = this.userData.TotalAwardCount === 0 ? true : false;
 
@@ -191,7 +164,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 						<div class='awardRow' ?myAward="${this.myAward}" slot="header">
 							<div class="ranking">
 								<div 
-									class="awardRank ${fontStyle}" 
+									class="awardRank ${mainFontStyle}" 
 									role="img"
 									?topRank="${this.userData.Rank <= TopStyleLimit}" 
 									aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
@@ -206,14 +179,13 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 								aria-hidden="true">
 							</d2l-profile-image>
 							<div class='creditCount'>
-								<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
-								${displayNumber}
-							</div>
-							<div class="side">
-								${sidePanel}
+								<div class='${mainFontStyle} displayName'>${this.userData.DisplayName}</div>
+								<div class='${secondFontStyle} displayNumber'>${this._getDisplayNumber()}</div>
 							</div>
 						</div>
-						${expandPanel}
+						<div class="panel"> 
+							${userAwards}
+						</div>
 					</d2l-labs-accordion-collapse>
 				</d2l-labs-accordion>
 			`;
@@ -222,7 +194,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			<div class='awardRow' ?myAward="${this.myAward}">
 				<div class="ranking">	
 					<div 
-						class="awardRank ${fontStyle}" 
+						class="awardRank ${mainFontStyle}" 
 						role="img" 
 						?topRank="${this.userData.Rank <= TopStyleLimit}" 
 						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
@@ -237,14 +209,13 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 					aria-hidden="true">
 				</d2l-profile-image>
 				<div class='creditCount'>
-					<div class='${fontStyle} noMargin displayName'>${this.userData.DisplayName}</div>
-					${displayNumber}
+					<div class='${mainFontStyle} displayName'>${this.userData.DisplayName}</div>
+					<div class='${secondFontStyle} displayNumber'>${this._getDisplayNumber()}</div>
 				</div>
 				<div class="side">
-					${sidePanel}
+					${userAwards}
 				</div>
 			</div>
-			${expandPanel}
 		`;
 	}
 
