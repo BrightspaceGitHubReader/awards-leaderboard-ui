@@ -88,14 +88,10 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				border: 1px solid var(--d2l-color-celestine);
 			}
 			.creditCount {
+				align-items: center;
 				display:flex;
 				flex-direction: column;
 				overflow: hidden;
-				margin-left: 10px;
-			}
-			:host([dir="rtl"]) .creditCount {
-				margin-left: 0px;
-				margin-right: 10px;
 			}
 			:host([full]) .creditCount {
 				flex-direction: row;
@@ -105,7 +101,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				overflow: hidden;
 				text-overflow: ellipsis;
 			}
-			:host([full]) .displayName {  
+			:host([full]) .displayName {
+				margin-left: 10px;
+				margin-right: 10px;
 				width: 70%;
 			}
 			.displayNumber {
