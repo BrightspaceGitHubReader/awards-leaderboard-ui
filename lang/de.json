@@ -6,5 +6,12 @@
    "credits.one" : "1 Punkt",
    "emptyBody" : "Schauen Sie regelmäßig nach den neuesten Rankings.",
    "emptyHeading" : "Es wurden noch keine Lernerfolge erzielt.",
-   "rankingAria" : "Rank {rank}"
+   "extraCountDescription" : "{extracount} more awards",
+   "label.credits" : "Punkte:",
+   "label.description" : "Beschreibung:",
+   "label.evidence" : "Nachweis:",
+   "label.expiryDate" : "Ablaufdatum:",
+   "label.issueDate" : "Ausstellungsdatum:",
+   "label.issuer" : "Aussteller:",
+   "rankingAria" : "Rang {rank}"
 }

@@ -6,5 +6,12 @@
    "credits.one" : "1 poäng",
    "emptyBody" : "Du bör ta en titt på rangordningarna med regelbundna intervall.",
    "emptyHeading" : "Du har inte fått några utdelningar.",
-   "rankingAria" : "Rank {rank}"
+   "extraCountDescription" : "{extracount} more awards",
+   "label.credits" : "Antal krediter:",
+   "label.description" : "Beskrivning:",
+   "label.evidence" : "Spåra:",
+   "label.expiryDate" : "Utgångsdatum:",
+   "label.issueDate" : "Datum för utfärdande:",
+   "label.issuer" : "Utfärdare:",
+   "rankingAria" : "Rang {rank}"
 }

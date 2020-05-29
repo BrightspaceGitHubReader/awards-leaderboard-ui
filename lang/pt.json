@@ -6,5 +6,12 @@
    "credits.one" : "1 crédito",
    "emptyBody" : "Verifique sempre as classificações mais recentes.",
    "emptyHeading" : "Ainda não foi atribuído nenhum prêmio.",
-   "rankingAria" : "Rank {rank}"
+   "extraCountDescription" : "{extracount} more awards",
+   "label.credits" : "Créditos:",
+   "label.description" : "Descrição:",
+   "label.evidence" : "Evidência:",
+   "label.expiryDate" : "Data de Vencimento:",
+   "label.issueDate" : "Data de Emissão:",
+   "label.issuer" : "Emissor:",
+   "rankingAria" : "Classificação {rank}"
 }
