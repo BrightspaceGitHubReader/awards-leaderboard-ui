@@ -87,13 +87,23 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.awardRow[myAward] .awardRank {
 				border: 1px solid var(--d2l-color-celestine);
 			}
-			.creditCount {
+			:host([full]) .creditCount {
 				align-items: center;
 				display:flex;
+			}
+			.creditCount {
+				display: flex;
 				flex-direction: column;
 				overflow: hidden;
+				margin-left: 10px;
+			}
+			:host([dir="rtl"]) .creditCount {
+				margin-left: 0px;
+				margin-right: 10px;
 			}
 			:host([full]) .creditCount {
+				align-items: center;
+				display: flex;
 				flex-direction: row;
 				width: 35%;
 			}
@@ -102,8 +112,12 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				text-overflow: ellipsis;
 			}
 			:host([full]) .displayName {
-				margin-left: 10px;
 				margin-right: 10px;
+				width: 70%;
+			}
+			:host([full][dir="rtl"]) .displayName {
+				margin-left: 10px;
+				margin-right: 0;
 				width: 70%;
 			}
 			.displayNumber {
@@ -159,10 +173,10 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 					<d2l-labs-accordion-collapse flex icon-has-padding ?disabled="${isDisabled}">
 						<div class='awardRow' ?myAward="${this.myAward}" slot="header">
 							<div class="ranking">
-								<div 
-									class="awardRank ${mainFontStyle}" 
+								<div
+									class="awardRank ${mainFontStyle}"
 									role="img"
-									?topRank="${this.userData.Rank <= TopStyleLimit}" 
+									?topRank="${this.userData.Rank <= TopStyleLimit}"
 									aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
 									${this.userData.Rank}
 								</div>
@@ -179,7 +193,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 								<div class='${secondFontStyle} displayNumber'>${this._getDisplayNumber()}</div>
 							</div>
 						</div>
-						<div class="panel"> 
+						<div class="panel">
 							${userAwards}
 						</div>
 					</d2l-labs-accordion-collapse>
@@ -188,11 +202,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		}
 		return html`
 			<div class='awardRow' ?myAward="${this.myAward}">
-				<div class="ranking">	
-					<div 
-						class="awardRank ${mainFontStyle}" 
-						role="img" 
-						?topRank="${this.userData.Rank <= TopStyleLimit}" 
+				<div class="ranking">
+					<div
+						class="awardRank ${mainFontStyle}"
+						role="img"
+						?topRank="${this.userData.Rank <= TopStyleLimit}"
 						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
 						${this.userData.Rank}
 					</div>
