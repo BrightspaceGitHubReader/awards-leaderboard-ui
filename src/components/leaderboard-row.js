@@ -118,7 +118,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			:host([full][dir="rtl"]) .displayName {
 				margin-left: 10px;
 				margin-right: 0;
-				width: 70%;
 			}
 			.displayNumber {
 				margin-left: 0;
