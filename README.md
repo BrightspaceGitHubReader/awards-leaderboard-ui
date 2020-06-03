@@ -1,6 +1,6 @@
 # awards-leaderboard-ui
 
-[![Build Status][CI Badge]][CI Branch] 
+[![Build Status][CI Badge]][CI Branch]
 
 This a leaderboard widget of users in a course with the top 10 awards.
 
@@ -22,8 +22,6 @@ To run this solution, you will need BSI
 * Link BSI to your local web component for `d2l-awards-leaderboard-ui` (from name in package.json) https://github.com/Brightspace/brightspace-integration#running-locally-with-a-local-web-component
 * (*Recommended*) Unbundle your build so that the UI will update with changes made to code https://github.com/Brightspace/brightspace-integration#using-the-script-to-unbundle-your-build
 
-
-
 ## Dependencies
 
 This solution is run by widget code within the LMS
@@ -31,6 +29,23 @@ This solution is run by widget code within the LMS
 
 This also makes Valence API calls to Awards tool
 * [Valence Awards API](https://docs.valence.desire2learn.com/res/awards.html)
+
+## Demo
+
+There is a demo page. To serve it, run the following commands:
+* `npm i`
+* `polymer serve`
+This outputs a url, use that and point it to the demo/index page.
+It should return  a url like this http://127.0.0.1:8081/components/d2l-awards-leaderboard-ui/
+Viewing the demo page would be at http://127.0.0.1:8081/components/d2l-awards-leaderboard-ui/demo/index.html
+
+This comes with sample data and a sample full view, medium view and mobile view as there are distinctions between them.
+
+## Tests
+
+There are tests with this repo that run within CI.
+To test them locally within a browser, run
+`polymer test --skip-plugin sauce -p`
 
 ## Versioning
 
