@@ -1,17 +1,10 @@
 export class DemoService {
-	static get Create() {
-		return (type) => {
-			return (object) => {
-				return this.postJsonRequest(LeaderboardRoutes.RelativePath(type), object);
-			};
-		};
-	}
 
 	static get GetOptions() {
 		return {
 			credentials: 'include',
 			headers: new Headers({
-				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Origin': '*'
 			}),
 			method: 'GET',
 			mode: 'cors'
@@ -19,11 +12,11 @@ export class DemoService {
 	}
 
 	static getLeaderboard() {
-		return fetch('../../demo/data/leaderboard.json', this.GetOptions).then(r => r.json());
+		return fetch('../demo/data/leaderboard.json', this.GetOptions).then(r => r.json());
 	}
 
 	static getMyAwards() {
-		return fetch('../../demo/data/awards.json', this.GetOptions).then(r => r.json());
+		return fetch('../demo/data/awards.json', this.GetOptions).then(r => r.json());
 	}
 
 	static getRequest(url) {
