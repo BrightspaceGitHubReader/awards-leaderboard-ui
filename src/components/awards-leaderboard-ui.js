@@ -26,6 +26,7 @@ import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
 import { LeaderboardService } from '../services/awards-leaderboard-service.js';
+import { DemoService } from '../services/demo-service.js';
 const mobileWidthMax = 700;
 const fullWidthMin = 950;
 const maxFullBadges = 10;
@@ -48,7 +49,8 @@ class App extends BaseMixin(LitElement) {
 				value: false
 			},
 			maxBadges: { type: Number },
-			isEmptyLeaderboard: { type: Boolean }
+			isEmptyLeaderboard: { type: Boolean },
+			demo: { type: Boolean }
 		};
 	}
 
@@ -148,6 +150,10 @@ class App extends BaseMixin(LitElement) {
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
 
+		this.leaderboardService = this.demo ?
+			new LeaderboardService() :
+			new DemoService()
+
 		const baseUrl = import.meta.url;
 		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
 		this.maxBadges = maxMobileBadges;
@@ -174,7 +180,7 @@ class App extends BaseMixin(LitElement) {
 								<div class="skeleton-name"></div>
 								<div class="skeleton-count"></div>
 							</div>
-						</div>					
+						</div>
 					</d2l-list-item-content>
 				</d2l-list-item>
 			`;
@@ -195,7 +201,7 @@ class App extends BaseMixin(LitElement) {
 				<d2l-list aria-busy="${!this.doneLoading}">
 					${listContent}
 				</d2l-list>
-			</d2l-resize-aware>			
+			</d2l-resize-aware>
 		`;
 	}
 
@@ -208,11 +214,11 @@ class App extends BaseMixin(LitElement) {
 		}
 		return html`
 			<d2l-list-item class="${ isMyAward ? 'myAwardItem' : '' }">
-				<leaderboard-row 
-					?myAward=${isMyAward} 
-					.userData=${item} 
-					?sortByCreditsConfig=${this.sortByCreditsConfig} 
-					?mobile="${this.mobile}" 
+				<leaderboard-row
+					?myAward=${isMyAward}
+					.userData=${item}
+					?sortByCreditsConfig=${this.sortByCreditsConfig}
+					?mobile="${this.mobile}"
 					?full="${this.full}"
 					maxBadges="${this.maxBadges}">
 				</leaderboard-row>
@@ -231,7 +237,7 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	async _getLeaderboard() {
-		const myLeaderboard = await LeaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
+		const myLeaderboard = await this.leaderboardService.getLeaderboard(this.orgUnitId, this.sortByCreditsConfig);
 		this.sortedLeaderboardArray = myLeaderboard.Objects;
 		this.isEmptyLeaderboard = this._isEmptyLeaderboard();
 		if (this.isEmptyLeaderboard) {
@@ -251,7 +257,7 @@ class App extends BaseMixin(LitElement) {
 
 	async _getMyAwards() {
 		//Obtain the currently logged in user's awards
-		const myAwards = await LeaderboardService.getMyAwards(this.orgUnitId, this.userId);
+		const myAwards = await this.leaderboardService.getMyAwards(this.orgUnitId, this.userId);
 		if (myAwards === undefined || myAwards === null) {
 			return;
 		}
