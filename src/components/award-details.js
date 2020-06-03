@@ -51,13 +51,22 @@ class AwardDetails extends BaseMixin(LitElement) {
 			}
 			.awardImage {
 				overflow: auto;
+				max-width: 85px;
 				width: 20%;
 			}
 			.awardImage img{
-				max-width: 85px;
+				width: 100%;
 			}
 			.awardDescription {
 				max-width: 70%;
+				margin-left: 1rem;
+			}
+			:host([dir="rtl"]) .awardDescription {
+				margin-left: 0;
+				margin-right: 1rem;
+			}
+			.d2l-body-compact {
+				margin-bottom: .25rem;
 			}
 		`];
 	}
@@ -90,13 +99,13 @@ class AwardDetails extends BaseMixin(LitElement) {
 		const credits = this.awardCredit === null || this.awardCredit === undefined ?
 			html`` :
 			html`
-				<div class="d2l-label-text">${this.localize('label.credits')}</div> 
+				<div class="d2l-label-text">${this.localize('label.credits')}</div>
 				<div class="d2l-body-compact">${this.awardCredit}</div>
 			`;
 		const expiry = this.awardExpiry === null || this.awardExpiry === undefined ?
 			html`` :
 			html`
-				<div class="d2l-label-text">${this.localize('label.expiryDate')}</div> 
+				<div class="d2l-label-text">${this.localize('label.expiryDate')}</div>
 				<div class="d2l-body-compact">${this.formatDateTime(this.awardExpiry)}</div>
 			`;
 
@@ -105,21 +114,21 @@ class AwardDetails extends BaseMixin(LitElement) {
 				<div class="awardImage">
 					<img src="${this.awardImage}" alt="${this.awardTitle}" tabindex="-1" />
 				</div>
-				<div class="awardDescription">				
-					<div class="d2l-label-text">${this.localize('label.description')}</div> 
+				<div class="awardDescription">
+					<div class="d2l-label-text">${this.localize('label.description')}</div>
 					<div class="d2l-body-compact">${this.awardDescription}</div>
 
 					${expiry}
-					
-					<div class="d2l-label-text">${this.localize('label.issueDate')}</div> 
+
+					<div class="d2l-label-text">${this.localize('label.issueDate')}</div>
 					<div class="d2l-body-compact">${this.formatDateTime(this.awardIssued)}</div>
-					
-					<div class="d2l-label-text">${this.localize('label.issuer')}</div> 
+
+					<div class="d2l-label-text">${this.localize('label.issuer')}</div>
 					<div class="d2l-body-compact">${this.issuerName}</div>
-					
+
 					${credits}
-					
-					<div class="d2l-label-text">${this.localize('label.evidence')}</div> 
+
+					<div class="d2l-label-text">${this.localize('label.evidence')}</div>
 					<div class="d2l-body-compact">${this.awardEvidence}</div>
 				</div>
 			</div>
