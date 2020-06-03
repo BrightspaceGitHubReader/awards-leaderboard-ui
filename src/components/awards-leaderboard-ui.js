@@ -25,8 +25,7 @@ import { bodyStandardStyles, heading2Styles } from '@brightspace-ui/core/compone
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 import { BaseMixin } from '../mixins/base-mixin.js';
 
-import { LeaderboardService } from '../services/awards-leaderboard-service.js';
-import { DemoService } from '../services/demo-service.js';
+import { LeaderboardServiceFactory } from '../services/leaderboard-service-factory.js';
 const mobileWidthMax = 700;
 const fullWidthMin = 950;
 const maxFullBadges = 10;
@@ -150,9 +149,7 @@ class App extends BaseMixin(LitElement) {
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
 
-		this.leaderboardService = window.demo ?
-			new LeaderboardService() :
-			new DemoService()
+		this.leaderboardService = LeaderboardServiceFactory.getLeaderboardService();
 
 		const baseUrl = import.meta.url;
 		this.emptyImage = new URL('../../images/leaderboard-empty-state.svg', baseUrl);
