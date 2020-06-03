@@ -46,6 +46,9 @@ class AwardIssued extends BaseMixin(LitElement) {
 				margin-right: 0px;
 				text-decoration: none;
 			}
+			d2l-tooltip {
+				word-break: break-all;
+			}
 			`
 		];
 	}
