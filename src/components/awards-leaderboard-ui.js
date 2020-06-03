@@ -150,7 +150,7 @@ class App extends BaseMixin(LitElement) {
 		this.sortByCreditsConfig = false;
 		this.doneLoading = false;
 
-		this.leaderboardService = this.demo ?
+		this.leaderboardService = window.demo ?
 			new LeaderboardService() :
 			new DemoService()
 
