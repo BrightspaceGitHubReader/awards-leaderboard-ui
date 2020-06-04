@@ -6,7 +6,7 @@
     "credits.one": "1 credit",
     "emptyBody": "Check back often for the latest rankings.",
     "emptyHeading": "No awards have been earned yet.",
-    "extraCountDescription": "{extracount} more awards",
+    "extraCountDescription": "+{extracount} awards",
     "label.credits": "Credits:",
     "label.description": "Description:",
     "label.evidence": "Evidence:",
