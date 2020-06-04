@@ -13,15 +13,7 @@ d2lfetch.use({
 
 export class LeaderboardService {
 
-	static get Create() {
-		return (type) => {
-			return (object) => {
-				return this.postJsonRequest(LeaderboardRoutes.RelativePath(type), object);
-			};
-		};
-	}
-
-	static get GetOptions() {
+	static get getOptions() {
 		return {
 			credentials: 'include',
 			headers: new Headers({
@@ -32,20 +24,17 @@ export class LeaderboardService {
 		};
 	}
 
-	static getLeaderboard(orgunitid, sortByCreditsConfig) {
-		let classlistSort = ClasslistAwardSortByAwards;
-		if (sortByCreditsConfig) {
-			classlistSort = ClasslistAwardSortByCredits;
-		}
-		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgunitid, classlistSort));
+	static getLeaderboard(orgUnitId, sortByCreditsConfig) {
+		const classlistSort = sortByCreditsConfig ? ClasslistAwardSortByCredits : ClasslistAwardSortByAwards;
+		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgUnitId, classlistSort));
 	}
 
-	static getMyAwards(orgunitid, userId) {
-		return this.getRequest(LeaderboardRoutes.MyAwards(orgunitid, userId));
+	static getMyAwards(orgUnitId, userId) {
+		return this.getRequest(LeaderboardRoutes.MyAwards(orgUnitId, userId));
 	}
 
 	static getRequest(url) {
-		return fetch(url, this.GetOptions).then(r => r.json());
+		return fetch(url, this.getOptions).then(r => r.json());
 	}
 
 }
