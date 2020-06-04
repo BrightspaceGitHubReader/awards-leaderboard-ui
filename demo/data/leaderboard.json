@@ -1,0 +1,2563 @@
+{
+	"Objects": [
+		{
+			"UserId": 10183,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Eddiehasalongnamehopeitworksokayhowmgnycharactersistoomanycharac Albertandhereshislonglastname",
+			"FirstName": "Eddiehasalongnamehopeitworksokayhowmgnycharactersistoomanycharac",
+			"LastName": "Albertandhereshislonglastname",
+			"TotalAwardCount": 12,
+			"TotalCreditCount": 110.0,
+			"Rank": 1,
+			"IssuedAwards": {
+				"Objects": [
+					{
+						"IssuedId": 59,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:48:40.633",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 36,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "profile-6.jpg",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=81"
+							},
+							"CertificateData": null,
+							"Title": "This is Christine's Badge that has a bunch of text in the title for testing purposes.",
+							"Description": "ertert",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 3,
+								"Minute": null,
+								"Hour": null,
+								"Day": 100,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "system_noreply@brightspace.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "dfgret",
+						"Evidence": "dfgret"
+					},
+					{
+						"IssuedId": 50,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:06.103",
+						"ExpiryDate": "U2021-12-13T15:54:00.000",
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 10,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Hand_Out.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=53"
+							},
+							"CertificateData": null,
+							"Title": "Take a hand",
+							"Description": "This is the Badge 10 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 4,
+								"Minute": null,
+								"Hour": null,
+								"Day": 5,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 5,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 44,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:00.783",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 9,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Grad_Hat.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=52"
+							},
+							"CertificateData": null,
+							"Title": "Administrator or Moderator",
+							"Description": "This is the Badge 9 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "rtert",
+						"Evidence": "rtert"
+					},
+					{
+						"IssuedId": 38,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:51.907",
+						"ExpiryDate": "U2021-01-05T12:21:00.000",
+						"IssuedByUserId": 169,
+						"Credit": 100.0,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 8,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Globe.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=51"
+							},
+							"CertificateData": null,
+							"Title": "Earth Worker",
+							"Description": "This is an award that has a bunch of text to see what happens if the text overflows with more text. Let's see how this works out! Ready set go ",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 2,
+								"Minute": 0,
+								"Hour": 4,
+								"Day": 23,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 9,
+								"Year": 2021
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 31,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:44.273",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 7,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Flask_Liquid.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=50"
+							},
+							"CertificateData": null,
+							"Title": "Future Scientist",
+							"Description": "This is the Badge 7 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 26,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:38.210",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 6,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion_Crown.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=49"
+							},
+							"CertificateData": null,
+							"Title": "King Conversationalist",
+							"Description": "This is the Badge 6 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 20,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:33.953",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 5,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=48"
+							},
+							"CertificateData": null,
+							"Title": "Talking with people",
+							"Description": "This is the Badge 5 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "edrt",
+						"Evidence": "edrt"
+					},
+					{
+						"IssuedId": 17,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:26.190",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 4,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Calculator.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=47"
+							},
+							"CertificateData": null,
+							"Title": "Master Calculator",
+							"Description": "This is the Badge 4 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "r554",
+						"Evidence": "r554"
+					},
+					{
+						"IssuedId": 11,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:21.507",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 3,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book_Mark.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=46"
+							},
+							"CertificateData": null,
+							"Title": "Bookworm",
+							"Description": "This is the Badge 3 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 4,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:17.460",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 2,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=45"
+							},
+							"CertificateData": null,
+							"Title": "Read a book",
+							"Description": "This is the Badge 2 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10183,
+						"Criteria": "drt",
+						"Evidence": "drt"
+					}
+				],
+				"Next": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/api/bas/1.1/issued/users/10183/?awardType=Badge&orgUnitId=6609&includeExpired=0&offset=10"
+			}
+		},
+		{
+			"UserId": 10184,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Robert Alda",
+			"FirstName": "Robert",
+			"LastName": "Alda",
+			"TotalAwardCount": 12,
+			"TotalCreditCount": 110.0,
+			"Rank": 1,
+			"IssuedAwards": {
+				"Objects": [
+					{
+						"IssuedId": 60,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:48:40.640",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 36,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "profile-6.jpg",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=81"
+							},
+							"CertificateData": null,
+							"Title": "This is Christine's Badge that has a bunch of text in the title for testing purposes.",
+							"Description": "ertert",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 3,
+								"Minute": null,
+								"Hour": null,
+								"Day": 100,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "system_noreply@brightspace.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "dfgret",
+						"Evidence": "dfgret"
+					},
+					{
+						"IssuedId": 55,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:06.103",
+						"ExpiryDate": "U2021-12-13T15:54:00.000",
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 10,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Hand_Out.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=53"
+							},
+							"CertificateData": null,
+							"Title": "Take a hand",
+							"Description": "This is the Badge 10 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 4,
+								"Minute": null,
+								"Hour": null,
+								"Day": 5,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 5,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 42,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:00.783",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 9,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Grad_Hat.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=52"
+							},
+							"CertificateData": null,
+							"Title": "Administrator or Moderator",
+							"Description": "This is the Badge 9 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "rtert",
+						"Evidence": "rtert"
+					},
+					{
+						"IssuedId": 35,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:51.903",
+						"ExpiryDate": "U2021-01-05T12:21:00.000",
+						"IssuedByUserId": 169,
+						"Credit": 100.0,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 8,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Globe.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=51"
+							},
+							"CertificateData": null,
+							"Title": "Earth Worker",
+							"Description": "This is an award that has a bunch of text to see what happens if the text overflows with more text. Let's see how this works out! Ready set go ",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 2,
+								"Minute": 0,
+								"Hour": 4,
+								"Day": 23,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 9,
+								"Year": 2021
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 30,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:44.273",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 7,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Flask_Liquid.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=50"
+							},
+							"CertificateData": null,
+							"Title": "Future Scientist",
+							"Description": "This is the Badge 7 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 24,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:38.200",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 6,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion_Crown.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=49"
+							},
+							"CertificateData": null,
+							"Title": "King Conversationalist",
+							"Description": "This is the Badge 6 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 22,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:33.953",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 5,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=48"
+							},
+							"CertificateData": null,
+							"Title": "Talking with people",
+							"Description": "This is the Badge 5 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "edrt",
+						"Evidence": "edrt"
+					},
+					{
+						"IssuedId": 15,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:26.190",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 4,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Calculator.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=47"
+							},
+							"CertificateData": null,
+							"Title": "Master Calculator",
+							"Description": "This is the Badge 4 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "r554",
+						"Evidence": "r554"
+					},
+					{
+						"IssuedId": 10,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:21.500",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 3,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book_Mark.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=46"
+							},
+							"CertificateData": null,
+							"Title": "Bookworm",
+							"Description": "This is the Badge 3 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 5,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:17.460",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 2,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=45"
+							},
+							"CertificateData": null,
+							"Title": "Read a book",
+							"Description": "This is the Badge 2 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10184,
+						"Criteria": "drt",
+						"Evidence": "drt"
+					}
+				],
+				"Next": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/api/bas/1.1/issued/users/10184/?awardType=Badge&orgUnitId=6609&includeExpired=0&offset=10"
+			}
+		},
+		{
+			"UserId": 10185,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Jane Alexander",
+			"FirstName": "Jane",
+			"LastName": "Alexander",
+			"TotalAwardCount": 10,
+			"TotalCreditCount": 110.0,
+			"Rank": 1,
+			"IssuedAwards": {
+				"Objects": [
+					{
+						"IssuedId": 51,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:06.103",
+						"ExpiryDate": "U2021-12-13T15:54:00.000",
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 10,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Hand_Out.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=53"
+							},
+							"CertificateData": null,
+							"Title": "Take a hand",
+							"Description": "This is the Badge 10 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 4,
+								"Minute": null,
+								"Hour": null,
+								"Day": 5,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 5,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 46,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:00.850",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 9,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Grad_Hat.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=52"
+							},
+							"CertificateData": null,
+							"Title": "Administrator or Moderator",
+							"Description": "This is the Badge 9 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "rtert",
+						"Evidence": "rtert"
+					},
+					{
+						"IssuedId": 34,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:51.897",
+						"ExpiryDate": "U2021-01-05T12:21:00.000",
+						"IssuedByUserId": 169,
+						"Credit": 100.0,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 8,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Globe.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=51"
+							},
+							"CertificateData": null,
+							"Title": "Earth Worker",
+							"Description": "This is an award that has a bunch of text to see what happens if the text overflows with more text. Let's see how this works out! Ready set go ",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 2,
+								"Minute": 0,
+								"Hour": 4,
+								"Day": 23,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 9,
+								"Year": 2021
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 29,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:44.263",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 7,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Flask_Liquid.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=50"
+							},
+							"CertificateData": null,
+							"Title": "Future Scientist",
+							"Description": "This is the Badge 7 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 25,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:38.210",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 6,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion_Crown.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=49"
+							},
+							"CertificateData": null,
+							"Title": "King Conversationalist",
+							"Description": "This is the Badge 6 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 21,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:33.953",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 5,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=48"
+							},
+							"CertificateData": null,
+							"Title": "Talking with people",
+							"Description": "This is the Badge 5 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "edrt",
+						"Evidence": "edrt"
+					},
+					{
+						"IssuedId": 14,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:26.190",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 4,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Calculator.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=47"
+							},
+							"CertificateData": null,
+							"Title": "Master Calculator",
+							"Description": "This is the Badge 4 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "r554",
+						"Evidence": "r554"
+					},
+					{
+						"IssuedId": 13,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:21.510",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 3,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book_Mark.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=46"
+							},
+							"CertificateData": null,
+							"Title": "Bookworm",
+							"Description": "This is the Badge 3 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 6,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:17.470",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 2,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=45"
+							},
+							"CertificateData": null,
+							"Title": "Read a book",
+							"Description": "This is the Badge 2 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "drt",
+						"Evidence": "drt"
+					},
+					{
+						"IssuedId": 1,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:10.183",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": 10.0,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 1,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Avatar_Speech.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=44"
+							},
+							"CertificateData": null,
+							"Title": "Social Conversation",
+							"Description": "This is the Badge 1 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10185,
+						"Criteria": "sdfrg",
+						"Evidence": "sdfrg"
+					}
+				],
+				"Next": null
+			}
+		},
+		{
+			"UserId": 10190,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Beatrice Arthur",
+			"FirstName": "Beatrice",
+			"LastName": "Arthur",
+			"TotalAwardCount": 6,
+			"TotalCreditCount": 100.0,
+			"Rank": 4,
+			"IssuedAwards": {
+				"Objects": [
+					{
+						"IssuedId": 53,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:06.103",
+						"ExpiryDate": "U2021-12-13T15:54:00.000",
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 10,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Hand_Out.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=53"
+							},
+							"CertificateData": null,
+							"Title": "Take a hand",
+							"Description": "This is the Badge 10 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 4,
+								"Minute": null,
+								"Hour": null,
+								"Day": 5,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 5,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10190,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 45,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:00.783",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 9,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Grad_Hat.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=52"
+							},
+							"CertificateData": null,
+							"Title": "Administrator or Moderator",
+							"Description": "This is the Badge 9 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10190,
+						"Criteria": "rtert",
+						"Evidence": "rtert"
+					},
+					{
+						"IssuedId": 37,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:51.903",
+						"ExpiryDate": "U2021-01-05T12:21:00.000",
+						"IssuedByUserId": 169,
+						"Credit": 100.0,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 8,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Globe.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=51"
+							},
+							"CertificateData": null,
+							"Title": "Earth Worker",
+							"Description": "This is an award that has a bunch of text to see what happens if the text overflows with more text. Let's see how this works out! Ready set go ",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 2,
+								"Minute": 0,
+								"Hour": 4,
+								"Day": 23,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 9,
+								"Year": 2021
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10190,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 32,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:44.273",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 7,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Flask_Liquid.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=50"
+							},
+							"CertificateData": null,
+							"Title": "Future Scientist",
+							"Description": "This is the Badge 7 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10190,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 27,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:38.210",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 6,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion_Crown.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=49"
+							},
+							"CertificateData": null,
+							"Title": "King Conversationalist",
+							"Description": "This is the Badge 6 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10190,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 19,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:33.953",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 5,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=48"
+							},
+							"CertificateData": null,
+							"Title": "Talking with people",
+							"Description": "This is the Badge 5 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10190,
+						"Criteria": "edrt",
+						"Evidence": "edrt"
+					}
+				],
+				"Next": null
+			}
+		},
+		{
+			"UserId": 10191,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Ed Asner",
+			"FirstName": "Ed",
+			"LastName": "Asner",
+			"TotalAwardCount": 4,
+			"TotalCreditCount": 100.0,
+			"Rank": 4,
+			"IssuedAwards": {
+				"Objects": [
+					{
+						"IssuedId": 52,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:06.103",
+						"ExpiryDate": "U2021-12-13T15:54:00.000",
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 10,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Hand_Out.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=53"
+							},
+							"CertificateData": null,
+							"Title": "Take a hand",
+							"Description": "This is the Badge 10 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 4,
+								"Minute": null,
+								"Hour": null,
+								"Day": 5,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 5,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10191,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 43,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:47:00.783",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 9,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Grad_Hat.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=52"
+							},
+							"CertificateData": null,
+							"Title": "Administrator or Moderator",
+							"Description": "This is the Badge 9 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10191,
+						"Criteria": "rtert",
+						"Evidence": "rtert"
+					},
+					{
+						"IssuedId": 39,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:51.907",
+						"ExpiryDate": "U2021-01-05T12:21:00.000",
+						"IssuedByUserId": 169,
+						"Credit": 100.0,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 8,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Globe.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=51"
+							},
+							"CertificateData": null,
+							"Title": "Earth Worker",
+							"Description": "This is an award that has a bunch of text to see what happens if the text overflows with more text. Let's see how this works out! Ready set go ",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 2,
+								"Minute": 0,
+								"Hour": 4,
+								"Day": 23,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": 9,
+								"Year": 2021
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10191,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 33,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:44.277",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 7,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Flask_Liquid.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=50"
+							},
+							"CertificateData": null,
+							"Title": "Future Scientist",
+							"Description": "This is the Badge 7 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10191,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					}
+				],
+				"Next": null
+			}
+		},
+		{
+			"UserId": 10186,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Woody Allen",
+			"FirstName": "Woody",
+			"LastName": "Allen",
+			"TotalAwardCount": 3,
+			"TotalCreditCount": 0.0,
+			"Rank": 6,
+			"IssuedAwards": {
+				"Objects": [
+					{
+						"IssuedId": 16,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:26.190",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 4,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Calculator.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=47"
+							},
+							"CertificateData": null,
+							"Title": "Master Calculator",
+							"Description": "This is the Badge 4 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10186,
+						"Criteria": "r554",
+						"Evidence": "r554"
+					},
+					{
+						"IssuedId": 12,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:21.510",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 3,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book_Mark.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=46"
+							},
+							"CertificateData": null,
+							"Title": "Bookworm",
+							"Description": "This is the Badge 3 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10186,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 7,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:17.470",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 2,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=45"
+							},
+							"CertificateData": null,
+							"Title": "Read a book",
+							"Description": "This is the Badge 2 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10186,
+						"Criteria": "drt",
+						"Evidence": "drt"
+					}
+				],
+				"Next": null
+			}
+		},
+		{
+			"UserId": 10187,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Don Ameche",
+			"FirstName": "Don",
+			"LastName": "Ameche",
+			"TotalAwardCount": 2,
+			"TotalCreditCount": 0.0,
+			"Rank": 6,
+			"IssuedAwards": {
+				"Objects": [
+					{
+						"IssuedId": 28,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:38.210",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 6,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion_Crown.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=49"
+							},
+							"CertificateData": null,
+							"Title": "King Conversationalist",
+							"Description": "This is the Badge 6 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10187,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 23,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:33.953",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 5,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Discussion.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=48"
+							},
+							"CertificateData": null,
+							"Title": "Talking with people",
+							"Description": "This is the Badge 5 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10187,
+						"Criteria": "edrt",
+						"Evidence": "edrt"
+					}
+				],
+				"Next": null
+			}
+		},
+		{
+			"UserId": 10188,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Julie Andrews",
+			"FirstName": "Julie",
+			"LastName": "Andrews",
+			"TotalAwardCount": 3,
+			"TotalCreditCount": 0.0,
+			"Rank": 6,
+			"IssuedAwards": {
+				"Objects": [
+					{
+						"IssuedId": 18,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:26.200",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 4,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Calculator.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=47"
+							},
+							"CertificateData": null,
+							"Title": "Master Calculator",
+							"Description": "This is the Badge 4 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10188,
+						"Criteria": "r554",
+						"Evidence": "r554"
+					},
+					{
+						"IssuedId": 9,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:21.493",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 3,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book_Mark.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=46"
+							},
+							"CertificateData": null,
+							"Title": "Bookworm",
+							"Description": "This is the Badge 3 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10188,
+						"Criteria": "ert",
+						"Evidence": "ert"
+					},
+					{
+						"IssuedId": 8,
+						"OrgUnitId": 6609,
+						"IssuedDate": "U2020-04-27T21:46:17.470",
+						"ExpiryDate": null,
+						"IssuedByUserId": 169,
+						"Credit": null,
+						"Share": {
+							"WithProfile": false,
+							"WithMozilla": true,
+							"WithEportfolio": false,
+							"SentToProfile": false,
+							"SentToMozilla": false,
+							"SentToEportfolio": false,
+							"SharedObjectId": null
+						},
+						"Award": {
+							"AwardType": 1,
+							"AwardId": 2,
+							"CreatedBy": 169,
+							"IsDeleted": false,
+							"ImageData": {
+								"Name": "Badge_Book.png",
+								"Path": "http://klx0-cbelan.desire2learn.d2l:44444/d2l/awards/v1/image/6606?imageId=45"
+							},
+							"CertificateData": null,
+							"Title": "Read a book",
+							"Description": "This is the Badge 2 Description",
+							"ExpiryCalculation": {
+								"ExpiryCalculationType": 1,
+								"Minute": null,
+								"Hour": null,
+								"Day": null,
+								"Week": null,
+								"DayOfWeek": null,
+								"Month": null,
+								"Year": null
+							},
+							"ExpiryNotification": {
+								"ExpiryNotifyValue": null,
+								"ExpiryNotifyType": 1
+							},
+							"IssuerName": "Brightspace",
+							"IssuerUrl": "http://www.brightspace.com/",
+							"IssuerContact": "helpdesk@example.com"
+						},
+						"IssuedToUserId": 10188,
+						"Criteria": "drt",
+						"Evidence": "drt"
+					}
+				],
+				"Next": null
+			}
+		},
+		{
+			"UserId": 10192,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Fred Astaire",
+			"FirstName": "Fred",
+			"LastName": "Astaire",
+			"TotalAwardCount": 0,
+			"TotalCreditCount": 0.0,
+			"Rank": 6,
+			"IssuedAwards": {
+				"Objects": [],
+				"Next": null
+			}
+		},
+		{
+			"UserId": 10193,
+			"OrgUnitId": 6609,
+			"ProfileImage": "/d2l/img/0/Framework.UserProfileBadge.actProfileDaylight100.png?v=20.20.6.0-11096326",
+			"DisplayName": "Lauren Bacall",
+			"FirstName": "Lauren",
+			"LastName": "Bacall",
+			"TotalAwardCount": 0,
+			"TotalCreditCount": 0.0,
+			"Rank": 6,
+			"IssuedAwards": {
+				"Objects": [],
+				"Next": null
+			}
+		}
+	],
+	"Next": "http://localhost:44444/d2l/api/bas/1.1/orgunits/6609/classlist/?limit=10&sortField=4&fetchLatest=true&awardType=1&offset=10"
+}
