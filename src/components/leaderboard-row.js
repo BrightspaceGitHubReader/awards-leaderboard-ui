@@ -160,7 +160,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			return;
 		}
 		const userAwards = html`${this._getAwardsDisplay()}`;
-		const additionalAwards = html`${this._getExtraAwardsCount()}`;
+		const additionalAwards = html`${this._getExtraAwardsDisplay()}`;
 
 		const mainFontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-compact';
 		const secondFontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-small';
@@ -249,17 +249,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		`;
 	}
 
-	_getExtraAwardsCount() {
-		const extraCount = this._getExtraAwardCount();
-
-		if (extraCount === 0) {
-			return;
-		}
-		return html`
-				<span role="img" aria-label="${this.localize('extraCountDescription', {extracount:`${extraCount}`})}">+${extraCount}</span>
-			`;
-	}
-
 	_getAwardCountText() {
 		if (this.userData.TotalAwardCount === 1) {
 			return this.localize('awards.one');
@@ -299,6 +288,17 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			return extraCount;
 		}
 		return 0;
+	}
+
+	_getExtraAwardsDisplay() {
+		const extraCount = this._getExtraAwardCount();
+
+		if (extraCount === 0) {
+			return;
+		}
+		return html`
+				<span role="img" aria-label="${this.localize('extraCountDescription', {extracount:`${extraCount}`})}">+${extraCount}</span>
+			`;
 	}
 
 	_hasAwardsToDisplay() {
