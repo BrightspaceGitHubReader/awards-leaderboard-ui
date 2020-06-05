@@ -160,6 +160,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			return;
 		}
 		const userAwards = html`${this._getAwardsDisplay()}`;
+		const additionalAwards = html`${this._getExtraAwardsCount()}`;
 
 		const mainFontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-compact';
 		const secondFontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-small';
@@ -193,7 +194,10 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 							</div>
 						</div>
 						<div class="panel">
-							${userAwards}
+							<span role="list">
+								${userAwards}
+							</span>
+							${additionalAwards}
 						</div>
 					</d2l-labs-accordion-collapse>
 				</d2l-labs-accordion>
@@ -222,7 +226,10 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 					<div class='${secondFontStyle} displayNumber'>${this._getDisplayNumber()}</div>
 				</div>
 				<div class="side">
-					${userAwards}
+					<span role="list">
+						${userAwards}
+					</span>
+					${additionalAwards}
 				</div>
 			</div>
 		`;
@@ -235,9 +242,22 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		this._displayedBadges = this._displayedBadges + 1;
 
 		return html`
-			<award-issued .award=${award} >
-			</award-issued>
+			<span role="listitem">
+				<award-issued .award=${award}>
+				</award-issued>
+			</span>
 		`;
+	}
+
+	_getExtraAwardsCount() {
+		const extraCount = this._getExtraAwardCount();
+
+		if (extraCount === 0) {
+			return;
+		}
+		return html`
+				<span role="img" aria-label="${this.localize('extraCountDescription', {extracount:`${extraCount}`})}">+${extraCount}</span>
+			`;
 	}
 
 	_getAwardCountText() {
@@ -251,18 +271,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		if (!this._hasAwardsToDisplay()) {
 			return;
 		}
-		const extraCount = this._getExtraAwardCount();
-		let additionalAwards;
-		if (extraCount > 0) {
-			additionalAwards = html`
-				<span role="img" aria-label="${this.localize('extraCountDescription', {extracount:`${extraCount}`})}">+${extraCount}</span>
-			`;
-		}
+
 		this._displayedBadges = 0;
 
 		return html`
 			${this.userData.IssuedAwards.Objects.map(award => this._createAwardEntry(award))}
-			${additionalAwards}
 		`;
 	}
 
