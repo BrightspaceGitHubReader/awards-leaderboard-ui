@@ -60,16 +60,18 @@ class AwardIssued extends BaseMixin(LitElement) {
 			return;
 		}
 
-		this.badgeId = `Badge_${this.award.Award.AwardId}`;
+		const badgeId = `Badge_${this.award.Award.AwardId}`;
+		const tooltipId = `BadgeTooltip_${this.award.Award.AwardId}`;
 		return html`
 			<button
-				id="${this.badgeId}"
+				id="${badgeId}"
 				style="background-image:url(${this.award.Award.ImageData.Path})"
 				@click="${this._awardClick}"
 				class="awardBtn"
+				aria-labelledby="${tooltipId}"
 			>
 			</button>
-			<d2l-tooltip for="${this.badgeId}" for-type="label">${this.award.Award.Title}</d2l-tooltip>
+			<d2l-tooltip id="${tooltipId}" for="${badgeId}" for-type="label">${this.award.Award.Title}</d2l-tooltip>
     	`;
 	}
 
