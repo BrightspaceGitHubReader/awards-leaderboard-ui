@@ -131,12 +131,11 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			.panel {
 				background-color: var(--d2l-color-sylvite);
 				border-top: 1px solid var(--d2l-color-mica);
+				margin-bottom: -11px;
 				margin-top: 11px;
-				margin-bottom: -20px;
 				padding-bottom: 12px;
 				padding-left: ${unsafeCSS(PanelPadding)}px;
 				padding-top: 12px;
-				position: relative;
 			}
 			:host([dir="rtl"]) .panel {
 				padding-left: 0px;
