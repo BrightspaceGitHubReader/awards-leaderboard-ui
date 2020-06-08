@@ -51,13 +51,14 @@ To test them locally within a browser, run
 
 Awards Leaderboard is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 
-To create a new version bump:
-* Tag a new release in awards-leaderboard
+Include either `[increment major]`, `[increment minor]` or `[increment patch]` in your merge commit message to automatically increment the `package.json` version and create a tag and GitHub release.
+
+To update BSI to use a new version:
 * Ensure awards-leaderboard-ui is no longer linked to bsi - Follow Option 2 https://github.com/Brightspace/brightspace-integration#running-locally---bundled-production-build
 * Don't forget to restart IIS
 * Within BSI, run the following commands:
   * `rm package-lock.json`
-  * `rm -r node_modules`
+  * `rm -rf node_modules`
   * `npm i --package-lock`
   * `npm install`
   * `npm run build`

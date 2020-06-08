@@ -8,6 +8,17 @@ branches:
     - /^\d+\.\d+\.\d+$/
 install: npm ci
 script: ./ci-script.sh
+after_success:
+  - frauci-update-version -d=skip && export TRAVIS_TAG=$(frauci-get-version)
+deploy:
+  provider: releases
+  api_key: "$GITHUB_RELEASE_TOKEN"
+  on:
+    tags: true
 env:
   global:
+  - OWNER_NAME=Brightspace
+  - REPO_NAME=awards-leaderboard-ui
   - SAUCE_USERNAME: lweber-d2l
+  # GITHUB_RELEASE_TOKEN
+  - secure: U/gRDX/Ko8NuxoUALWtW3NfnLyf11CWDnRXUs0am+UQQNycUsAfhIRg45RxhHaNaUpuEsYR6k1Su/Xza+GVpJUIRVI58n6RvB+enKagRfad2Tfzhk24W3pq4CedU/BTMY3Ces0VI7H1s5hqcr2S29P2pDEAXtEM4Ndo0dovvOIZmZ27dkNz6zikqQj/s5/nM/MBi01+iHa04drqwmZdMXuPehohOAic4vN9eNSM/J5kXGqf8NRMdz7SQfdS+B+0O+2GSJj7IJYvinu0EGBc9Lljb0VQFR9WCqXPt4UWmDVUni068IKxW6h+ieZb/43QzpAFeYJ4xwIG7BxbjICnGiaglYMHNMEfbS40D1EMturVohXM9i4Wvm5c+1eUP6C11ZYlVkFq2fR3N5pAoZ+Jwfxlwb204ff9dKJ/e4BDBF5X1XpGTuSlqR+l1p16dlXIxGVDr5qpdFar52sGdL++skfo0qf5zeyspsySuMO/QlCQQCLelzCjC73Ie+01CWAVrzuoBlud49II1Jr9FACt5Pl//vTcgN0RwgyGwhazR951nEBag57K5LPjfU+BJYrzx8Zpmp16KXHE1FFZjR7OP8w1NKtPgdydR05HQh+bucw64W4VEekG4JChq6/ysXVB56D/zdBMivApBq2UHIJbLs7FKI6p4H6ZIhT7PW6uAfmg=
