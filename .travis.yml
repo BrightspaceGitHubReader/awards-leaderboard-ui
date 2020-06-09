@@ -6,7 +6,7 @@ branches:
   only:
     - master
     - /^\d+\.\d+\.\d+$/
-install: npm ci
+install: npm i
 script: ./ci-script.sh
 after_success:
   - frauci-update-version -d=skip && export TRAVIS_TAG=$(frauci-get-version)
