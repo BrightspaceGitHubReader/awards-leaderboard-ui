@@ -6,3 +6,4 @@ _site/
 lib/
 .vs/
 *.orig
+package-lock.json
