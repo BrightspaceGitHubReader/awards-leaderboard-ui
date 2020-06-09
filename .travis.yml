@@ -1,5 +1,4 @@
 language: node_js
-node_js: 10
 addons:
   chrome: stable
 branches:
@@ -8,11 +7,13 @@ branches:
     - /^\d+\.\d+\.\d+$/
 install: npm i
 script: ./ci-script.sh
-after_success:
-  - frauci-update-version -d=skip && export TRAVIS_TAG=$(frauci-get-version)
+after_success: >
+  frauci-update-version -d=skip &&
+  export TRAVIS_TAG=$(frauci-get-version)
 deploy:
   provider: releases
   api_key: "$GITHUB_RELEASE_TOKEN"
+  name: "$TRAVIS_TAG"
   on:
     tags: true
 env:
