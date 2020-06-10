@@ -239,10 +239,13 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			return;
 		}
 		this._displayedBadges = this._displayedBadges + 1;
+		const tooltipMidline = this.maxBadges / 2;
+		const isTooltipStart = (this.mobile && this._displayedBadges <= tooltipMidline);
+		const isTooltipEnd = (this.mobile && this._displayedBadges > tooltipMidline);
 
 		return html`
 			<span role="listitem">
-				<award-issued .award=${award}>
+				<award-issued .award=${award} .isTooltipStart=${isTooltipStart} .isTooltipEnd=${isTooltipEnd}>
 				</award-issued>
 			</span>
 		`;
