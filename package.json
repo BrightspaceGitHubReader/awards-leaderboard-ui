@@ -1,13 +1,13 @@
 {
   "name": "d2l-awards-leaderboard-ui",
   "description": "Awards Leaderboard UI",
-  "version": "2.0.2",
+  "version": "1.0.11",
   "scripts": {
     "start:prod": "npm run build && npx http-server ./build/prod -p 3000",
     "start:dev": "npm run build && npx polymer serve -p 3000",
     "build": "polymer build",
     "lint": "eslint --ext .json,.js,.html .",
-    "lint:fix": "eslint --ext .json,.js,.html --fix .",
+    "format": "npm run lint -- --fix .",
     "test": "npm run lint && npm run test:local",
     "test:local": "polymer test --skip-plugin sauce",
     "test:sauce": "polymer test --skip-plugin local",
@@ -52,6 +52,7 @@
     "eslint-plugin-json": "^2",
     "eslint-plugin-lit": "^0.6.0",
     "eslint-plugin-mocha": "^6",
+    "frau-ci": "^1",
     "http-server": "^0.12.1",
     "lint": "^0.7.0",
     "mocha": "^7",
