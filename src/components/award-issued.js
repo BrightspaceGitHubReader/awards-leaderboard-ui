@@ -20,7 +20,9 @@ class AwardIssued extends BaseMixin(LitElement) {
 
 	static get properties() {
 		return {
-			award: {type: Object}
+			award: {type: Object},
+			isTooltipStart: { type: Boolean },
+			isTooltipEnd: { type: Boolean }
 		};
 	}
 
@@ -62,6 +64,8 @@ class AwardIssued extends BaseMixin(LitElement) {
 
 		const badgeId = `Badge_${this.award.Award.AwardId}`;
 		const tooltipId = `BadgeTooltip_${this.award.Award.AwardId}`;
+		const tooltipAlign = this.isTooltipStart ? 'start' : (this.isTooltipEnd ? 'end' : '');
+
 		return html`
 			<button
 				id="${badgeId}"
@@ -71,7 +75,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 				aria-labelledby="${tooltipId}"
 			>
 			</button>
-			<d2l-tooltip id="${tooltipId}" for="${badgeId}" for-type="label">${this.award.Award.Title}</d2l-tooltip>
+			<d2l-tooltip id="${tooltipId}" for="${badgeId}" for-type="label" align="${tooltipAlign}">${this.award.Award.Title}</d2l-tooltip>
     	`;
 	}
 
