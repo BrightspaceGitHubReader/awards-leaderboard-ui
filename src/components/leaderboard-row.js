@@ -158,8 +158,6 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		if (this.userData === undefined) {
 			return;
 		}
-		const userAwards = html`${this._getAwardsDisplay()}`;
-		const additionalAwards = html`${this._getExtraAwardsDisplay()}`;
 
 		const mainFontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-compact';
 		const secondFontStyle = this.full ? 'd2l-body-standard' : 'd2l-body-small';
@@ -194,9 +192,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 						</div>
 						<div class="panel">
 							<span role="list">
-								${userAwards}
+								${this._getAwardsDisplay()}
 							</span>
-							${additionalAwards}
+							${this._getExtraAwardsDisplay()}
 						</div>
 					</d2l-labs-accordion-collapse>
 				</d2l-labs-accordion>
@@ -226,9 +224,9 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 				</div>
 				<div class="side">
 					<span role="list">
-						${userAwards}
+						${this._getAwardsDisplay()}
 					</span>
-					${additionalAwards}
+					${this._getExtraAwardsDisplay()}
 				</div>
 			</div>
 		`;

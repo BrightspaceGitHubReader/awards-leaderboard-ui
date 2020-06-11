@@ -162,8 +162,6 @@ class App extends BaseMixin(LitElement) {
 	}
 
 	render() {
-		const dialog = html`<award-details id="awarddetails"></award-details>`;
-
 		let listContent;
 		if (!this.doneLoading) {
 			const numberOfItems = 5;
