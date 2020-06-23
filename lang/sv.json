@@ -6,7 +6,7 @@
    "credits.one" : "1 poäng",
    "emptyBody" : "Du bör ta en titt på rangordningarna med regelbundna intervall.",
    "emptyHeading" : "Du har inte fått några utdelningar.",
-   "extraCountDescription" : "{extracount} more awards",
+   "extraCountDescription" : "+ {extracount} utmärkelser till",
    "label.credits" : "Antal krediter:",
    "label.description" : "Beskrivning:",
    "label.evidence" : "Spåra:",

@@ -6,7 +6,7 @@
    "credits.one" : "رصيد واحد",
    "emptyBody" : "تحقق باستمرار للاطّلاع على آخر التصنيفات.",
    "emptyHeading" : "لم يتم اكتساب أي جوائز بعد.",
-   "extraCountDescription" : "{extracount} more awards",
+   "extraCountDescription" : "+{extracount} من الجوائز",
    "label.credits" : "الأرصدة:",
    "label.description" : "الوصف:",
    "label.evidence" : "الدليل:",

@@ -6,7 +6,7 @@
    "credits.one" : "1학점",
    "emptyBody" : "최종 순위를 위해 자주 확인하십시오.",
    "emptyHeading" : "아직 수상 이력이 없습니다.",
-   "extraCountDescription" : "{extracount} more awards",
+   "extraCountDescription" : "{extracount}개 이상의 수상 내역",
    "label.credits" : "학점:",
    "label.description" : "설명:",
    "label.evidence" : "근거:",
