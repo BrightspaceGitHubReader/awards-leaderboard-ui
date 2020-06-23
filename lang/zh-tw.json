@@ -6,7 +6,7 @@
    "credits.one" : "1 個學分",
    "emptyBody" : "請經常返回查看最新的排名。",
    "emptyHeading" : "尚未獲得任何獎勵。",
-   "extraCountDescription" : "+{Extracount} 獎勵",
+   "extraCountDescription" : "{Extracount} 獎勵",
    "label.credits" : "學分：",
    "label.description" : "說明：",
    "label.evidence" : "證明：",
