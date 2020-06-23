@@ -6,7 +6,7 @@
    "credits.one" : "1 merit",
    "emptyBody" : "Kom tilbage med jævne mellemrum for at se seneste rangordninger.",
    "emptyHeading" : "Ingen priser er blevet optjent endnu.",
-   "extraCountDescription" : "+{extracount} priser",
+   "extraCountDescription" : "{extracount} priser",
    "label.credits" : "Meritter:",
    "label.description" : "Beskrivelse:",
    "label.evidence" : "Dokumentation:",
