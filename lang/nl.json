@@ -6,7 +6,7 @@
    "credits.one" : "1 studiepunt",
    "emptyBody" : "Kom regelmatig terug om de meeste recente scorelijsten te bekijken.",
    "emptyHeading" : "Er zijn nog geen onderscheidingen verdiend.",
-   "extraCountDescription" : "+{extraCount} onderscheidingen",
+   "extraCountDescription" : "{extraCount} onderscheidingen",
    "label.credits" : "Studiepunten:",
    "label.description" : "Beschrijving:",
    "label.evidence" : "Bewijs:",
