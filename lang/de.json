@@ -6,7 +6,7 @@
    "credits.one" : "1 Punkt",
    "emptyBody" : "Schauen Sie regelmäßig nach den neuesten Rankings.",
    "emptyHeading" : "Es wurden noch keine Lernerfolge erzielt.",
-   "extraCountDescription" : "+ {extracount} Lernerfolge",
+   "extraCountDescription" : "{extracount} Lernerfolge",
    "label.credits" : "Punkte:",
    "label.description" : "Beschreibung:",
    "label.evidence" : "Nachweis:",
