@@ -13,6 +13,15 @@ d2lfetch.use({
 
 export class LeaderboardService {
 
+	static getLeaderboard(orgUnitId, sortByCreditsConfig) {
+		const classlistSort = sortByCreditsConfig ? ClasslistAwardSortByCredits : ClasslistAwardSortByAwards;
+		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgUnitId, classlistSort));
+	}
+
+	static getMyAwards(orgUnitId, userId) {
+		return this.getRequest(LeaderboardRoutes.MyAwards(orgUnitId, userId));
+	}
+
 	static get getOptions() {
 		return {
 			credentials: 'include',
@@ -22,15 +31,6 @@ export class LeaderboardService {
 			method: 'GET',
 			mode: 'cors'
 		};
-	}
-
-	static getLeaderboard(orgUnitId, sortByCreditsConfig) {
-		const classlistSort = sortByCreditsConfig ? ClasslistAwardSortByCredits : ClasslistAwardSortByAwards;
-		return this.getRequest(LeaderboardRoutes.ClasslistLeaderboard(orgUnitId, classlistSort));
-	}
-
-	static getMyAwards(orgUnitId, userId) {
-		return this.getRequest(LeaderboardRoutes.MyAwards(orgUnitId, userId));
 	}
 
 	static getRequest(url) {

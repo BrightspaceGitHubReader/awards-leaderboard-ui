@@ -1,5 +1,13 @@
 export class DemoService {
 
+	static getLeaderboard() {
+		return fetch('../demo/data/leaderboard.json', this.getOptions).then(r => r.json());
+	}
+
+	static getMyAwards() {
+		return fetch('../demo/data/awards.json', this.getOptions).then(r => r.json());
+	}
+
 	static get getOptions() {
 		return {
 			credentials: 'include',
@@ -9,14 +17,6 @@ export class DemoService {
 			method: 'GET',
 			mode: 'cors'
 		};
-	}
-
-	static getLeaderboard() {
-		return fetch('../demo/data/leaderboard.json', this.getOptions).then(r => r.json());
-	}
-
-	static getMyAwards() {
-		return fetch('../demo/data/awards.json', this.getOptions).then(r => r.json());
 	}
 
 	static getRequest(url) {

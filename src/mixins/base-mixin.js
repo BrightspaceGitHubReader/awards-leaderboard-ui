@@ -63,10 +63,6 @@ export const BaseMixin = superclass => class extends LocalizeMixin(RtlMixin(supe
 		return null;
 	}
 
-	localize(key, values) {
-		return super.localize(key, values) || `{language term '${key}' not found}`;
-	}
-
 	formatDateTime(date) {
 		if (date === null || date === undefined) {
 			return '';
@@ -76,6 +72,10 @@ export const BaseMixin = superclass => class extends LocalizeMixin(RtlMixin(supe
 			new Date(myDate),
 			{format: 'medium'}
 		);
+	}
+
+	localize(key, values) {
+		return super.localize(key, values) || `{language term '${key}' not found}`;
 	}
 
 };
