@@ -45,7 +45,10 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			bodyCompactStyles,
 			bodySmallStyles,
 			css`
-            .awardRow {
+			:host {
+				width: 100%;
+			}
+			.awardRow {
 				align-items: center;
 				display: flex;
 				flex-direction: row;
