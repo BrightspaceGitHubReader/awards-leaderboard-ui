@@ -6,7 +6,7 @@
    "credits.one" : "1 crédito",
    "emptyBody" : "Verifique sempre as classificações mais recentes.",
    "emptyHeading" : "Ainda não foi atribuído nenhum prêmio.",
-   "extraCountDescription" : "{extracount} more awards",
+   "extraCountDescription" : "Mais {extracount} prêmios",
    "label.credits" : "Créditos:",
    "label.description" : "Descrição:",
    "label.evidence" : "Evidência:",
