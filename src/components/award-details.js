@@ -85,6 +85,19 @@ class AwardDetails extends BaseMixin(LitElement) {
 			`;
 	}
 
+	openDialog(event) {
+		this.awardTitle = event.detail.awardTitle;
+		this.issuerName = event.detail.issuerName;
+		this.awardDescription = event.detail.awardDescription;
+		this.awardIssued = event.detail.awardIssued;
+		this.awardCredit = event.detail.awardCredit;
+		this.awardEvidence = event.detail.awardEvidence;
+		this.awardImage = event.detail.awardImage;
+		this.awardExpiry = event.detail.awardExpiry;
+
+		this.awardsDialogOpen = true;
+	}
+
 	_closeDialog() {
 		this.awardsDialogOpen = false;
 		// When dialog closes, reset blur to hide tooltip
@@ -135,18 +148,6 @@ class AwardDetails extends BaseMixin(LitElement) {
 		`;
 	}
 
-	openDialog(event) {
-		this.awardTitle = event.detail.awardTitle;
-		this.issuerName = event.detail.issuerName;
-		this.awardDescription = event.detail.awardDescription;
-		this.awardIssued = event.detail.awardIssued;
-		this.awardCredit = event.detail.awardCredit;
-		this.awardEvidence = event.detail.awardEvidence;
-		this.awardImage = event.detail.awardImage;
-		this.awardExpiry = event.detail.awardExpiry;
-
-		this.awardsDialogOpen = true;
-	}
 }
 
 window.customElements.define('award-details', AwardDetails);
