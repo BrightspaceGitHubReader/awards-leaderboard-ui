@@ -1,0 +1,17 @@
+{
+   "awards.many" : "{numawards} récompenses",
+   "awards.one" : "1 récompense",
+   "closeDialog" : "Fermer",
+   "credits.many" : "{numcredits} crédits",
+   "credits.one" : "1 crédit",
+   "emptyBody" : "Revenez régulièrement pour connaître les derniers classements.",
+   "emptyHeading" : "Aucune récompense obtenue.",
+   "extraCountDescription" : "+{extracount} récompenses",
+   "label.credits" : "Crédits :",
+   "label.description" : "Description :",
+   "label.evidence" : "Preuve :",
+   "label.expiryDate" : "Date d’expiration :",
+   "label.issueDate" : "Date d’émission :",
+   "label.issuer" : "Émetteur :",
+   "rankingAria" : "Rang {rank}"
+}
