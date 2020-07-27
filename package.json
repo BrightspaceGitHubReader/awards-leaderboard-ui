@@ -50,7 +50,7 @@
     "eslint-plugin-chai-friendly": "^0.6.0",
     "eslint-plugin-html": "^6",
     "eslint-plugin-json": "^2",
-    "eslint-plugin-lit": "^1.2.0",
+    "eslint-plugin-lit": "^1.2.2",
     "eslint-plugin-mocha": "^7",
     "eslint-plugin-sort-class-members": "^1.7.0",
     "frau-ci": "^1",
