@@ -26,7 +26,7 @@
   "homepage": "https://github.com/Brightspace/awards-leaderboard-ui#readme",
   "dependencies": {
     "@brightspace-ui-labs/accordion": "^2",
-    "@brightspace-ui/core": "1.58.0",
+    "@brightspace-ui/core": "1.63.3",
     "@polymer/polymer": "^3",
     "@webcomponents/webcomponentsjs": "^2",
     "d2l-fetch": "github:Brightspace/d2l-fetch#semver:^2",
