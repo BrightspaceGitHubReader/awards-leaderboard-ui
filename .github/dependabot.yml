@@ -11,4 +11,6 @@ updates:
       - dependencies
       - auto
     rebase-strategy: auto
+    ignore:
+      - dependency-name: "@brightspace-ui/core" # ignoring for now due to issues
     versioning-strategy: increase
