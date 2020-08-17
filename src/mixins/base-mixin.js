@@ -70,7 +70,7 @@ export const BaseMixin = superclass => class extends LocalizeMixin(RtlMixin(supe
 		const myDate = getLocalDateTimeFromUTCDateTime(date);
 		return formatDateTime(
 			new Date(myDate),
-			{format: 'medium'}
+			{ format: 'medium' }
 		);
 	}
 

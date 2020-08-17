@@ -177,7 +177,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 									class="awardRank ${mainFontStyle}"
 									role="img"
 									?topRank="${this.userData.Rank <= TopStyleLimit}"
-									aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+									aria-label="${this.localize('rankingAria', { rank:`${this.userData.Rank}` })}">
 									${this.userData.Rank}
 								</div>
 							</div>
@@ -210,7 +210,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 						class="awardRank ${mainFontStyle}"
 						role="img"
 						?topRank="${this.userData.Rank <= TopStyleLimit}"
-						aria-label="${this.localize('rankingAria', {rank:`${this.userData.Rank}`})}">
+						aria-label="${this.localize('rankingAria', { rank:`${this.userData.Rank}` })}">
 						${this.userData.Rank}
 					</div>
 				</div>
@@ -256,7 +256,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		if (this.userData.TotalAwardCount === 1) {
 			return this.localize('awards.one');
 		}
-		return this.localize('awards.many', {numawards:`${this.userData.TotalAwardCount}`});
+		return this.localize('awards.many', { numawards:`${this.userData.TotalAwardCount}` });
 	}
 
 	_getAwardsDisplay() {
@@ -275,7 +275,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 		if (this.userData.TotalCreditCount === 1) {
 			return this.localize('credits.one');
 		}
-		return this.localize('credits.many', {numcredits:`${this.userData.TotalCreditCount}`});
+		return this.localize('credits.many', { numcredits:`${this.userData.TotalCreditCount}` });
 	}
 
 	_getDisplayNumber() {
@@ -300,7 +300,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 			return;
 		}
 		return html`
-				<span role="img" aria-label="${this.localize('extraCountDescription', {extracount:`${extraCount}`})}">+${extraCount}</span>
+				<span role="img" aria-label="${this.localize('extraCountDescription', { extracount:`${extraCount}` })}">+${extraCount}</span>
 			`;
 	}
 

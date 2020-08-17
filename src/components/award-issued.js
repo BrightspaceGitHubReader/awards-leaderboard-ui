@@ -20,7 +20,7 @@ class AwardIssued extends BaseMixin(LitElement) {
 
 	static get properties() {
 		return {
-			award: {type: Object},
+			award: { type: Object },
 			isTooltipStart: { type: Boolean },
 			isTooltipEnd: { type: Boolean }
 		};
