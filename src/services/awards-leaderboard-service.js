@@ -26,5 +26,4 @@ export class LeaderboardService {
 	static getRequest(url) {
 		return fetch(url, this.getOptions).then(r => r.json());
 	}
-
 }
