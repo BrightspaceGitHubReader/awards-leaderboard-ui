@@ -2,11 +2,9 @@
 
 [![Build Status][CI Badge]][CI Branch]
 
-This a leaderboard widget of users in a course with the top 10 awards.
-
-A maximum of 10 awards will be shown for each user.
-
-The widget can be configured to display users listed by top awards or top credits.
+This a leaderboard widget of users in a course with the top 10 awards. A maximum
+of 10 awards will be shown for each user. The widget can be configured to
+display users listed by top awards or top credits.
 
 ## Quick start
 
@@ -43,15 +41,23 @@ This comes with sample data and a sample full view, medium view and mobile view 
 
 ## Tests
 
-There are tests with this repo that run within CI.
-To test them locally within a browser, run
-`polymer test --skip-plugin sauce -p`
+There are tests with this repo that run within CI. To test them locally within a
+browser, run
+
+```
+polymer test --skip-plugin sauce -p
+```
 
 ## Versioning
 
 Awards Leaderboard is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 
-Include either `[increment major]`, `[increment minor]` or `[increment patch]` in your merge commit message to automatically increment the `package.json` version and create a tag and GitHub release.
+Include either `[increment major]`, `[increment minor]` or `[increment patch]`
+in your merge commit title to automatically increment the `package.json`
+version and create a tag and GitHub release. This must be done when merging the
+pull request.
+
+![Versioning example](docs/img/merge-commit-title.png)
 
 To update BSI to use a new version:
 * Ensure awards-leaderboard-ui is no longer linked to bsi - Follow Option 2 https://github.com/Brightspace/brightspace-integration#running-locally---bundled-production-build
