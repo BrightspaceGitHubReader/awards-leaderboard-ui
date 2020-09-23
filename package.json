@@ -44,7 +44,7 @@
     "d2l-license-checker": "^3",
     "del": "^5",
     "eslint": "^7",
-    "eslint-config-brightspace": "^0.10.0",
+    "eslint-config-brightspace": "^0.11.0",
     "eslint-plugin-chai-friendly": "^0.6.0",
     "eslint-plugin-html": "^6",
     "eslint-plugin-json": "^2",
