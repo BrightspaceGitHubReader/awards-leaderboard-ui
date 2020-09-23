@@ -222,7 +222,7 @@ class LeaderboardRow extends BaseMixin(LitElement) {
 					aria-hidden="true">
 				</d2l-profile-image>
 				<div class='creditCount'>
-					<div class='${mainFontStyle} displayName'>${this.userData.DisplayName}</div>
+					<div class='${mainFontStyle} displayName' @mouseenter=${this._handleMouseEnter}>${this.userData.DisplayName}</div>
 					<div class='${secondFontStyle} displayNumber'>${this._getDisplayNumber()}</div>
 				</div>
 				<div class="side">
