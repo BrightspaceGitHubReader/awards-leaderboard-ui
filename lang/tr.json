@@ -6,12 +6,12 @@
    "credits.one" : "1 kredi",
    "emptyBody" : "Güncel derecelendirmeler için sık sık kontrol edin.",
    "emptyHeading" : "Henüz bir ödül kazanılmadı.",
-   "extraCountDescription" : "{extracount} ödül",
+   "extraCountDescription" : "+ {extracount} ödül",
    "label.credits" : "Krediler:",
    "label.description" : "Açıklama:",
    "label.evidence" : "Kanıt:",
-   "label.expiryDate" : "Son Kullanma Tarihi:",
-   "label.issueDate" : "Düzenleme Tarihi:",
-   "label.issuer" : "Düzenleyen:",
-   "rankingAria" : "Sıra {rank}"
+   "label.expiryDate" : "Bitiş Tarihi:",
+   "label.issueDate" : "Veriliş Tarihi:",
+   "label.issuer" : "Veren Kişi:",
+   "rankingAria" : "{rank}. Sıra"
 }
