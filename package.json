@@ -57,7 +57,7 @@
     "mocha": "^8",
     "polymer-cli": "^1",
     "polyserve": "^0.27.15",
-    "puppeteer": "^5",
+    "puppeteer": "^6",
     "wct-mocha": "^1.1.0",
     "web-component-tester": "^6.9.2"
   }
