@@ -40,7 +40,7 @@
   "devDependencies": {
     "@polymer/test-fixture": "^4",
     "babel-eslint": "^10",
-    "chai": "^4.2.0",
+    "chai": "^4.3.3",
     "d2l-license-checker": "^3",
     "del": "^6",
     "eslint": "^7",
