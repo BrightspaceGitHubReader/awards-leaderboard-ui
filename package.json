@@ -50,7 +50,7 @@
     "eslint-plugin-json": "^2",
     "eslint-plugin-lit": "^1.2.4",
     "eslint-plugin-mocha": "^8",
-    "eslint-plugin-sort-class-members": "^1.8.0",
+    "eslint-plugin-sort-class-members": "^1.10.0",
     "frau-ci": "^1",
     "http-server": "^0.12.3",
     "lint": "^0.7.0",
