@@ -47,7 +47,7 @@
     "eslint-config-brightspace": "^0.11.0",
     "eslint-plugin-chai-friendly": "^0.6.0",
     "eslint-plugin-html": "^6",
-    "eslint-plugin-json": "^2",
+    "eslint-plugin-json": "^3",
     "eslint-plugin-lit": "^1.2.4",
     "eslint-plugin-mocha": "^8",
     "eslint-plugin-sort-class-members": "^1.8.0",
