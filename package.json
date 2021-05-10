@@ -45,7 +45,7 @@
     "del": "^6",
     "eslint": "^7",
     "eslint-config-brightspace": "^0.11.0",
-    "eslint-plugin-chai-friendly": "^0.6.0",
+    "eslint-plugin-chai-friendly": "^0.7.1",
     "eslint-plugin-html": "^6",
     "eslint-plugin-json": "^2",
     "eslint-plugin-lit": "^1.2.4",
