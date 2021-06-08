@@ -54,7 +54,7 @@
     "frau-ci": "^1",
     "http-server": "^0.12.3",
     "lint": "^0.7.0",
-    "mocha": "^8",
+    "mocha": "^9",
     "polymer-cli": "^1",
     "polyserve": "^0.27.15",
     "puppeteer": "^5",
